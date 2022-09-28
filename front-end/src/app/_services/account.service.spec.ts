@@ -14,3 +14,10 @@ describe('AccountService', () => {
     expect(service).toBeTruthy();
   });
 });
+
+
+// Nock Usage
+// nock('https://budgeting-js.com')
+// .get('/api/accounts')
+// .reply(400);
+
