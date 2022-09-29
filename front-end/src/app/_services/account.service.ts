@@ -8,7 +8,7 @@ export class AccountService {
   constructor() { }
 
 
-  getAccount(){
+  getAccount(email:string,password:string){
     
   };
 }

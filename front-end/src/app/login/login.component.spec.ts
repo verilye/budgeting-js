@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { AccountService } from '../_services/account.service';
 import { LoginComponent } from './login.component';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 describe('LoginComponent', () => {
 
@@ -11,26 +12,19 @@ describe('LoginComponent', () => {
   let fixture : ComponentFixture<LoginComponent>;
   let service : AccountService;
   let router : Router;
+  let accountServiceSpy: jasmine.SpyObj<AccountService>;
 
   beforeEach(async () => {
 
-    const accountServiceSpy = jasmine.createSpyObj<AccountService>(['getAccount']);
-    accountServiceSpy.getAccount.and.callFake(function(){
-      return of({
-        results:[
-          {
-            name: 'King',
-            email: 'Julian'
-          }
-        ]
-      })
-    });
-
     await TestBed.configureTestingModule({
-      declarations: [ LoginComponent ]
+      declarations: [ LoginComponent ],
+      imports:[
+        ReactiveFormsModule
+      ]
     })
     .compileComponents();
 
+    accountServiceSpy = TestBed.inject(AccountService) as jasmine.SpyObj<AccountService>;
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -43,33 +37,35 @@ describe('LoginComponent', () => {
 
   it ('should display a login form', () =>{
 
-    const loginForm = fixture.debugElement.query(By.css('#loginForm')).nativeElement;
+    const loginForm = fixture.debugElement.query(By.css('#login-form')).nativeElement;
     expect(loginForm.toBeTruthy);
 
   });
 
-  it ('should display a login button', ()=>{
+  it ('should display a login button', () =>{
 
-    const loginButton = fixture.debugElement.query(By.css('#loginButton')).nativeElement;
+    const loginButton = fixture.debugElement.query(By.css('#login-button')).nativeElement;
     expect(loginButton.toBeTruthy);
 
   });
 
-  it ('should call onLogin when button is clicked', ()=>{
+  it ('should call login() when button is clicked', ()=>{
 
-    const loginButton = fixture.debugElement.query(By.css('#loginButton')).nativeElement;
+    const componentSpy = spyOn(component,'login');
+
+    const loginButton = fixture.debugElement.query(By.css('#login-button')).nativeElement;
     loginButton.click();
-
-    fixture.whenStable().then(()=>{
-      expect(component.login).toHaveBeenCalled();
-    });
+      
+    expect(componentSpy).toHaveBeenCalled();
+    
   });
 
   it("should contact AccountService when login() is called",()=>{
     
-    const accountSpy = spyOn(service, 'getAccount');
+    const serviceSpy = spyOn(accountServiceSpy, 'getAccount');
+    
     component.login();
-    expect(accountSpy).toHaveBeenCalled();
+    expect(serviceSpy).toHaveBeenCalled();
 
   });
 
