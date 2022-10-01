@@ -19,15 +19,12 @@ export class AccountService {
 
 
   //TODO
-  // handleError() indicates a to be in house error handler that has yet to be made
   //Complete Unit testing, error handling and JWT before building this service out
 
   getAccount(account: Account): Observable<Account>{
     
-    return this.http.post<Account>(this.url, account)
-      .pipe(
-        catchError(this.handleError('getAccount', account));
-      );
+    return this.http.post<Account>(this.url, account);
+
   }
 
   
