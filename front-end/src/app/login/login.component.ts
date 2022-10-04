@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
+import { Account } from '../_models/account';
 
 @Component({
   selector: 'app-login',
@@ -20,11 +21,13 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-
+  
     var email = this.loginForm.controls.email.value ||'';
     var password = this.loginForm.controls.password.value ||'';
 
-    this.accountService.getAccount(email,password);
+    var account = new Account(email,password);
+
+    this.accountService.getAccount(account);
 
     return;
     
