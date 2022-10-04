@@ -1,0 +1,19 @@
+<div class="container" id="callToAction">
+    <div class="row justify-content-center" id="splash">
+        <div class="col-4" id="splash-text" >
+            <p class="card-title" style="white-space: nowrap; font-size:bold; font-size:30px">Clean Budgeting</p>
+            <p class="card-text" style="margin-top: 1.5em; font-size:20px;">Organise your spending quickly with minimal effort</p>
+        </div>
+        <div class="col-4" id="splash-login"> 
+            <form id="login-form" [formGroup] = "loginForm" (ngSubmit)="login()">
+                <label for="email">Email:</label>
+                <input id="email" type="text" formControlName="email">
+
+                <label for="password">Password:</label>
+                <input id="password" type="text" formControlName="password">
+            </form>
+            <button  href="#" class="btn" type ="submit" id="login-button" (click)="login()">Login</button>
+        </div>
+    </div>
+    <div class="container" style="font-size: 10px;">personal project of connor logan 09/2022, contact me at connor.j.logan@outlook.com</div>
+</div>
