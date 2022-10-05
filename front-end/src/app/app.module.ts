@@ -8,12 +8,20 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CalendarComponent } from './dashboard/calendar/calendar.component';
+import { SpendLogComponent } from './dashboard/spend-log/spend-log.component';
+import { MenuComponent } from './dashboard/menu/menu.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent,
+    CalendarComponent,
+    SpendLogComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
