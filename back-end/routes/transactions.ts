@@ -1,10 +1,15 @@
 import * as express from "express";
 const router = express.Router();
 
+router.get('/', (req,res)=>{
+
+   //Get array of transactions for pagination of relevant ones
+  
+});
+
 router.post('/', (req,res)=>{
 
-    //Send user to db, check to see if it matches with the password hash
-    //Store user client side 
+    //Store transaction on db
   
 });
 
