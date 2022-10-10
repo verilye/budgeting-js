@@ -20,15 +20,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = __importStar(require("express"));
-const { UserService } = require('../services/user-service');
 const router = express.Router();
+router.get('/', (req, res) => {
+    //Get array of transactions for pagination of relevant ones
+});
 router.post('/', (req, res) => {
-    //Send user to db, check to see if it matches with the password hash
-    //send positive response to client side 
-    try {
-        UserService.getUser();
-    }
-    catch (_a) {
-    }
+    //Store transaction on db
 });
 module.exports = router;
