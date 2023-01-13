@@ -11,3 +11,11 @@ const port = process.env.PORT || 3000;
 app.use("/", login);
 app.listen(port, () => console.log(`App listening on PORT ${port}`));
 module.exports = app;
+
+ 
+
+//TODO
+// clean up typescript transpilation
+// setup node server into more readable patterns
+// connect up to front
+// remove deleted files from github
