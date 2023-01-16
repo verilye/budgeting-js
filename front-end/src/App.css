@@ -20,6 +20,10 @@
     font-size: 1.5rem;
 }
 
+.item:hover{
+    font-size: 1.6rem;
+}
+
 .graphic{
     margin-top: 10rem;
     float:right;

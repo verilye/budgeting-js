@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import LoginComponent from './splash/login-component';
 
 function App() {
   return (
@@ -14,9 +15,15 @@ function App() {
 
       <div className='title'>budgeting-js</div>
       <div className='menu-items'>
-        <div className='login'>login</div>
-        <div className='features'>features</div>
-        <div className='about'>about</div>
+        <div className='login item'>
+          login
+          https://blog.logrocket.com/react-onclick-event-handlers-guide/#:~:text=The%20React%20onClick%20event%20handler,handlers%20appear%20inside%20curly%20braces. 
+          <div className='login visibile'>
+            <LoginComponent/>
+          </div>
+        </div> 
+        <div className='features item'>features</div>
+        <div className='about item'>about</div>
       </div>
     </div>
   );
