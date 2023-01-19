@@ -3,6 +3,19 @@
     src: url(../fonts/IBMPlexMono-SemiBold.ttf);
 }
 
+.slide-in{
+    opacity: 0%;
+    transform: translateY(50px); /*I would like to understand this better*/
+    animation: slide-in 0.5s ease forwards;
+}
+
+@keyframes slide-in {
+    to {
+        opacity: 100%;
+        transform: translate(0);
+        }
+}
+
 .splash{
     margin-top:10%;
     margin-right:10%;
@@ -46,6 +59,15 @@
 .menu-items{
     margin-top: 10rem;
     font-size: 1.5rem;
+}
+
+.login{
+    margin-top:2rem;
+}
+
+.about{
+    font-size: small;
+    margin-top:1rem;
 }
 
 .item:hover{

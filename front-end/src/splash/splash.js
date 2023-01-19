@@ -1,19 +1,37 @@
 import React from "react";
 import { useState } from "react";
-import LoginComponent from "./login-component";
+import About from "./about-component";
+import Features from "./features-component";
+import Login from "./login-component";
+
 import "./splash.css";
 
 export default function Splash(){
 
     const [loginVisible, setLoginVisible] = useState(false);
-
+    const [featuresVisible, setFeaturesVisible] = useState(false);
+    const [aboutVisibile, setAboutVisible] = useState(false);
+ 
     const toggleLogin = event =>{
         setLoginVisible(!loginVisible);
+        setFeaturesVisible(false);
+        setAboutVisible(false);
     };
 
+    const toggleFeatures = event =>{
+        setLoginVisible(false);
+        setFeaturesVisible(!featuresVisible);
+        setAboutVisible(false);
+    }
+
+    const toggleAbout = event =>{
+        setLoginVisible(false);
+        setFeaturesVisible(false);
+        setAboutVisible(!aboutVisibile);
+    }
 
     return(
-        <div className='splash'>
+        <div className='splash slide-in'>
             <div className='graphic'>
                 <div className='graphic-01 graphic-item'></div>
                 <div className='graphic-02 graphic-item'> </div>
@@ -25,10 +43,16 @@ export default function Splash(){
                 <div className='title'>budgeting-js</div>
                 <div className='login item' onClick={toggleLogin}>
                     login
-                        {loginVisible && <LoginComponent/>}
+                        {loginVisible && <Login/>}
                 </div> 
-                <div className='features item'>features</div>
-                <div className='about item'>about</div>
+                <div className='features item' onClick={toggleFeatures}>
+                    features
+                        {featuresVisible && <Features/> }
+                </div>
+                <div className='item' onClick={toggleAbout}>
+                    about
+                        {aboutVisibile && <About/> }    
+                </div>
             </div>
         </div>
     )
