@@ -6,7 +6,7 @@ export default class Login extends React.Component{
 
     render(){
         return(
-            <div className="login-form">
+            <div className="login-form slide-down">
                 <form>
                     <label>
                         <input type="text" name="username" placeholder="USERNAME"

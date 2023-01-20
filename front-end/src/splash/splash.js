@@ -5,6 +5,7 @@ import Features from "./features-component";
 import Login from "./login-component";
 
 import "./splash.css";
+import "./animation.css";
 
 export default function Splash(){
 
@@ -13,20 +14,17 @@ export default function Splash(){
     const [aboutVisibile, setAboutVisible] = useState(false);
  
     const toggleLogin = event =>{
-        setLoginVisible(!loginVisible);
         setFeaturesVisible(false);
-        setAboutVisible(false);
+        setLoginVisible(!loginVisible);
     };
 
     const toggleFeatures = event =>{
         setLoginVisible(false);
         setFeaturesVisible(!featuresVisible);
-        setAboutVisible(false);
+       
     }
 
     const toggleAbout = event =>{
-        setLoginVisible(false);
-        setFeaturesVisible(false);
         setAboutVisible(!aboutVisibile);
     }
 

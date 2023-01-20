@@ -1,8 +1,11 @@
 .feature-display{
+    margin-top: -20rem;
     margin-right:30rem;
+    margin-bottom:3rem;
 }
 
 .feature{
+    
     margin-left: 4rem;
     margin-right: 4rem;
 }

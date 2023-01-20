@@ -9,11 +9,13 @@ export default function Features(){
     return(
 
         <div className="features">
+            <>
             <div className="feature-display">
-                <a className="feature"> Financial Goals </a>
-                <a className="feature"> Weekly Budgets </a>
-                <a className="feature"> Data Analytics </a>
+                <a className="feature slide-down"> Financial Goals </a>
+                <a className="feature slide-down"> Weekly Budgets </a>
+                <a className="feature slide-down"> Data Analytics </a>
             </div>
+            </>
         </div>
     )
 }
