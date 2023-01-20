@@ -54,6 +54,7 @@
 
 .title{
     font-size: 2rem;
+    margin-bottom:2rem;
 }
 
 .menu-items{
@@ -68,6 +69,10 @@
 .about{
     font-size: small;
     margin-top:1rem;
+}
+
+.item{
+    margin:0.5rem;
 }
 
 .item:hover{

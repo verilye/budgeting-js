@@ -1,5 +1,5 @@
 import React from "react";
-
+import './login.css';
 
 
 export default class Login extends React.Component{
@@ -9,13 +9,19 @@ export default class Login extends React.Component{
             <div className="login-form">
                 <form>
                     <label>
-                        <input type="text" name="username" placeholder="Username"/>
-                    </label>
-                    <label>
-                        <input type="text" name="password" placeholder="Password"/>
+                        <input type="text" name="username" placeholder="USERNAME"
+                         className="username-input form"/>
                     </label>
                     <br/>
-                    <input type="submit" value="submit"/>
+                    <label >
+                        <input type="text" name="password" placeholder="PASSWORD"
+                         className="password-input form"/>
+                    </label>
+                    <br/>
+                    <input
+                        className="login-button form" 
+                        type="submit" value="SUBMIT"
+                    />
                 </form>
             </div>
         )

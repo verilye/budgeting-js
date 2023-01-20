@@ -1,0 +1,32 @@
+.form{
+    border-radius:1rem;
+    border-width: 0.2rem;
+    border-color: black;
+    padding:0.5rem;
+    margin:0.2rem;
+    background-color:fcff61;
+}
+
+input[type="text"], textarea {
+
+    background-color : #fcff61;
+    font-weight: bold;
+    color:black;
+    opacity: 100%;
+  
+}
+
+input[type="submit"], textarea {
+
+    background-color : #fcff61;
+    font-weight: bold;
+    color:black;
+    opacity: 100%;
+  
+}
+
+::placeholder{
+    opacity: 1;
+    color: black;
+}
+  

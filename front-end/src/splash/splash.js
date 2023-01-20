@@ -41,16 +41,16 @@ export default function Splash(){
             
             <div className='menu-items'>
                 <div className='title'>budgeting-js</div>
-                <div className='login item' onClick={toggleLogin}>
-                    login
+                <div>
+                    <div className="item" onClick={toggleLogin}>login</div>
                         {loginVisible && <Login/>}
                 </div> 
-                <div className='features item' onClick={toggleFeatures}>
-                    features
+                <div>
+                    <div className="item" onClick={toggleFeatures}>features</div>
                         {featuresVisible && <Features/> }
                 </div>
-                <div className='item' onClick={toggleAbout}>
-                    about
+                <div>
+                    <div className="item" onClick={toggleAbout}>about</div>
                         {aboutVisibile && <About/> }    
                 </div>
             </div>

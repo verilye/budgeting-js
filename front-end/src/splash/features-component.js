@@ -10,9 +10,9 @@ export default function Features(){
 
         <div className="features">
             <div className="feature-display">
-                <a className="feature"> Blah </a>
-                <a className="feature"> Blah </a>
-                <a className="feature"> Blah </a>
+                <a className="feature"> Financial Goals </a>
+                <a className="feature"> Weekly Budgets </a>
+                <a className="feature"> Data Analytics </a>
             </div>
         </div>
     )
