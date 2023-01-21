@@ -1,11 +1,10 @@
 .feature-display{
     margin-top: -20rem;
     margin-right:30rem;
-    margin-bottom:3rem;
+    margin-bottom: -9rem;
 }
 
-.feature{
-    
-    margin-left: 4rem;
-    margin-right: 4rem;
+p{
+    width: 20rem;
+    font-size: 1rem;
 }

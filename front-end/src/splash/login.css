@@ -1,3 +1,7 @@
+.create-account{
+    font-size: 1rem;
+}
+
 .form{
     border-radius:1rem;
     border-width: 0.2rem;
@@ -9,6 +13,7 @@
 
 input[type="text"], textarea {
 
+    width:12rem;
     background-color : #fcff61;
     font-weight: bold;
     color:black;

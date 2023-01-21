@@ -20,7 +20,11 @@ export default class Login extends React.Component{
                     <br/>
                     <input
                         className="login-button form" 
-                        type="submit" value="SUBMIT"
+                        type="submit" value="CREATE ACCOUNT"
+                    />
+                    <input
+                        className="login-button form" 
+                        type="submit" value="LOGIN"
                     />
                 </form>
             </div>

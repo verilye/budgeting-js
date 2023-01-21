@@ -14,12 +14,12 @@ export default function Splash(){
     const [aboutVisibile, setAboutVisible] = useState(false);
  
     const toggleLogin = event =>{
-        setFeaturesVisible(false);
+        
         setLoginVisible(!loginVisible);
     };
 
     const toggleFeatures = event =>{
-        setLoginVisible(false);
+
         setFeaturesVisible(!featuresVisible);
        
     }
