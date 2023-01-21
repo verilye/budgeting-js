@@ -6,6 +6,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Splash from './splash/splash';
+import BudgetViewPort from './budgeting/budget-viewport';
+import DataVisualisations from './data-visuals/visuals';
+import Goals from './goals/goals';
 
 const router = createBrowserRouter([
   {
@@ -13,9 +16,17 @@ const router = createBrowserRouter([
     element: <Splash/>
   },
   {
-    path:"/planner",
-    element:<div> "Welcome to the weekly planner"</div>
-  }
+    path:"/budgeting",
+    element:<BudgetViewPort/>
+  },
+  {
+    path:"/data-visualisations",
+    element:<DataVisualisations/>
+  },
+  {
+    path:"/goals",
+    element:<Goals/>
+  },
 ]);
 
 
