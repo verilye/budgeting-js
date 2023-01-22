@@ -8,7 +8,15 @@ export default function BudgetViewPort(){
 
         <div className="budget-viewport">
             
-            An easy way to add money gained or lost would be cool, add or subtract money in 2 taps 
+            TODO An easy way to add money gained or lost would be cool, add or subtract money in 2 taps,
+                pull from api amounts spent for each day,
+                total amount spent for each day
+                total amount spent for each week
+                total amount saved per week
+                How closely you are matching your goals for each week
+                How many more weeks until you are meeting your financial goals
+                Store income, bills, debits and credits
+
 
             <div className="income"> click into this menu to adjust income from job, side gigs or other</div>
             <div className="bills"> click to set repeatable costs</div>
