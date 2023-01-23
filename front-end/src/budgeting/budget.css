@@ -1,0 +1,61 @@
+
+.budget-viewport{
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+}
+
+.income-outcome{
+    margin-top: 5%;
+    width:30%;
+    height:5rem;
+    
+    color: white;
+    display:grid;
+    gap:10px;
+    grid-template-columns: 10rem;
+
+    margin-bottom: 2rem;
+}
+
+.totals{
+    background-color: black;
+    padding: 2rem;
+}
+
+.income{
+    grid-column: 1/1;
+    grid-row:1;
+}
+
+.income-total{
+    grid-column: 2/2;
+    grid-row:1;
+
+}
+
+.bills{
+    grid-column: 3/3;
+    grid-row:1;
+}
+
+.bills-total{
+    grid-column: 4/4;
+    grid-row:1;
+}
+
+
+.calendar{
+    background-color: orange;
+    color:blue;
+    display:grid;
+    gap:10px;
+    grid-template-columns: 10rem;
+}
+
+.day{
+    width:14.28%;
+    padding:5rem;
+    grid-template-columns: 7;
+    grid-row:1;
+}

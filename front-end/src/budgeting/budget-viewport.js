@@ -1,5 +1,4 @@
-
-
+import './budget.css';
 
 
 export default function BudgetViewPort(){
@@ -8,7 +7,7 @@ export default function BudgetViewPort(){
 
         <div className="budget-viewport">
             
-            TODO An easy way to add money gained or lost would be cool, add or subtract money in 2 taps,
+            {/* TODO An easy way to add money gained or lost would be cool, add or subtract money in 2 taps,
                 pull from api amounts spent for each day,
                 total amount spent for each day
                 total amount spent for each week
@@ -17,14 +16,36 @@ export default function BudgetViewPort(){
                 How many more weeks until you are meeting your financial goals
                 Store income, bills, debits and credits
 
-
-            <div className="income"> click into this menu to adjust income from job, side gigs or other</div>
-            <div className="bills"> click to set repeatable costs</div>
-            
+            // Use css grid to set up a layout here */}
+            <div class ="income-outcome">
+                <div className="totals income"> INCOME</div>
+                <div className="totals income-total"> 1000</div>
+                <div className="totals bills"> BILLS</div>
+                <div className="totals bills-total"> 500</div>
+            </div>
+        
             <div className="calendar">
-                Paginate data from the node api to form days of the week
+                {/* Paginate data from the node api to form days of the week */}
+                <div  className="day">
+                   MON
+                </div>
+                <div  className="day">
+                    TUE
+                </div>
                 <div className="day">
-                    Each day of the week should have a running total + display all costs that have accrued
+                    WED
+                </div>
+                <div  className="day">
+                   THU
+                </div>
+                <div className="day">
+                    FRI
+                </div>
+                <div className="day">
+                    SAT
+                </div>
+                <div className="day">
+                    SUN
                 </div>
             </div>
         </div>
