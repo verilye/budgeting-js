@@ -1,21 +1,18 @@
 import express from "express";
-const login = require("./routes/login");
+const app = express();
 
-var app = express();
-const port = process.env.PORT || 3000;
-
-const db = require("./services/firestoreConnection");
+require('./startup/dbConnection')();
+require('./startup/routes')(app);
 
 
-//routes
-app.use("/", login);
 
-
-// TODO GET RID OF FIREBASE, NOSQL IS NOT A WIDELY SOUGHT AFTER SKILL
+// TODO 
+// Figure out the ts file
+// GET RID OF FIREBASE, NOSQL IS NOT A WIDELY SOUGHT AFTER SKILL
 // !!! MYSQL !!!
 // USE AN AZURE OR AMAZON INSTANCE, DONT BE A SILLY BOY
 
-
+const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`App listening on PORT ${port}`));
 
 
