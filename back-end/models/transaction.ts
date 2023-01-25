@@ -10,3 +10,6 @@ enum TransactionType{
     debit = 'D',
     credit = 'C',
 }
+
+// needed types
+// transactions,goals, savings, income, bills, 

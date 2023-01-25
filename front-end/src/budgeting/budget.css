@@ -55,7 +55,6 @@
 
 .day{
     width:14.28%;
-    padding:5rem;
     grid-template-columns: 7;
     grid-row:1;
 }
