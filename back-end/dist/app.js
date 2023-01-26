@@ -4,18 +4,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const login = require("./routes/login");
-var app = express_1.default();
+const app = (0, express_1.default)();
+require('./startup/dbConnection')();
+require('./startup/routes')(app);
+// TODO 
+// Figure out the ts file
+// GET RID OF FIREBASE, NOSQL IS NOT A WIDELY SOUGHT AFTER SKILL
+// !!! MYSQL !!!
+// USE AN AZURE OR AMAZON INSTANCE, DONT BE A SILLY BOY
+// set up mysql on azure data studio
 const port = process.env.PORT || 3000;
-//routes
-app.use("/", login);
 app.listen(port, () => console.log(`App listening on PORT ${port}`));
 module.exports = app;
-
- 
-
-//TODO
-// clean up typescript transpilation
-// setup node server into more readable patterns
-// connect up to front
-// remove deleted files from github

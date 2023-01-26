@@ -22,13 +22,29 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = __importStar(require("express"));
+const dbConnection_1 = __importDefault(require("../startup/dbConnection"));
+const { UserService } = require('../services/user-service');
 const router = express.Router();
-router.get('/', (req, res) => {
-    //Get array of transactions for pagination of relevant ones
-});
-router.post('/', (req, res) => {
-    //Store transaction on db
+router.post('/create-user', (req, res) => {
+    let user = "Petah";
+    let pass = "Somlotomblio";
+    let savings = "0.10";
+    dbConnection_1.default.connect(function (err) {
+        if (err)
+            throw err;
+        console.log("inserting data...");
+        let sql = `INSERT INTO users (user_name, password_hash, total_savings) 
+                VALUES(" + user + "," + pass + "," + savings + ")`;
+        dbConnection_1.default.query(sql, function (err, result) {
+            if (err)
+                throw err;
+            console.log("inserted user");
+        });
+    });
 });
 module.exports = router;
