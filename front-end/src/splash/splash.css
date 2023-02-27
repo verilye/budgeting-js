@@ -3,40 +3,45 @@
     src: url(../fonts/IBMPlexMono-SemiBold.ttf);
 }
 
-.splash{
-    margin-top:10rem;
-    margin-right:15%;
-    height:25rem;
+.font-setting{
     font-family: IBM-Plex-Mono;
+}
+
+.splash{
+    margin-top: 20rem;
+    padding-right:30%;
+    height:25rem;
     float: right;
     text-align: right;
 }
 
 .graphic{
-    float:right;
-    height:10rem;
-    width: 10rem;
+    margin-top: 16rem;
+    float:left;
+    padding-left:30%;
+    height:25rem;
+    width: 15rem;
 }
 
 .graphic-item{
-    width:25%;
+    width:20%;
     float:left;
     background-color: black;
 }
 
 .graphic-01{
     margin-top:5rem;
-    height: 5rem;
+    height: 6rem;
     margin-right: 5%;
 }
 .graphic-02{
     margin-top:7rem;
-    height: 3rem;
+    height: 4rem;
 }
 .graphic-03{
     margin-top:6rem;
     margin-left: 5%;
-    height: 4rem;
+    height: 5rem;
 }
 
 .title{
@@ -45,8 +50,8 @@
 }
 
 .menu-items{
-    margin-top: 10rem;
-    font-size: 1.5rem;
+    cursor: pointer;
+    font-size: 2rem;
 }
 
 .login{
