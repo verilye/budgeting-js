@@ -12,11 +12,11 @@ import Goals from './goals/goals';
 
 const router = createBrowserRouter([
   {
-    path:"/",
+    path:"/budgeting",
     element: <Splash/>
   },
   {
-    path:"/budgeting",
+    path:"/",
     element:<BudgetViewPort/>
   },
   {

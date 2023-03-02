@@ -1,3 +1,11 @@
+@font-face {
+    font-family: IBM-Plex-Mono ;
+    src: url(../fonts/IBMPlexMono-SemiBold.ttf);
+}
+
+.font-setting{
+    font-family: IBM-Plex-Mono;
+}
 
 .budget-viewport{
     margin-left: 5%;
@@ -6,55 +14,47 @@
 }
 
 .income-outcome{
-    margin-top: 5%;
-    width:30%;
-    height:5rem;
-    
-    color: white;
     display:grid;
-    gap:10px;
-    grid-template-columns: 10rem;
+    grid-template-columns: 150px 150px 160px 100px;
+    margin-top: 5%;
+    margin-left: 2rem;
+    height:5rem;
+    margin-bottom: 0.5rem;
 
-    margin-bottom: 2rem;
 }
 
 .totals{
-    background-color: black;
-    padding: 2rem;
+    padding-left: 15px;
+    height: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    grid-row:1;
 }
 
 .income{
-    grid-column: 1/1;
-    grid-row:1;
+    width: 8rem;
+    border-right: 2px solid black;
 }
 
-.income-total{
-    grid-column: 2/2;
-    grid-row:1;
-
+.outcome{
+    border-right: 2px solid black;
 }
-
-.bills{
-    grid-column: 3/3;
-    grid-row:1;
-}
-
-.bills-total{
-    grid-column: 4/4;
-    grid-row:1;
-}
-
 
 .calendar{
-    background-color: orange;
-    color:blue;
+
+    color:black;
+    font-size: 1.5rem;
     display:grid;
-    gap:10px;
-    grid-template-columns: 10rem;
+    
 }
 
 .day{
-    width:14.28%;
-    grid-template-columns: 7;
+    
+    padding:20px;
+    height: 100px;
     grid-row:1;
+    border-radius: 2rem;
+    border-style: solid;
+    border-color: black;
+    width: 11rem;
 }

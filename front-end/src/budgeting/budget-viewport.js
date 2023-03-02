@@ -14,20 +14,23 @@ export default function BudgetViewPort(){
                 total amount saved per week
                 How closely you are matching your goals for each week
                 How many more weeks until you are meeting your financial goals
-                Store income, bills, debits and credits
+                 Store income, bills, debits and credits
 
             // Use css grid to set up a layout here */}
             <div class ="income-outcome">
                 <div className="totals income"> INCOME</div>
-                <div className="totals income-total"> 1000</div>
-                <div className="totals bills"> BILLS</div>
-                <div className="totals bills-total"> 500</div>
+                <div className="totals income-total"> $1000</div>
+                <div className="totals outcome"> OUTCOME</div>
+                <div className="totals outcome-total"> $200000</div>
             </div>
         
             <div className="calendar">
                 {/* Paginate data from the node api to form days of the week */}
                 <div  className="day">
                    MON
+                   <>
+                        $200
+                   </>
                 </div>
                 <div  className="day">
                     TUE
