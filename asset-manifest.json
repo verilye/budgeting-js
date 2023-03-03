@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/budgeting-js/static/css/main.71ac33c1.css",
-    "main.js": "/budgeting-js/static/js/main.071d64f6.js",
+    "main.js": "/budgeting-js/static/js/main.4b5babe4.js",
     "static/media/IBMPlexMono-SemiBold.ttf": "/budgeting-js/static/media/IBMPlexMono-SemiBold.5f82c3b8863d23615092.ttf",
     "index.html": "/budgeting-js/index.html",
     "main.71ac33c1.css.map": "/budgeting-js/static/css/main.71ac33c1.css.map",
-    "main.071d64f6.js.map": "/budgeting-js/static/js/main.071d64f6.js.map"
+    "main.4b5babe4.js.map": "/budgeting-js/static/js/main.4b5babe4.js.map"
   },
   "entrypoints": [
     "static/css/main.71ac33c1.css",
-    "static/js/main.071d64f6.js"
+    "static/js/main.4b5babe4.js"
   ]
 }
