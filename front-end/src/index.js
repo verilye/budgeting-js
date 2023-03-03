@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import {
-  createBrowserRouter,
+  createHashRouter,
   RouterProvider,
 } from "react-router-dom";
 import Splash from './splash/splash';
@@ -10,7 +10,7 @@ import BudgetViewPort from './budgeting/budget-viewport';
 import DataVisualisations from './data-visuals/visuals';
 import Goals from './goals/goals';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path:"/",
     element: <Splash/>
