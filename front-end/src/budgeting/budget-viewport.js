@@ -1,7 +1,16 @@
 import './budget.css';
+import React from 'react';
+import { useState } from 'react';
 
 
 export default function BudgetViewPort(){
+
+    const [value, setValue] = useState('');
+    
+    const handleChange = (event) => {
+        setValue(event.target.value);
+    };
+
 
     return(
 
@@ -18,11 +27,23 @@ export default function BudgetViewPort(){
 
             // Use css grid to set up a layout here */}
             <div class ="income-outcome">
+
+                {value}
                 <div className="totals income"> INCOME</div>
                 <div className="totals income-total"> $1000</div>
                 <div className="totals outcome"> OUTCOME</div>
                 <div className="totals outcome-total"> $200000</div>
-                
+
+                <div className='quick-transaction'>
+                    <form>
+                        <label>Amount:</label>
+                        <input type="text" value={value} onChange={handleChange}></input>
+                        <label className="add" value="Submit">+</label>
+                        <label className="subtract" value="Submit">-</label>
+                    </form>
+                   
+                </div>
+        
                 <div className="welcome">Welcome Lad</div>
             </div>
 

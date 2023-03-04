@@ -54,14 +54,21 @@
 }
 
 .day{
+
     font-size: 2;
-    padding:20px;
     height: 100px;
     grid-row:1;
     border-radius: 2rem;
     border-style: solid;
     border-color: black;
-    width: 11rem;
+    padding:0.5rem;
+    width: 12rem;
+
+}
+
+.quick-transaction{
+    margin-left:2rem;
+    font-size: 1rem;
 }
 
 .spending-log{
