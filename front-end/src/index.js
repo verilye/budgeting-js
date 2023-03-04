@@ -10,6 +10,10 @@ import BudgetViewPort from './budgeting/budget-viewport';
 import DataVisualisations from './data-visuals/visuals';
 import Goals from './goals/goals';
 
+
+// A Hash router means putting '/#' between the base url and the 
+// route keyword
+
 const router = createHashRouter([
   {
     path:"/",

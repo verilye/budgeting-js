@@ -22,33 +22,69 @@ export default function BudgetViewPort(){
                 <div className="totals income-total"> $1000</div>
                 <div className="totals outcome"> OUTCOME</div>
                 <div className="totals outcome-total"> $200000</div>
+                
+                <div className="welcome">Welcome Lad</div>
             </div>
+
+            <div className="date"> 
+                    21/02/2018
+                    Week 10 of 51
+            </div>
+
+            {/* Highlight the current day as a different color */}
         
             <div className="calendar">
                 {/* Paginate data from the node api to form days of the week */}
                 <div  className="day">
-                   MON
-                   <>
+                   MONDAY
+                   <div className="spending">
                         $200
-                   </>
+                   </div>
                 </div>
                 <div  className="day">
-                    TUE
+                    TUESDAY
+                    <div className="spending">
+                        $200
+                   </div>
                 </div>
                 <div className="day">
-                    WED
+                    WEDNESDAY
+                    <div className="spending">
+                        $200
+                   </div>
                 </div>
                 <div  className="day">
-                   THU
+                   THURSDAY
+                   <div className="spending">
+                        $200
+                   </div>
                 </div>
                 <div className="day">
-                    FRI
+                    FRIDAY
+                    <div className="spending">
+                        $200
+                   </div>
                 </div>
                 <div className="day">
-                    SAT
+                    SATURDAY
+                    <div className="spending">
+                        $200
+                   </div>
                 </div>
                 <div className="day">
-                    SUN
+                    SUNDAY
+                    <div className="spending">
+                        $200
+                   </div>
+                </div>
+            </div>
+
+            <div className="spending-log">
+                <div> Spending Log
+                    <div className="entry">-100 head replacement</div>
+                    <div className="entry">-21 gym</div>
+                    <div className="entry">-210 bills</div>
+                    <div className="entry">-10 grocery</div>
                 </div>
             </div>
         </div>

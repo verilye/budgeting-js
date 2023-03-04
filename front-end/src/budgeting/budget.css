@@ -15,7 +15,7 @@
 
 .income-outcome{
     display:grid;
-    grid-template-columns: 150px 150px 160px 100px;
+    grid-template-columns: 150px 150px 160px 100px 400px;
     margin-top: 5%;
     margin-left: 2rem;
     height:5rem;
@@ -40,6 +40,11 @@
     border-right: 2px solid black;
 }
 
+.welcome{
+    font-size: 1rem;
+    padding-left: 20%;
+}
+
 .calendar{
 
     color:black;
@@ -49,7 +54,7 @@
 }
 
 .day{
-    
+    font-size: 2;
     padding:20px;
     height: 100px;
     grid-row:1;
@@ -58,3 +63,14 @@
     border-color: black;
     width: 11rem;
 }
+
+.spending-log{
+    margin-top: 4rem;
+    margin-left: 10%;
+    margin-right: 10%;
+    width:80%;
+    height:20rem;
+    border-color: black;
+    border-style: solid;
+}
+
