@@ -1,9 +1,11 @@
 const express = require('express');
-const userAccess = require('../routes/user-access');
+const user_access = require('../routes/user-access');
+const transaction = require('../routes/transactions');
 
 module.exports = function(app:any){ 
 
     app.use(express.json());
-    app.use("/user-access", userAccess);
+    app.use("/user-access", user_access);
+    app.use("/transaction",transaction )
 
 }

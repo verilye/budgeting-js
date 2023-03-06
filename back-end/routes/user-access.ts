@@ -5,7 +5,13 @@ import db from "../startup/dbConnection";
 const router = express.Router();
 
 
-// /user-access/create-user
+// TODO
+// Create user
+// Register user
+// Edit user information
+// Return information about user
+// valid login token?
+
 
 router.post('/create-user', (req,res)=>{
 
@@ -24,6 +30,14 @@ router.post('/create-user', (req,res)=>{
         console.log("inserted user");
     });
     
+});
+
+router.post('/login',(req,res) =>{
+
+    // TODO
+    // Check the request body to see if it matches the db entries
+    // Positive response if yes, negative if no
+
 });
 
 module.exports = router;

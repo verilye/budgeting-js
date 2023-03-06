@@ -5,6 +5,6 @@ export interface Transaction{
 
     type: TransactionType,
     date: Date,
-    interval : TimeInterval
+    amount: number
 
 }
