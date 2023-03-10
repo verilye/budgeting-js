@@ -1,113 +1,71 @@
 import './budget.css';
 import React from 'react';
-import { useState } from 'react';
-
 
 export default function BudgetViewPort(){
-
-    const [value, setValue] = useState('');
-    
-    const handleChange = (event) => {
-        setValue(event.target.value);
-    };
 
 
     return(
 
         <div className="budget-viewport">
             
-            {/* TODO An easy way to add money gained or lost would be cool, add or subtract money in 2 taps,
-                pull from api amounts spent for each day,
-                total amount spent for each day
-                total amount spent for each week
-                total amount saved per week
-                How closely you are matching your goals for each week
-                How many more weeks until you are meeting your financial goals
-                 Store income, bills, debits and credits
+            {/* TODO 
+                This section should display goals in categories
 
-            // Use css grid to set up a layout here */}
-            <div class ="income-outcome">
+                Users should be able to create categories (a container for goals)
+                
+                This page should be scrollable and dynamics so that it can display all goals
 
-                {value}
-                <div className="totals income"> INCOME</div>
-                <div className="totals income-total"> $1000</div>
-                <div className="totals outcome"> OUTCOME</div>
-                <div className="totals outcome-total"> $200000</div>
+                A goal should be a bubble box that has a progress bar and a subtotal and goal
 
-                <div className='quick-transaction'>
-                    <form>
-                        <label>Amount:</label>
-                        <input type="text" value={value} onChange={handleChange}></input>
-                        <label className="add" value="Submit">+</label>
-                        <label className="subtract" value="Submit">-</label>
-                    </form>
-                   
-                </div>
-        
-                <div className="welcome">Welcome Lad</div>
+                Income should be displayed up the top
+
+            */}
+
+            <div className ="logo-bar">
+                <div className='logo'> budgeting-js </div>
             </div>
 
-            <div className="date"> 
-                    21/02/2018
-                    Week 10 of 51
-            </div>
+            <div className ="content">
+                    {/* Make the income log expandable and editable in place to quickly add new income */}
+                    {/* Show % of income that has been allocated */}
+                <div className='income-log'>
+                    INCOME: $600 - 24th March 2023 
+                    {/* Put all this on the same line as income to make it look tidier */}
+                    <div className='income-manip'>
+                        + 
+                        - 
+                        <img className="history" src="history.png" alt="history"></img>
+                    </div>
+                </div>
+                <div className='category-display'>
+                    CATEGORIES:
+                    {/* Paginate categories and goals here */}  
+                    {/* Categories should be scalable in size, goals should not  */}
 
-            {/* Highlight the current day as a different color */}
-        
-            <div className="calendar">
-                {/* Paginate data from the node api to form days of the week */}
-                <div  className="day">
-                   MONDAY
-                   <div className="spending">
-                        $200
-                   </div>
-                </div>
-                <div  className="day">
-                    TUESDAY
-                    <div className="spending">
-                        $200
-                   </div>
-                </div>
-                <div className="day">
-                    WEDNESDAY
-                    <div className="spending">
-                        $200
-                   </div>
-                </div>
-                <div  className="day">
-                   THURSDAY
-                   <div className="spending">
-                        $200
-                   </div>
-                </div>
-                <div className="day">
-                    FRIDAY
-                    <div className="spending">
-                        $200
-                   </div>
-                </div>
-                <div className="day">
-                    SATURDAY
-                    <div className="spending">
-                        $200
-                   </div>
-                </div>
-                <div className="day">
-                    SUNDAY
-                    <div className="spending">
-                        $200
-                   </div>
-                </div>
-            </div>
+                    <div className='category'>
+                        Bills:
+                        <div className='goal'>RENT</div>
+                        <div className='goal'>PHONE</div >
+                    </div>
 
-            <div className="spending-log">
-                <div> Spending Log
-                    <div className="entry">-100 head replacement</div>
-                    <div className="entry">-21 gym</div>
-                    <div className="entry">-210 bills</div>
-                    <div className="entry">-10 grocery</div>
+                    <div className='category'>
+                        Groceries:
+                        <div className='goal'></div>   
+                    </div>
+
+                    <div className='category'>
+                        Frogs:
+                        <div className='goal'></div>
+                    </div>
+                    
+
+
                 </div>
+
+
+
             </div>
+         
         </div>
     )
 
