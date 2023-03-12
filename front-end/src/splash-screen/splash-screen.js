@@ -1,11 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import About from "./about-component";
-import Features from "./features-component";
-import Login from "./login-component";
+import About from "./about";
+import Features from "./features";
+import Login from "./login-form";
 
-import "./splash.css";
-import "./animation.css";
+import "./splash-screen.css";
+import "./slide-in-animations.css";
 
 export default function Splash(){
 

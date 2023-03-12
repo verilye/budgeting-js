@@ -5,9 +5,9 @@ import {
   createHashRouter,
   RouterProvider,
 } from "react-router-dom";
-import Splash from './splash/splash';
-import BudgetViewPort from './budgeting/budget-viewport';
-import DataVisualisations from './data-visuals/visuals';
+import Splash from './splash-screen/splash-screen';
+import BudgetViewPort from './budgeting/budgeting';
+import DataVisualisations from './data-visuals/data-visuals';
 
 
 // A Hash router means putting '/#' between the base url and the 
@@ -23,7 +23,7 @@ const router = createHashRouter([
     element:<BudgetViewPort/>
   },
   {
-    path:"/data-visualisations",
+    path:"/data-visuals",
     element:<DataVisualisations/>
   }
 ]);

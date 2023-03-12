@@ -3,42 +3,16 @@
     src: url(../fonts/IBMPlexMono-SemiBold.ttf);
 }
 
-.budget-viewport{
+.budgeting{
     font-family: IBM-Plex-Mono;
+    width:98vw;
 }
 
-.history{
-    width:2rem;
-    height:2rem;
-}
-
-.logo-bar{
+.title{
     font-size: 2rem;
-    padding:20px;
+    padding:1rem;
     margin:10px;
     height:5vh;
-    width:100%;
-}
-
-.income-log{
-    font-size: 1.5rem;
-    margin:10px;
-    padding:40px;
-    width:95% - 10px;
-    background-color: black;
-    color: white;
-    border-radius: 2rem;
-    border-style: solid;
-    border-color: black;
-}
-
-.income-manip{
-    color:black;
-    background-color: white;
-    padding:10px;
-    border-radius: 2rem;
-    border-style: solid;
-    border-color: black;
 }
 
 .category-display{

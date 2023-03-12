@@ -1,0 +1,52 @@
+.income-display{
+    font-size: 1.5rem;
+    margin:10px;
+    padding:40px;
+    width:95%-10px;
+    background-color: black;
+    color: white;
+    border-radius: 2rem;
+    border-style: solid;
+    border-color: black;
+}
+
+.income-container{
+    width:40vw;
+    display:grid;
+    column-count: 2;
+}
+
+.income-info{
+
+    grid-column-start: 1;
+    width:25vw;
+
+    column-count: 2;
+    display:grid;
+
+}
+
+.income{
+    grid-column-start: 1;   
+}
+
+
+.income-manip{
+    grid-column-start: 2;
+    padding:10px;
+    border-radius: 2rem;
+    border-style: solid;
+    border-color: black;
+}   
+
+button{
+
+    height:60px;
+    width:60px;
+
+}
+
+.history{
+    width:30px;
+    height:30px;
+}
