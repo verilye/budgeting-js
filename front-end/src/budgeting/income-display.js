@@ -1,6 +1,7 @@
 import React from "react"
 
 import "./income-display.css"
+import { Container } from "@mui/material";
 
 
 
@@ -10,7 +11,7 @@ export default function IncomeDisplay(){
 
         <div className='income-display'>
             
-            <div className="income-container">
+            <Container className="income-container">
                 {/* Break it down into smaller components. There should be a separate one for the 
                     income text, buttons etc */}
                 <div className="income-info">
@@ -21,22 +22,11 @@ export default function IncomeDisplay(){
                     
                     </div>
 
-                    <div className="income-manip">
-                        <div className='income'>
-                            $600
-                        </div>
-                        <button>
-                            + 
-                        </button>
-                        <button>
-                            - 
-                        </button>
-                        <button>
-                            <img className="history" src="history.png" alt="history"></img>
-                        </button>
+                    <div className='income'>
+                        $600
                     </div>
                 </div>
-            </div>
+            </Container>
         </div>
 
     )
