@@ -3,6 +3,7 @@ import { useState } from "react";
 import About from "./about";
 import Features from "./features";
 import Login from "./login-form";
+import { Box } from "@mui/system";
 
 import "./splash-screen.css";
 import "./slide-in-animations.css";
@@ -30,31 +31,31 @@ export default function Splash(){
 
     return(
 
-        <div className="font-setting">
-        <div className='graphic slide-in'>
-            <div className='graphic-01 graphic-item'></div>
-            <div className='graphic-02 graphic-item'> </div>
-            <div className='graphic-03 graphic-item'></div>
-            <div className='graphic-04 graphic-item'></div>
-            <div className='title'>budgeting-js</div>
-        </div>
-        <div className='splash slide-in'>
-            <div className='menu-items'>
-                <div>
-                    <div className="item" onClick={toggleLogin}>login</div>
-                        {loginVisible && <Login/>}
-                </div> 
-                <div>
-                    <div className="item" onClick={toggleFeatures}>features</div>
-                </div>
-                <div>
-                    <div className="item" onClick={toggleAbout}>about</div>
-                        {aboutVisibile && <About/> }    
+        <Box className="font-setting">
+            <Box className='graphic slide-in'>
+                <div className='graphic-01 graphic-item'></div>
+                <div className='graphic-02 graphic-item'> </div>
+                <div className='graphic-03 graphic-item'></div>
+                <div className='graphic-04 graphic-item'></div>
+                <Box className='title'>budgeting-js</Box>
+            </Box>
+            <div className='splash slide-in'>
+                <div className='menu-items'>
+                    <div>
+                        <div className="item" onClick={toggleLogin}>login</div>
+                            {loginVisible && <Login/>}
+                    </div> 
+                    <div>
+                        <div className="item" onClick={toggleFeatures}>features</div>
+                    </div>
+                    <div>
+                        <div className="item" onClick={toggleAbout}>about</div>
+                            {aboutVisibile && <About/> }    
+                    </div>
                 </div>
             </div>
-        </div>
-        {featuresVisible && <Features/> }
-        </div>
+            {featuresVisible && <Features/> }
+        </Box>
     )
     
 }

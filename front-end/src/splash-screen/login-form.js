@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import React from "react";
 import './login-form.css';
 
@@ -6,7 +7,7 @@ export default class Login extends React.Component{
 
     render(){
         return(
-            <div className="login-form slide-down">
+            <Box className="login-form slide-down">
                 <form>
                     <label>
                         <input type="text" name="username" placeholder="USERNAME"
@@ -27,7 +28,7 @@ export default class Login extends React.Component{
                         type="submit" value="LOGIN"
                     />
                 </form>
-            </div>
+            </Box>
         )
     }
 }

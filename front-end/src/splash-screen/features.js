@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import React from "react";
 import "./features.css";
 
@@ -8,7 +9,7 @@ export default function Features(){
 
     return(
 
-        <div className="features">
+        <Box className="features">
             <>
             <div className="feature-display">
                 <p className="feature slide-down"> Financial Goals </p>
@@ -31,6 +32,6 @@ export default function Features(){
 
             </div>
             </>
-        </div>
+        </Box>
     )
 }

@@ -1,33 +1,46 @@
 import React from "react"
 
-import "./income-display.css"
-import { Container } from "@mui/material";
+import {Container, Grid, Box } from "@mui/material";
 
 
 
 export default function IncomeDisplay(){
 
     return(
-
-        <div className='income-display'>
             
-            <Container className="income-container">
-                {/* Break it down into smaller components. There should be a separate one for the 
-                    income text, buttons etc */}
-                <div className="income-info">
-                    
-                    <div className="date">
-                    
-                        MONTH:YEAR
-                    
-                    </div>
+            <Grid 
+                spacing={"32.5vw"}
+                className="income-info"
+                sx={{
+                    fontSize:"30px",
+                    padding:"10px",
+                }}
+            >
+                
+                <Grid item className="date"
 
-                    <div className='income'>
-                        $600
-                    </div>
-                </div>
-            </Container>
-        </div>
+                    sx={{
+                        
+                    }}
+                >
+                    MONTH:YEAR
+                </Grid>
+
+                {/* This component should be clickable - its where you add your income */}
+                <Grid item 
+                    sx={{
+                        
+                        height:"4rem",
+                        borderStyle:"solid",
+                        borderRadius:2,
+                        borderColour:"black",
+
+                    }}
+                    className='income'
+                >
+                    $600
+                </Grid>
+            </Grid>
 
     )
 }
