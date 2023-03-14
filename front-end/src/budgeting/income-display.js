@@ -8,37 +8,46 @@ export default function IncomeDisplay(){
 
     return(
             
-            <Grid 
-                spacing={"32.5vw"}
+            <Grid container
+                spacing={"5vw"}
                 className="income-info"
                 sx={{
                     fontSize:"30px",
                     padding:"10px",
                 }}
             >
-                
-                <Grid item className="date"
-
-                    sx={{
-                        
-                    }}
+                <Grid item 
+                    xs={5}
+                    className="date"
                 >
-                    MONTH:YEAR
+                     <Box
+                        sx={{
+                            textAlign:'center',
+                        }}                    
+                    >
+                        MONTH:YEAR
+                    </Box>
                 </Grid>
 
                 {/* This component should be clickable - its where you add your income */}
                 <Grid item 
-                    sx={{
-                        
-                        height:"4rem",
-                        borderStyle:"solid",
-                        borderRadius:2,
-                        borderColour:"black",
-
-                    }}
+                    xs={2}
                     className='income'
+                    fontSize={"10px"}
+                    textAlign={"right"}
                 >
-                    $600
+                    <Box
+                        sx={{
+                            textAlign:'center',
+                            borderRadius:'0.5rem',
+                            borderStyle:'solid',
+                            borderColour:'black',
+                            fontSize:'30px',
+                        }}                    
+                    >
+                        $600
+                    </Box>
+                    + click to add/edit income
                 </Grid>
             </Grid>
 
