@@ -1,6 +1,6 @@
 import React from "react"
 import { Box } from "@mui/system"
-import Goal from "./goal-component"
+import Goal from "./goal_component"
 
 export default function Category(){
 
