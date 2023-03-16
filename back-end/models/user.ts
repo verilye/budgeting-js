@@ -1,7 +1,7 @@
-export interface User {
+interface User{
 
-    username: string;
-    passwordHash: string;
-    savings: number;
+    user_id:String,
+    email:String, 
+    password:String, 
 
 }
