@@ -4,13 +4,14 @@ const error =require("./middleware/error");
 
 const app = express();
 
-require('./startup/routes')(app);
-
 
 // NOTE
 // In routes include next in the parameters (req,res,next)
 // catch errors using catch{ next(err); }
 // This function is passed after every route on error
+
+require('./startup/routes')(app);
+
 
 app.use(error);
 

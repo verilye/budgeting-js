@@ -1,7 +1,7 @@
 interface User{
 
     user_id:String,
-    email:String, 
-    password:String, 
+    password_hash:String, 
+    income:number,
 
 }

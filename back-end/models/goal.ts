@@ -6,9 +6,9 @@ interface Goal{
 
     user_id:String,
     category_id:String, 
-    name:String,
-    targetAmount:number,
-    allocatedAmount:number,
-    targetDate:Date,
+    goal_id:String,
+    target_amount:number,
+    target_progress:number,
+    target_date:Date,
 
 }
