@@ -1,12 +1,24 @@
 import * as express from "express";
+import db from "../startup/dbConnection";
+
 const router = express.Router();
 
 router.post('/create-category', (req,res,next)=>{
 
     try{
 
-
-
+        // Map variables from request to SQL command
+        db.connect();
+    
+        console.log("creating category...")
+    
+        let sql = `INSERT INTO category (user_id, category_id) 
+                VALUES(" + req.body.user_id + "," + req.body.category_id ")`; 
+        db.query(sql, function (err:any,result:any){
+            if(err) throw err;
+            console.log("inserted category");
+        });
+ 
 
     }catch(err){
         next(err);
