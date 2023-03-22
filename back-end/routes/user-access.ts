@@ -1,30 +1,30 @@
 import * as express from "express";
 import db from "../startup/dbConnection";
 
-
 const router = express.Router();
 
+router.post('/create-user', (req,res, next)=>{
 
-// TODO
-// Create user
-// Register user
-// Edit user information
-// Return information about user
-// valid login token?
+    try{
 
+        const user_id = req.body.user_id;
+        const password_hash = req.body.password_hash;
+        const income = req.body.income;
 
-router.post('/create-user', (req,res)=>{
+        db.connect();
+        
+        console.log("inserting data...")
 
-    db.connect();
-    
-    console.log("inserting data...")
-
-    let sql = `INSERT INTO users (user_name, password_hash, total_savings) 
-            VALUES(" + req.body.user_id + "," + req.body.password_hash + "," + req.body.income + ")`;
-    db.query(sql, function (err:any,result:any){
-        if(err) throw err;
-        console.log("inserted user");
-    });
+        let sql = `INSERT INTO users (user_id, password_hash, income) 
+                VALUES(" + user_id + "," + password_hash + "," + income + ")`;
+        db.query(sql, function (err:any,result:any){
+            if(err) throw err;
+            console.log("inserted user");
+        });
+        
+    }catch(err){
+        next(err);
+    }
     
 });
 

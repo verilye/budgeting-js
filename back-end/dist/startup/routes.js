@@ -1,7 +1,9 @@
 "use strict";
 const express = require('express');
-const userAccess = require('../routes/user-access');
+const user_access = require('../routes/user-access');
+const budgeting = require('../routes/budgeting');
 module.exports = function (app) {
     app.use(express.json());
-    app.use("/user-access", userAccess);
+    app.use("/user-access", user_access);
+    app.use("/budgeting", budgeting);
 };

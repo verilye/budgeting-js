@@ -1,6 +1,6 @@
 import express, { NextFunction } from "express";
 
-const error =require("./middleware/error");
+const error = require("./middleware/error");
 
 const app = express();
 

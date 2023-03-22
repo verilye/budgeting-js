@@ -1,9 +1,6 @@
 const fs = require('fs');
 const mysql = require('mysql');
 
-// TODO 
-// Add the server certificate
-
 const serverCa = [fs.readFileSync("/var/www/html/bin/DigiCertGlobalRootCA.crt.pem", "utf8")];
 
 const connection = mysql.createConnection({

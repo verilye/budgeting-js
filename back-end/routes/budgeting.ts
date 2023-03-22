@@ -52,3 +52,5 @@ router.post('/create-goal', (req,res,next)=>{
     }
 
 });
+
+module.exports = router;

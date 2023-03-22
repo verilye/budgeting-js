@@ -29,28 +29,36 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express = __importStar(require("express"));
 const dbConnection_1 = __importDefault(require("../startup/dbConnection"));
 const router = express.Router();
-router.post('/create-user', (req, res, next) => {
+router.post('/create-category', (req, res, next) => {
     try {
-        const user_id = req.body.user_id;
-        const password_hash = req.body.password_hash;
-        const income = req.body.income;
+        // Map variables from request to SQL command
         dbConnection_1.default.connect();
-        console.log("inserting data...");
-        let sql = `INSERT INTO users (user_id, password_hash, income) 
-                VALUES(" + user_id + "," + password_hash + "," + income + ")`;
+        console.log("creating category...");
+        let sql = `INSERT INTO category (user_id, category_id) 
+                VALUES(" + req.body.user_id + "," + req.body.category_id ")`;
         dbConnection_1.default.query(sql, function (err, result) {
             if (err)
                 throw err;
-            console.log("inserted user");
+            console.log("inserted category");
         });
     }
     catch (err) {
         next(err);
     }
 });
-router.post('/login', (req, res) => {
-    // TODO
-    // Check the request body to see if it matches the db entries
-    // Positive response if yes, negative if no
+router.get('/get-categories', (req, res, next) => {
+    try {
+        // all categories in an array, with goals inside the categories
+    }
+    catch (err) {
+        next(err);
+    }
+});
+router.post('/create-goal', (req, res, next) => {
+    try {
+    }
+    catch (err) {
+        next(err);
+    }
 });
 module.exports = router;
