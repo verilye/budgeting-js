@@ -7,9 +7,9 @@ router.post('/create-user', (req,res, next)=>{
 
     try{
 
-        const user_id = req.body.user_id;
-        const password_hash = req.body.password_hash;
-        const income = req.body.income;
+        const user_id:String = req.body.user_id;
+        const password_hash:String  = req.body.password_hash;
+        const income:number = req.body.income;
 
         db.connect();
         
