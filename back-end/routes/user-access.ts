@@ -15,11 +15,14 @@ router.post('/create-user', (req,res, next)=>{
         
         console.log("inserting data...")
 
-        let sql = `INSERT INTO users (user_id, password_hash, income) 
-                VALUES(" + user_id + "," + password_hash + "," + income + ")`;
-        db.query(sql, function (err:any,result:any){
-            if(err) throw err;
-            console.log("inserted user");
+        let sql = "INSERT INTO User (user_id, password_hash, income) VALUES(?,?,?)";
+
+        db.query(
+            sql, 
+            [user_id,password_hash,income],
+            function (err:any,result:any){
+                if(err) throw err;
+                console.log("inserted user");
         });
         
     }catch(err){

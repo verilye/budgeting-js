@@ -1,4 +1,7 @@
 import express, { NextFunction } from "express";
+import * as dotenv from 'dotenv'
+dotenv.config({path:"./db.env"});
+
 
 const error = require("./middleware/error");
 

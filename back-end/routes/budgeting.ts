@@ -12,7 +12,7 @@ router.post('/create-category', (req,res,next)=>{
     
         console.log("creating category...")
     
-        let sql = `INSERT INTO category (user_id, category_id) 
+        let sql = `INSERT INTO Category (user_id, category_id) 
                 VALUES(" + req.body.user_id + "," + req.body.category_id ")`; 
         db.query(sql, function (err:any,result:any){
             if(err) throw err;
