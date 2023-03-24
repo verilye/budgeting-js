@@ -1,33 +1,64 @@
-import { Box } from "@mui/material";
+import { Box, Button, FormGroup, TextField } from "@mui/material";
 import React from "react";
 import './login_form.css';
-
 
 export default class Login extends React.Component{
 
     render(){
         return(
             <Box className="login-form slide-down">
-                <form>
-                    <label>
-                        <input type="text" name="username" placeholder="USERNAME"
+                <FormGroup>
+
+                        <TextField type="text" name="username" placeholder="USERNAME"
                          className="username-input form"/>
-                    </label>
+                    
                     <br/>
-                    <label >
-                        <input type="text" name="password" placeholder="PASSWORD"
+                    
+                        <TextField type="text" name="password" placeholder="PASSWORD"
                          className="password-input form"/>
-                    </label>
+                   
                     <br/>
-                    <input
-                        className="login-button form" 
-                        type="submit" value="CREATE ACCOUNT"
-                    />
-                    <input
+                    <Button
+                        sx={{
+                            backgroundColor:"black",
+                            "&:hover":{
+                                color:"black",
+                                bgcolor:"#FFFFFF",
+                                borderStyle:"solid",
+                                borderWidth:"2px",
+                                borderColor:"black"
+                            }
+                        }}
+                        variant ="contained"
                         className="login-button form" 
                         type="submit" value="LOGIN"
-                    />
-                </form>
+                    >LOGIN</Button>  
+                    <Box
+                        sx={{
+                            fontSize:"13px",
+                            margin:0,
+                            padding:"2px",
+                        }}
+                    >- or -</Box>
+
+                    <Button
+                         sx={{
+                            backgroundColor:"black",
+                            "&:hover":{
+                                color:"black",
+                                bgcolor:"#FFFFFF",
+                                borderStyle:"solid",
+                                borderWidth:"2px",
+                                borderColor:"black"
+                            }
+                        }}
+                        variant ="contained"
+                        className="login-button form" 
+                        type="submit" value="CREATE ACCOUNT"
+                    >CREATE ACCOUNT</Button>
+                    
+                    <br/>
+                </FormGroup>
             </Box>
         )
     }
