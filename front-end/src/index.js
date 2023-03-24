@@ -5,9 +5,10 @@ import {
   createHashRouter,
   RouterProvider,
 } from "react-router-dom";
-import Splash from './splash-screen/splash-screen';
+import Splash from './splash_screen/splash_screen';
 import BudgetViewPort from './budgeting/budgeting';
-import DataVisualisations from './data-visuals/data-visuals';
+import DataVisualisations from './data_visuals/data_visuals';
+import ErrorBoundary from './error_handling/ErrorBoundary';
 
 
 // A Hash router means putting '/#' between the base url and the 
@@ -32,6 +33,8 @@ const router = createHashRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router = {router} />
+    <ErrorBoundary>
+      <RouterProvider router = {router} />
+    </ErrorBoundary>
   </React.StrictMode>
 );

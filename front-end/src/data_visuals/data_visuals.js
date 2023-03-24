@@ -1,10 +1,6 @@
-
-
-
 export default function DataVisualisations(){
 
     return(
-        <ErrorBoundary ErrorComponent ={ErrorHandler}>
             <div className="visuals">
 
                 visuals and shareable data visuals that can be shared through social 
@@ -24,7 +20,6 @@ export default function DataVisualisations(){
                 <div> Github contribution tracker </div>
 
             </div>
-        </ErrorBoundary>
     )
 
 }

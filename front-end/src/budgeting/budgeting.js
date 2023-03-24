@@ -8,7 +8,6 @@ export default function BudgetViewPort(){
 
 
     return(
-        <ErrorBoundary ErrorComponent={ErrorHandler}>
             <div className="budgeting">
 
                 <Box className ="logo"
@@ -61,7 +60,6 @@ export default function BudgetViewPort(){
                 </Box>
             
             </div>
-        </ErrorBoundary>
     )
 
 }

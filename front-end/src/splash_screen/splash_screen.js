@@ -5,9 +5,8 @@ import Features from "./features";
 import Login from "./login_form";
 import { Box } from "@mui/system";
 
-import "./splash-screen.css";
-import "./slide-in-animations.css";
-import ErrorHandler from "../ErrorComponent";
+import "./splash_screen.css";
+import "./slide_in_animations.css";
 
 export default function Splash(){
 
@@ -31,7 +30,6 @@ export default function Splash(){
     }
 
     return(
-        <ErrorBoundary ErrorComponent={ErrorHandler}>
             <Box className="font-setting">
                 <Box className='graphic slide-in'>
                     <div className='graphic-01 graphic-item'></div>
@@ -57,7 +55,6 @@ export default function Splash(){
                 </div>
                 {featuresVisible && <Features/> }
             </Box>
-        </ErrorBoundary>
     )
     
 }
