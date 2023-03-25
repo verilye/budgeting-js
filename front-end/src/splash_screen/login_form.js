@@ -1,5 +1,6 @@
 import { Box, Button, FormGroup, TextField } from "@mui/material";
 import {React,useState} from "react";
+import * as Yup from "yup";
 import './login_form.css';
 
 
@@ -8,6 +9,12 @@ export default function LoginForm(){
     
     const[user_id,setUserID] = useState("");
     const[password_hash,setPasswordHash] = useState("");
+
+    const schema = Yup.object({
+        user_id: Yup.string().required("Required"),
+        password_hash: Yup.string().required("Required"),
+
+    });
 
     let handleSubmit = async (e) =>{
         
@@ -41,7 +48,8 @@ export default function LoginForm(){
 
     return(
         <Box className="login-form slide-down">
-            <FormGroup>
+            <FormGroup
+            >
 
                     <TextField
                         onChange={(e) => setUserID(e.target.value)}
@@ -50,11 +58,11 @@ export default function LoginForm(){
                         placeholder="USERNAME"
                         className="username-input form"
                     />
-                
+                    <span>{errorMessage}</span>
                 <br/>
                 
                     <TextField 
-                        onChange={(e) =>setPasswordHash(e.target.value)}
+                        onChange={(e) => setPasswordHash(e.target.value)}
                         type="text" 
                         name="password" 
                         placeholder="PASSWORD"
@@ -85,7 +93,10 @@ export default function LoginForm(){
                 >- or -</Box>
 
                 <Button
-                    onClick={handleSubmit}
+                    onClick={(values) =>{
+                        alert(JSON.stringify(values,null,2));
+                        handleSubmit;
+                    }}
                     sx={{
                     backgroundColor:"black",
                         "&:hover":{
