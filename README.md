@@ -11,15 +11,18 @@ MVP
   - quick and easy to use
   - follow best practices and design patterns where possible
 
-Done by the 18th March 2023
 Trello link - https://trello.com/b/vyEzer2K/budgeting-js 
 
 
-Front end technologies -
+Front end -
   MUI
   React
   Chart.js
 
-Back end technologies - 
+Back end  - 
   Nodejs
   Typescript
+
+  Decided not to use an SQL query builder as I read a convincing argument that it
+  is an anti pattern. Needless abstraction when I could just write more portable SQL
+  that is just as testable.

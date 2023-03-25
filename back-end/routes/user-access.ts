@@ -20,22 +20,25 @@ router.post('/create-user', (req,res, next)=>{
         db.query(
             sql, 
             [user_id,password_hash,income],
+            
             function (err:any,result:any){
                 if(err) throw err;
                 console.log("inserted user");
         });
+
+        // Create default categories and goals for examples
         
     }catch(err){
         next(err);
     }
+
+    res.sendStatus(200);
     
 });
 
 router.post('/login',(req,res) =>{
 
-    // TODO
-    // Check the request body to see if it matches the db entries
-    // Positive response if yes, negative if no
+    //Include user authentication so we know who has logged in
 
 });
 
