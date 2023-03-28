@@ -13,6 +13,8 @@ export default function Splash(){
     const [loginVisible, setLoginVisible] = useState(false);
     const [featuresVisible, setFeaturesVisible] = useState(false);
     const [aboutVisibile, setAboutVisible] = useState(false);
+
+    const [aboutHeight,setAboutHeight] = useState("35vh");
  
     const toggleLogin = event =>{
         
@@ -24,8 +26,12 @@ export default function Splash(){
         setFeaturesVisible(!featuresVisible);
        
     }
-
     const toggleAbout = event =>{
+        if(aboutHeight==="35vh"){
+            setAboutHeight("30vh");
+        }else{
+            setAboutHeight("35vh")
+        }
         setAboutVisible(!aboutVisibile);
     }
 
@@ -38,19 +44,19 @@ export default function Splash(){
                     <div className='graphic-04 graphic-item'></div>
                     <Box className='title'>budgeting-js</Box>
                 </Box>
-                <div className='splash slide-in'>
+                <div className='splash slide-in' style={{marginTop:aboutHeight}}>
                     <div className='menu-items'>
                         <div>
-                            <div className="item" onClick={toggleLogin}>login</div>
-                                {loginVisible && <Login/>}
-                        </div> 
+                            {aboutVisibile && <About/> } 
+                            <div className="item" onClick={toggleAbout}>about</div>        
+                        </div>
                         <div>
                             <div className="item" onClick={toggleFeatures}>features</div>
                         </div>
                         <div>
-                            <div className="item" onClick={toggleAbout}>about</div>
-                                {aboutVisibile && <About/> }    
-                        </div>
+                            <div className="item" onClick={toggleLogin}>login</div>
+                            {loginVisible && <Login/>}
+                        </div> 
                     </div>
                 </div>
                 {featuresVisible && <Features/> }

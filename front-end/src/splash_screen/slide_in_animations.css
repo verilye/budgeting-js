@@ -26,11 +26,11 @@
 
 .slide-up{
     opacity: 0%;
-    transform: translateY(25px); 
+    transform: translateY(50px); 
     animation: slide-in 0.2s ease forwards;
 }
 
-@keyframes slide-down {
+@keyframes slide-up {
     to {
         opacity: 100%;
         transform: translate(0);

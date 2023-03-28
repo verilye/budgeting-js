@@ -8,14 +8,13 @@
 }
 
 .splash{
-    margin-top:20%;
     padding-right:30%;
     float: right;
     text-align: right;
 }
 
 .graphic{
-    margin-top: 16rem;
+    margin-top: 14rem;
     float:left;
     padding-left:30%;
     height:25rem;
@@ -68,5 +67,5 @@
 }
 
 .item:hover{
-    font-size: 1.6rem;
+    font-size: 1.9rem;
 }   
