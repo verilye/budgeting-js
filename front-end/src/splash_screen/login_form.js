@@ -1,4 +1,4 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, FormControl, FormGroup, TextField, FormHelperText } from "@mui/material";
 import {React,useState} from "react";
 import './login_form.css';
 
@@ -79,7 +79,9 @@ export default function LoginForm(props){
                 Display errors as long as the form field is invalid 
                 Add conditional 
             */}
-            <form>
+            <FormGroup>
+                <FormControl>
+        
                     <TextField
                         onChange={(e) => checkUserID(e.target.value)}
                         type="text" 
@@ -89,11 +91,12 @@ export default function LoginForm(props){
                     />
                     {user_id_err ? (
 
-                        <div className="err">Username must be greater than 5 characters and less than 20</div>
+                        <FormHelperText error="true">Username must be greater than 5 characters and less than 20</FormHelperText>
 
                     ) : null}
-                    <br/>
-
+                    
+                </FormControl>
+                <FormControl>
                     <TextField 
                         onChange={(e) => checkPassword(e.target.value)}
                         type="text" 
@@ -102,58 +105,62 @@ export default function LoginForm(props){
                         className="password-input form"
                     />
                     {password_err ? (
-                        <div className="err">Password must be greater than 5 characters and less than 20</div>
+                        <FormHelperText error="true">Password must be greater than 5 characters and less than 20</FormHelperText>
                     ) : null}
-
-                    <br/>
-
-                <Button
-                    sx={{
-                        backgroundColor:"black",
-                        "&:hover":{
-                            color:"black",
-                            bgcolor:"#FFFFFF",
-                            borderStyle:"solid",
-                            borderWidth:"2px",
-                            borderColor:"black"
-                        }
-                    }}
-                    variant ="contained"
-                    className="login-button form" 
-                    type="submit" value="LOGIN"
-                >
-                    LOGIN
-                </Button>  
-
-                <Box
-                    sx={{
-                        fontSize:"13px",
-                        margin:0,
-                        padding:"2px",
-                    }}
-                >
-                    - or -
-                </Box>
-
-                <Button
-                    onClick={(!password_err && !user_id_err) ? handleSubmit:null}
-                    sx={{
-                    backgroundColor:"black",
-                        "&:hover":{
-                            color:"black",
-                            bgcolor:"#FFFFFF",
-                            borderStyle:"solid",
-                            borderWidth:"2px",
-                            borderColor:"black"
-                        }
-                    }}
-                    variant ="contained"
-                    className="login-button form" 
-                    type="submit" value="CREATE ACCOUNT"
-                >CREATE ACCOUNT</Button>
+                    
                 
-                <br/>
-           </form>
+                </FormControl>
+
+                <>
+                    <Button
+                        sx={{
+                            marginTop:"1rem",
+                            backgroundColor:"black",
+                            "&:hover":{
+                                color:"black",
+                                bgcolor:"#FFFFFF",
+                                borderStyle:"solid",
+                                borderWidth:"2px",
+                                borderColor:"black"
+                            }
+                        }}
+                        variant ="contained"
+                        className="login-button form" 
+                        type="submit" value="LOGIN"
+                    >
+                        LOGIN
+                    </Button>  
+
+                    <Box
+                        sx={{
+                            fontSize:"13px",
+                            margin:0,
+                            padding:"2px",
+                        }}
+                    >
+                        - or -
+                    </Box>
+
+                    <Button
+                        onClick={(!password_err && !user_id_err) ? handleSubmit:null}
+                        sx={{
+                        backgroundColor:"black",
+                            "&:hover":{
+                                color:"black",
+                                bgcolor:"#FFFFFF",
+                                borderStyle:"solid",
+                                borderWidth:"2px",
+                                borderColor:"black"
+                            }
+                        }}
+                        variant ="contained"
+                        className="login-button form" 
+                        type="submit" value="CREATE ACCOUNT"
+                    >CREATE ACCOUNT</Button>
+                </>
+                
+                
+           </FormGroup>
         </Box>
     )
     
