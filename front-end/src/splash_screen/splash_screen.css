@@ -8,9 +8,8 @@
 }
 
 .splash{
-    margin-top: 20rem;
+    margin-top:20%;
     padding-right:30%;
-    height:25rem;
     float: right;
     text-align: right;
 }
@@ -55,6 +54,7 @@
 }
 
 .login{
+    margin-top: 10%;
     margin-top:2rem;
 }
 
@@ -64,7 +64,7 @@
 }
 
 .item{
-    margin:0.8rem;
+    margin:0.5rem;
 }
 
 .item:hover{

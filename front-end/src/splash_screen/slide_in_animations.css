@@ -23,3 +23,16 @@
         transform: translate(0);
         }
 }
+
+.slide-up{
+    opacity: 0%;
+    transform: translateY(25px); 
+    animation: slide-in 0.2s ease forwards;
+}
+
+@keyframes slide-down {
+    to {
+        opacity: 100%;
+        transform: translate(0);
+        }
+}

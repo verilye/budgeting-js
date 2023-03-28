@@ -1,23 +1,49 @@
-import { Box, Button, FormGroup, TextField } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import {React,useState} from "react";
-import * as Yup from "yup";
 import './login_form.css';
 
 
 
-export default function LoginForm(){
+export default function LoginForm(props){
     
     const[user_id,setUserID] = useState("");
-    const[password_hash,setPasswordHash] = useState("");
+    const[password,setPassword] = useState("");
 
-    const schema = Yup.object({
-        user_id: Yup.string().required("Required"),
-        password_hash: Yup.string().required("Required"),
+    const[user_id_err,setUIDErr] = useState(false);
+    const [password_err,setPErr] = useState(false);
 
-    });
+    // On change to form element, check for correctness
+    // if incorrect display error message
+    // if correct, remove and change appearance
 
+    let checkUserID = (user_id)=>{
+        if(user_id.length >20 ||user_id.length <=5 ){
+            setUIDErr(true);        
+            return false;
+        }
+
+        setUserID(user_id);
+        setUIDErr(false);
+        return true;
+    };
+
+    let checkPassword = (password)=>{
+        if(password.length >20 ||password.length <=5 ){
+            setPErr(true);
+            return false;
+        }
+
+        setPassword(password);
+        setPErr(false);
+        return true;
+    };
+
+    // Submit the data (after validation)
     let handleSubmit = async (e) =>{
-        
+    
+        // Hash password here before it is sent to db
+        const password_hash = password;
+
         try{
             let res = await fetch("http://localhost:4000/user-access/create-user",{
                 method:"POST",
@@ -36,7 +62,7 @@ export default function LoginForm(){
 
             if (res.status === 200) {
                 setUserID("");
-                setPasswordHash("");
+                setPassword("");
             } 
 
             console.log(resJSON);
@@ -47,28 +73,40 @@ export default function LoginForm(){
     };
 
     return(
-        <Box className="login-form slide-down">
-            <FormGroup
-            >
-
+        <Box className="slide-down"
+        >
+            {/* 
+                Display errors as long as the form field is invalid 
+                Add conditional 
+            */}
+            <form>
                     <TextField
-                        onChange={(e) => setUserID(e.target.value)}
+                        onChange={(e) => checkUserID(e.target.value)}
                         type="text" 
                         name="user_id"     
-                        placeholder="USERNAME"
+                        placeholder="User Name"
                         className="username-input form"
                     />
-                    <span>{errorMessage}</span>
-                <br/>
-                
+                    {user_id_err ? (
+
+                        <div className="err">Username must be greater than 5 characters and less than 20</div>
+
+                    ) : null}
+                    <br/>
+
                     <TextField 
-                        onChange={(e) => setPasswordHash(e.target.value)}
+                        onChange={(e) => checkPassword(e.target.value)}
                         type="text" 
                         name="password" 
-                        placeholder="PASSWORD"
-                        className="password-input form"/>
-                
-                <br/>
+                        placeholder="Password"
+                        className="password-input form"
+                    />
+                    {password_err ? (
+                        <div className="err">Password must be greater than 5 characters and less than 20</div>
+                    ) : null}
+
+                    <br/>
+
                 <Button
                     sx={{
                         backgroundColor:"black",
@@ -83,20 +121,22 @@ export default function LoginForm(){
                     variant ="contained"
                     className="login-button form" 
                     type="submit" value="LOGIN"
-                >LOGIN</Button>  
+                >
+                    LOGIN
+                </Button>  
+
                 <Box
                     sx={{
                         fontSize:"13px",
                         margin:0,
                         padding:"2px",
                     }}
-                >- or -</Box>
+                >
+                    - or -
+                </Box>
 
                 <Button
-                    onClick={(values) =>{
-                        alert(JSON.stringify(values,null,2));
-                        handleSubmit;
-                    }}
+                    onClick={(!password_err && !user_id_err) ? handleSubmit:null}
                     sx={{
                     backgroundColor:"black",
                         "&:hover":{
@@ -113,7 +153,7 @@ export default function LoginForm(){
                 >CREATE ACCOUNT</Button>
                 
                 <br/>
-            </FormGroup>
+           </form>
         </Box>
     )
     

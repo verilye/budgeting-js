@@ -1,14 +1,23 @@
+.login-form{
+    height:18rem;
+}
+
+.err{
+    font-size: 11.5px;
+    color: red;
+}
+
+
 .create-account{
     font-size: 1rem;
 }
 
 .form{
+    width:26rem;
     font-weight: bold;
     border-radius:1rem;
     border-width: 0.2rem;
     border-color: black;
-    padding:0.5rem;
-    margin:0.2rem;
     background-color:white;
 }
 
