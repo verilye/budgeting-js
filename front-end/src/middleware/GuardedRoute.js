@@ -1,18 +1,18 @@
 import React from 'react';
-import {Route,redirect} from 'react-router-dom';
+import {Navigate} from 'react-router-dom';
 
 
-const GuardedRoute = (Component)=>{
+const GuardedRoute = ({children})=>{
 
+    // TODO validate JWt here
     
-    //Do auth check
-    let auth = false;
+    // Do auth check
+
+    // Hardcoded for testing, use auth() in final
+    let auth = true;
     // useAuth(); is a hook that should be used here in final implementation
 
-    // suggested code, Navigate failed to work though
-    // return <Navigate to="/login" state={{ from: location }} />;
-
-    return auth ? <Component/> : redirect("/");
+    return auth ? children : <Navigate to="/budgeting-js"/>;
      
 
 

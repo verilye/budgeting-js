@@ -1,6 +1,11 @@
+import { LinearProgress } from "@mui/material"
 import { Box } from "@mui/system"
 
 export default function Goal(){
+    
+    // Get the progress value as a percentage of the total 
+    let progress = 25;
+
 
     return(
 
@@ -15,10 +20,19 @@ export default function Goal(){
             }}
 
         >
-            {/* https://www.freecodecamp.org/news/content/images/2020/09/Screen-Shot-2020-09-12-at-2.35.47-PM.png
-                Inspiration for goal loading bar */}
-            GOAL
-            
+            GOAL       {/* Monetary values here */}
+            {/* The progress value should be a number out of 100.*/}
+            <LinearProgress 
+                sx={{
+                    backgroundColor: 'black',
+                    '& .MuiLinearProgress-bar':{
+                        backgroundColor : "green"
+                    }
+                }}
+                variant = "determinate" 
+                value={progress}>
+
+            </LinearProgress>
             
         </Box>
 

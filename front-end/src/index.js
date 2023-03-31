@@ -16,21 +16,25 @@ import GuardedRoute from './middleware/GuardedRoute'
 
 const router = createBrowserRouter([
   {
-    path:"/",
+    path:"/budgeting-js/",
     element:
           <Splash/>
         
   },
   {
-    path:"/budgeting",
+    path:"/budgeting-js/budgeting",
     element:
       <GuardedRoute>
         <BudgetViewPort/>
       </GuardedRoute>
   },
   {
-    path:"/data-visuals",
-    element:<DataVisualisations/>
+    path:"/budgeting-js/data-visuals",
+    element:
+    <GuardedRoute>
+      <DataVisualisations/>
+    </GuardedRoute>
+    
   }
 ]);
 
