@@ -1,10 +1,12 @@
 import React from "react"
-
-import {Grid, Box } from "@mui/material";
-
-
+import {Grid, Box, Button} from "@mui/material";
 
 export default function IncomeDisplay(){
+
+    const currentDate = new Date();
+
+    //Add income from db here
+    const income = 600;
 
     return(
             
@@ -13,7 +15,7 @@ export default function IncomeDisplay(){
                 className="income-info"
                 sx={{
                     fontSize:"30px",
-                    padding:"10px",
+                    
                 }}
             >
                 <Grid item 
@@ -25,7 +27,7 @@ export default function IncomeDisplay(){
                             textAlign:'center',
                         }}                    
                     >
-                        MONTH:YEAR
+                        {currentDate.getDate()}/{currentDate.getMonth()}/{currentDate.getFullYear()}
                     </Box>
                 </Grid>
 
@@ -33,21 +35,30 @@ export default function IncomeDisplay(){
                 <Grid item 
                     xs={2}
                     className='income'
-                    fontSize={"10px"}
-                    textAlign={"right"}
+                    fontSize="15px"
                 >
-                    <Box
-                        sx={{
-                            textAlign:'center',
-                            borderRadius:'0.5rem',
-                            borderStyle:'solid',
-                            borderColour:'black',
-                            fontSize:'30px',
-                        }}                    
-                    >
-                        $600
+                    <Box>
+                        INCOME
                     </Box>
-                    + click to add/edit income
+                    <Button
+
+                        style={{
+                            borderStyle:"solid",
+                            borderWidth:"0.2rem",
+                        }}
+                        
+                        variant="outline"
+                      
+                        sx={{
+                            fontWeight:'bold',
+                            fontSize:"30px",
+                            
+                        }}     
+                                       
+                    >
+                        ${income}
+                    </Button>
+                    
                 </Grid>
             </Grid>
 

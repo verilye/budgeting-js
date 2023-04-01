@@ -11,7 +11,7 @@ export default function Category(){
             <Box className='category'
             
             sx={{
-
+                width:"40vw",
                 fontSize:'1rem',
                 height:'8rem',
                 padding:'10px',
