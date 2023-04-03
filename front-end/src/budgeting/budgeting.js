@@ -13,11 +13,9 @@ export default function BudgetViewPort(){
                 <Box className ="logo"
                     sx={{                    
                         fontSize: '2rem',
-                        padding:'1rem',
+                        paddingLeft:'1rem',
                         height:'10vh',
-                        marginBottom: "20px",
                     }}
-
                 >
 
                     budgeting-js 

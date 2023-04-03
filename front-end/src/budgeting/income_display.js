@@ -1,5 +1,5 @@
 import React from "react"
-import {Grid, Box, Button} from "@mui/material";
+import {Grid, Box, Button, TextField} from "@mui/material";
 
 export default function IncomeDisplay(){
 
@@ -25,6 +25,7 @@ export default function IncomeDisplay(){
                      <Box
                         sx={{
                             textAlign:'center',
+                            margin:"1vw"
                         }}                    
                     >
                         {currentDate.getDate()}/{currentDate.getMonth()}/{currentDate.getFullYear()}
@@ -33,32 +34,42 @@ export default function IncomeDisplay(){
 
                 {/* This component should be clickable - its where you add your income */}
                 <Grid item 
-                    xs={2}
+                    xs={3}
                     className='income'
-                    fontSize="15px"
+                    fontSize="13px"
                 >
                     <Box>
-                        INCOME
+                        INCOME - click to edit
                     </Box>
-                    <Button
+                        <Button
 
-                        style={{
-                            borderStyle:"solid",
-                            borderWidth:"0.2rem",
-                        }}
-                        
-                        variant="outline"
-                      
-                        sx={{
-                            fontWeight:'bold',
-                            fontSize:"30px",
+                            style={{
+                                borderStyle:"solid",
+                                borderWidth:"0.2rem",
+                                borderRadius:"0.5rem",
+                            }}
                             
-                        }}     
-                                       
-                    >
-                        ${income}
-                    </Button>
-                    
+                            variant="outline"
+                        
+                            sx={{
+                                width:"10vw",
+                                fontWeight:'bold',
+                                fontSize:"30px",
+
+                                ":hover":{
+                                    color:"white",
+                                    backgroundColor:"black",
+                                },
+                            }}     
+                                        
+                        >
+                            ${income}
+                            
+                        </Button>
+                        {/* Hide submit button while income textfield isnt selected */}
+                        <Button>
+                            Submit
+                        </Button>
                 </Grid>
             </Grid>
 
