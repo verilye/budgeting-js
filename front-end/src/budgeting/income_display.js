@@ -6,7 +6,7 @@ export default function IncomeDisplay(){
     const currentDate = new Date();
 
     //Add income from db here
-    const income = 600;
+    const income = 1210000000000;
 
     return(
             
@@ -34,42 +34,66 @@ export default function IncomeDisplay(){
 
                 {/* This component should be clickable - its where you add your income */}
                 <Grid item 
-                    xs={3}
+                    xs={2}
                     className='income'
+                    width="10vw"
                     fontSize="13px"
                 >
                     <Box>
-                        INCOME - click to edit
+                        INCOME
                     </Box>
-                        <Button
+                    <Box
 
-                            style={{
-                                borderStyle:"solid",
-                                borderWidth:"0.2rem",
-                                borderRadius:"0.5rem",
-                            }}
-                            
-                            variant="outline"
+                        style={{
+                            borderStyle:"solid",
+                            borderWidth:"0.2rem",
+                            borderRadius:"0.5rem",
+                        }}
                         
-                            sx={{
-                                width:"10vw",
-                                fontWeight:'bold',
-                                fontSize:"30px",
+                        overflow="hidden"
+                        variant="outline"
+                    
+                        sx={{
+                            width:"10vw",
+                            fontWeight:'bold',
+                            fontSize:"30px",
+                            marginBottom:"2rem",
+                        }}     
+                                    
+                    >
+                        ${income}
+                        
+                    </Box>
+                </Grid>
+                <Grid
+                    xs={1}
+                >
+                    <Button
+                        sx={{
+                            marginTop:'7rem',
+                            height:'2rem',
+                            width:"0.5rem",
+                            fontWeight:"bold",
+                            color:"white",
+                            backgroundColor:"black",
+                            ":hover":{
+                                borderStyle:"solid",
+                                borderWidth:"0.1rem",
+                                color:"black",
+                                backgroundColor:"white",
+                            }
+                        }}
+                    >
+                        edit
+                    </Button>
+                   
+                </Grid>
+                <Grid
+                    xs={1}
+                >
+                    <TextField>
 
-                                ":hover":{
-                                    color:"white",
-                                    backgroundColor:"black",
-                                },
-                            }}     
-                                        
-                        >
-                            ${income}
-                            
-                        </Button>
-                        {/* Hide submit button while income textfield isnt selected */}
-                        <Button>
-                            Submit
-                        </Button>
+                    </TextField>
                 </Grid>
             </Grid>
 
