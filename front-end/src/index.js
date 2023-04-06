@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import {
@@ -10,9 +10,6 @@ import BudgetViewPort from './budgeting/budgeting';
 import DataVisualisations from './data_visuals/data_visuals';
 import ErrorBoundary from './middleware/ErrorBoundary';
 import GuardedRoute from './middleware/GuardedRoute'
-
-// A Hash router means putting '/#' between the base url and the 
-// route keyword
 
 const router = createBrowserRouter([
   {
