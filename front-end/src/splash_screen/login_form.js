@@ -1,5 +1,8 @@
 import { Box, Button, FormControl, FormGroup, TextField, FormHelperText } from "@mui/material";
 import {React,useState} from "react";
+import bcrypt from 'bcryptjs';
+
+
 import './login_form.css';
 
 
@@ -38,11 +41,40 @@ export default function LoginForm(props){
         return true;
     };
 
+    let handleLogin = async (e) =>{
+
+
+        try{
+
+            // Search for username
+
+            const user = await fetch("http://localhost:4000/user-access/login" + user_id,{
+                method:"GET",
+                mode:'cors',
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+            });
+
+            let resJson = await res.json();
+
+            if(resJson == 200){
+                //store JWT
+            }
+
+            
+        }catch(err){
+            console.log(err)
+        }
+    };
+
     // Submit the data (after validation)
-    let handleSubmit = async (e) =>{
+    let handleRegister = async (e) =>{
     
         // Hash password here before it is sent to db
-        const password_hash = password;
+
+        const salt = bcrypt.genSaltSync(10);
+        const password_hash = bcrypt.hashSync(password, salt);
 
         try{
             let res = await fetch("http://localhost:4000/user-access/create-user",{
@@ -113,6 +145,7 @@ export default function LoginForm(props){
 
                 <>
                     <Button
+                        onClick={(!password_err && !user_id_err) ? handleSubmit:null}
                         sx={{
                             marginTop:"1rem",
                             backgroundColor:"black",
@@ -142,7 +175,7 @@ export default function LoginForm(props){
                     </Box>
 
                     <Button
-                        onClick={(!password_err && !user_id_err) ? handleSubmit:null}
+                        onClick={(!password_err && !user_id_err) ? handleRegister:null}
                         sx={{
                         backgroundColor:"black",
                             "&:hover":{

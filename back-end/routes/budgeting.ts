@@ -26,13 +26,25 @@ router.post('/create-category', (req,res,next)=>{
 
 });
 
+
+// Should return all categories and goals for user
 router.get('/get-categories', (req,res,next)=>{
 
-    try{
-
-        
-        
+    try{        
         // all categories in an array, with goals inside the categories
+
+
+        db.connect();
+    
+        console.log("getting categories...")
+    
+        let sql = `SELECT * FROM Category`
+            
+        db.query(sql, function (err:any,result:any){
+            if(err) throw err;
+            console.log("inserted category");
+        });
+ 
 
     }catch(err){
         next(err);
@@ -40,17 +52,24 @@ router.get('/get-categories', (req,res,next)=>{
 
 });
 
-router.post('/create-goal', (req,res,next)=>{
+
+//Should allow the user to edit goal income
+router.post('/edit-goal', (req,res,next)=>{
 
     try{
-
-        
-
 
     }catch(err){
         next(err);
     }
+});
 
+router.post('/create-goal', (req,res,next)=>{
+
+    try{
+
+    }catch(err){
+        next(err);
+    }
 });
 
 module.exports = router;

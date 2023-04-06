@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import {Grid, Box, Button, TextField} from "@mui/material";
 
 export default function IncomeDisplay(){
@@ -7,6 +7,22 @@ export default function IncomeDisplay(){
 
     //Add income from db here
     const income = 1210000000000;
+
+
+    const [editVisible, setEditVisible] = useState(false);
+    const [buttonText, setEditButtonText] = useState("edit");
+
+    const toggleEditVisible = ()=> {
+
+        if(editVisible === true){
+            setEditVisible(false);
+            setEditButtonText("edit");
+            alert("Income Added");
+        }else{
+            setEditVisible(true);
+            setEditButtonText("submit");
+        }
+    }
 
     return(
             
@@ -42,28 +58,54 @@ export default function IncomeDisplay(){
                     <Box>
                         INCOME
                     </Box>
-                    <Box
+                    {(editVisible)?(
+                        <Box
+                            style={{
+                                borderStyle:"solid",
+                                borderWidth:"0.2rem",
+                                borderRadius:"0.5rem",
+                            }}
+                            
+                            overflow="hidden"
+                        
+                            sx={{
+                                width:"10vw",
+                                fontWeight:'bold',
+                                fontSize:"30px",
+                                marginBottom:"2rem",
+                            }}     
+                        >
+                            <TextField
+                                placeholder={'$' + income}
+                            
+                            >
 
-                        style={{
-                            borderStyle:"solid",
-                            borderWidth:"0.2rem",
-                            borderRadius:"0.5rem",
-                        }}
+                            </TextField>
+                        </Box>
+                    ):(
+                        <Box
+
+                            style={{
+                                borderStyle:"solid",
+                                borderWidth:"0.2rem",
+                                borderRadius:"0.5rem",
+                            }}
+                            
+                            overflow="hidden"
+                            variant="outline"
                         
-                        overflow="hidden"
-                        variant="outline"
-                    
-                        sx={{
-                            width:"10vw",
-                            fontWeight:'bold',
-                            fontSize:"30px",
-                            marginBottom:"2rem",
-                        }}     
-                                    
-                    >
-                        ${income}
-                        
-                    </Box>
+                            sx={{
+                                width:"10vw",
+                                fontWeight:'bold',
+                                fontSize:"30px",
+                                marginBottom:"2rem",
+                            }}     
+                                        
+                        >
+                            ${income}
+                            
+                        </Box>)
+                    }
                 </Grid>
                 <Grid
                     xs={1}
@@ -83,17 +125,12 @@ export default function IncomeDisplay(){
                                 backgroundColor:"white",
                             }
                         }}
+                        
+                        onClick={toggleEditVisible}
                     >
-                        edit
+                        {buttonText}
                     </Button>
                    
-                </Grid>
-                <Grid
-                    xs={1}
-                >
-                    <TextField>
-
-                    </TextField>
                 </Grid>
             </Grid>
 

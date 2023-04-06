@@ -36,9 +36,31 @@ router.post('/create-user', (req,res, next)=>{
     
 });
 
-router.post('/login',(req,res) =>{
+router.post('/login/:userid',(req,res,next) =>{
 
-    //Include user authentication so we know who has logged in
+    try{
+        const user = req.params.userid;
+
+        db.connect();
+
+        console.log("loggin in ... ");
+
+        let SQL = "SELECT * FROM User WHERE user_id = (user_id) VALUES(?)";
+        
+        db.query(
+            SQL,
+            [user],
+            function (err:any,result:any){
+                if(err) throw err;
+                console.log("inserted user");
+        });
+
+    //return JWT?
+    }catch(err){
+        next(err);
+    }
+
+    res.send(200);
 
 });
 
