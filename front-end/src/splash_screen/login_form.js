@@ -1,6 +1,6 @@
 import { Box, Button, FormControl, FormGroup, TextField, FormHelperText } from "@mui/material";
 import {React,useState} from "react";
-import bcrypt from 'bcryptjs';
+import bcrypt from 'react-native-bcrypt';
 
 
 import './login_form.css';
@@ -48,7 +48,7 @@ export default function LoginForm(props){
 
             // Search for username
 
-            const user = await fetch("http://localhost:4000/user-access/login" + user_id,{
+            const res = await fetch("http://localhost:4000/user-access/login" + user_id,{
                 method:"GET",
                 mode:'cors',
                 headers:{
@@ -58,8 +58,9 @@ export default function LoginForm(props){
 
             let resJson = await res.json();
 
-            if(resJson == 200){
+            if(resJson === 200){
                 //store JWT
+                
             }
 
             
@@ -145,7 +146,7 @@ export default function LoginForm(props){
 
                 <>
                     <Button
-                        onClick={(!password_err && !user_id_err) ? handleSubmit:null}
+                        onClick={(!password_err && !user_id_err) ? handleLogin:null}
                         sx={{
                             marginTop:"1rem",
                             backgroundColor:"black",

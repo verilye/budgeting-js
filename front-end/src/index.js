@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import {
@@ -8,8 +8,7 @@ import {
 import Splash from './splash_screen/splash_screen';
 import BudgetViewPort from './budgeting/budgeting';
 import DataVisualisations from './data_visuals/data_visuals';
-import ErrorBoundary from './middleware/ErrorBoundary';
-import GuardedRoute from './middleware/GuardedRoute'
+import GuardedRoute from './authentication/GuardedRoute'
 
 const router = createBrowserRouter([
   {
@@ -39,8 +38,6 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ErrorBoundary>
       <RouterProvider router = {router} />
-    </ErrorBoundary>
   </React.StrictMode>
 );
