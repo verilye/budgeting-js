@@ -87,6 +87,7 @@ export default function LoginForm(props){
                 body: JSON.stringify({
                     user_id: user_id,
                     password_hash: password_hash,
+                    password_salt: password_salt,
                     income: 0,
                 }),
             });
