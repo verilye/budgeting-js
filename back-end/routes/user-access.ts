@@ -47,29 +47,30 @@ router.post('/login',async (req,res,next) =>{
 
         const user_id:String = req.body.user_id;
     
-        db.connect(function(err:any){
+        db.connect(async function(err:any){
             if(err) throw err;
 
             console.log("logging in ... ");
         
-            db.query('SELECT * FROM user WHERE user_id = ?',[user_id], 
+            const result:any = await db.query('SELECT * FROM user WHERE user_id = ?',[user_id], 
             function(err:any,result:any){
                 if(err) throw err;
+                
                 console.log(result);
+
+                //Check details match with the db entry
+                // req.body.user_id === result[0].user_id etc
+
+                // generate JWT
+
+                const token:string = jwt.sign({user:result[0].user_id});
+
+                // return jwt
+
+                res.send({token});
             });
+
         });
-
-        
-        res.sendStatus(200);
-
-    // generate JWT
-
-    // const token = jwt.sign({user:});
-
-    // check for JWT in postman
-
-    // return jwt
-
 
     }catch(err){
         next(err);
