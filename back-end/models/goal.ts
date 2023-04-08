@@ -2,7 +2,7 @@
 // target date should automatically be set for the end of the next month
 // but be editable by the user
 
-interface Goal{
+export default interface Goal{
 
     user_id:String,
     category_id:String, 

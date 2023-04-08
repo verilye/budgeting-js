@@ -1,5 +1,9 @@
 import * as express from "express";
 import db from "../startup/dbConnection";
+import User from "../models/user";
+
+const mysql = require('mysql');
+const jwt = require('jsonwebtoken');
 
 const router = express.Router();
 
@@ -36,31 +40,44 @@ router.post('/create-user', (req,res, next)=>{
     
 });
 
-router.post('/login/:userid',(req,res,next) =>{
+router.post('/login',async (req,res,next) =>{
+
 
     try{
-        const user = req.params.userid;
 
-        db.connect();
+        const user_id:String = req.body.user_id;
+    
+        db.connect(function(err:any){
+            if(err) throw err;
 
-        console.log("logging in ... ");
-
-        let SQL = "SELECT * FROM User WHERE user_id = (user_id) VALUES(?)";
+            console.log("logging in ... ");
         
-        db.query(
-            SQL,
-            [user],
-            function (err:any,result:any){
+            db.query('SELECT * FROM user WHERE user_id = ?',[user_id], 
+            function(err:any,result:any){
                 if(err) throw err;
-                console.log("inserted user");
+                console.log(result);
+            });
         });
 
-    //return JWT?
+        
+        res.sendStatus(200);
+
+    // generate JWT
+
+    // const token = jwt.sign({user:});
+
+    // check for JWT in postman
+
+    // return jwt
+
+
     }catch(err){
         next(err);
     }
 
-    res.send(200);
+
+    
+    
 
 });
 
