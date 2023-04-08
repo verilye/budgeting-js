@@ -1,8 +1,9 @@
 import * as express from "express";
 import db from "../startup/dbConnection";
-import User from "../models/user";
+
 
 const mysql = require('mysql');
+const fs = require('fs');
 const jwt = require('jsonwebtoken');
 
 const router = express.Router();
@@ -63,7 +64,12 @@ router.post('/login',async (req,res,next) =>{
 
                 // generate JWT
 
-                const token:string = jwt.sign({user:result[0].user_id});
+                const privateKey:string = fs.readFileSync(__dirname+ '/../private.key', 'utf8');
+
+                // Pick a more appropriate algorithm that doesnt cause an error
+                // https://auth0.com/blog/json-web-token-signing-algorithms-overview/
+
+                const token:string = jwt.sign({user:result[0].user_id}, privateKey, {algorithm:'RSA512'});
 
                 // return jwt
 
