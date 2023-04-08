@@ -43,7 +43,7 @@ router.post('/login/:userid',(req,res,next) =>{
 
         db.connect();
 
-        console.log("loggin in ... ");
+        console.log("logging in ... ");
 
         let SQL = "SELECT * FROM User WHERE user_id = (user_id) VALUES(?)";
         
