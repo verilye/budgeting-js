@@ -65,12 +65,10 @@ router.post('/login',async (req,res,next) =>{
                 // generate JWT
 
                 const privateKey:string = fs.readFileSync(__dirname+ '/../private.key', 'utf8');
+                
 
-                // Pick a more appropriate algorithm that doesnt cause an error
-                // https://auth0.com/blog/json-web-token-signing-algorithms-overview/
-
-                const token:string = jwt.sign({user:result[0].user_id}, privateKey, {algorithm:'RSA512'});
-
+                const token:string = jwt.sign({user:result[0].user_id}, privateKey, {algorithm:"RS256", allowInsecureKeySizes:true});
+  
                 // return jwt
 
                 res.send({token});
