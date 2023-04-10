@@ -18,4 +18,8 @@ const connection = mysql.createConnection({
 
 });
 
+connection.connect(function(err:any) {
+	if (err) throw err
+});
+
 export default connection;
