@@ -3,9 +3,7 @@ import * as dotenv from 'dotenv';
 dotenv.config({path:"./db.env"});
 
 const cors = require('cors');
-
 const error = require("./middleware/error");
-
 const app = express();
 
 app.use(cors({
@@ -19,8 +17,6 @@ app.use(cors({
 // This function is passed after every route on error
 
 require('./startup/routes')(app);
-
-
 app.use(error);
 
 
