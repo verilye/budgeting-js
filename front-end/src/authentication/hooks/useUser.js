@@ -1,4 +1,4 @@
-import {useContext} from React;
+import {useContext} from 'react';
 import {AuthContext} from "../context/AuthContext";
 import { useLocalStorage } from "./useLocalStorage";
 
@@ -16,6 +16,15 @@ export const useUser = ()=>{
         setUser(null);
         setItem('user', '');   
     }
+
+    const login =()=>{
+        //TODO implement login here
+    }
+
+    const logout = ()=>{
+        //TODO implement logout here
+    }
+
 
     return{user, login, logout};
 }

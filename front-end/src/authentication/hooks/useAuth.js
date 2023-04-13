@@ -1,4 +1,4 @@
-import {useEffect} from React;
+import {useEffect} from 'react';
 import {useUser} from './useUser';
 import { useLocalStorage } from './useLocalStorage';
 
@@ -12,6 +12,8 @@ export const useAuth = () =>{
         if(user){
             addUser(JSON.parse(user));
         }
+
+        
     }, []);
 
     const login = (user) =>{

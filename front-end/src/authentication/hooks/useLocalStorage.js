@@ -1,7 +1,7 @@
-import {useState} from React;
+import {useState} from 'react';
 
 // A good example of react context and hooks
-// used to retrieve and store things in local storage
+// used to retrieve and store things in local storage   
 
 export const useLocalStorage = () =>{
     
@@ -9,7 +9,7 @@ export const useLocalStorage = () =>{
 
     const setItem = (key, value) =>{
         localStorage.setItem(key, value);
-        setValue;
+        setValue(value);
     };
 
     const getItem = (key) =>{
