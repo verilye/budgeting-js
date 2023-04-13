@@ -26,5 +26,5 @@ export const useUser = ()=>{
     }
 
 
-    return{user, login, logout};
+    return{user, login, logout, addUser, removeUser};
 }

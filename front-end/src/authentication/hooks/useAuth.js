@@ -14,7 +14,7 @@ export const useAuth = () =>{
         }
 
         
-    }, []);
+    }, [addUser, getItem]);
 
     const login = (user) =>{
         addUser(user);
