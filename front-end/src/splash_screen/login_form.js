@@ -117,16 +117,27 @@ export default function LoginForm(props) {
         // It seems like its totally okay to store lots of data in react context
         // Here I should potentially eager load things on login into there
 
+        // Im getting an infinite rerender errors, its almost certainly because
+        // of the useEffect Hook. Look at the comment about dependancy arrays
+        // in AuthContext if forgotten
+
         login({
             user_id: user_id,
             income:income,
             token:jwt,
         });
 
+        return;
+
     };
 
     return (
         <Box className="slide-down">
+            <Button
+                onClick={storeAuth("Baba",0,"Bingo")}
+            >
+                TEST BUTTON
+            </Button>
             {/* Display errors as long as the form field is invalid */}
             <FormGroup>
                 <FormControl>

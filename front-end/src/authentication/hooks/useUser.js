@@ -8,6 +8,7 @@ export const useUser = ()=>{
     const {setItem} = useLocalStorage();
 
     const addUser = (user) =>{
+        console.log("Use User activated!")
         setUser(user);
         setItem('user', JSON.stringify(user));
     };
@@ -17,14 +18,5 @@ export const useUser = ()=>{
         setItem('user', '');   
     }
 
-    const login =()=>{
-        //TODO implement login here
-    }
-
-    const logout = ()=>{
-        //TODO implement logout here
-    }
-
-
-    return{user, login, logout, addUser, removeUser};
+    return{user, addUser, removeUser};
 }

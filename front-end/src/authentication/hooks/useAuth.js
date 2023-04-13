@@ -2,6 +2,9 @@ import {useEffect} from 'react';
 import {useUser} from './useUser';
 import { useLocalStorage } from './useLocalStorage';
 
+// Access point for all auth related activities from regular code
+// The other hooks are 'helper' behind the scenese hooks
+
 export const useAuth = () =>{
 
     const {user, addUser, removeUser} = useUser();
@@ -17,6 +20,7 @@ export const useAuth = () =>{
     }, [addUser, getItem]);
 
     const login = (user) =>{
+        console.log("useAuth() activated")
         addUser(user);
     }
 
