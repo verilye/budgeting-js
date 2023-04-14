@@ -4,9 +4,17 @@ import {useAuth} from '../authentication/hooks/useAuth';
 
 import './login_form.css';
 
-export default function LoginForm(props) {
+export default function LoginForm() {
 
     const {login} = useAuth(); 
+
+    const handleAuth = () =>{
+        login({
+            user_id:"Bingus",
+            income:1,
+            jwt: "Jalapeno"
+        });
+    };
 
     const [user_id, setUserID] = useState("");
     const [password, setPassword] = useState("");
@@ -65,7 +73,7 @@ export default function LoginForm(props) {
                 // TODO
                 // Store JWT in auth context
 
-                storeAuth(user_id, resJson.income, resJson.token)
+                handleAuth(user_id, resJson.income, resJson.token)
                 // Store User in auth context
             }
 
@@ -97,7 +105,7 @@ export default function LoginForm(props) {
                 setUserID("");
                 setPassword("");
 
-                storeAuth(user_id, 0, resJson.token,);
+                handleAuth(user_id, 0, resJson.token,);
 
                 // TODO
                 // reroute to app
@@ -111,30 +119,10 @@ export default function LoginForm(props) {
         }
     };
 
-    const storeAuth =(user_id, income, jwt) =>{
-
-        // TODO
-        // It seems like its totally okay to store lots of data in react context
-        // Here I should potentially eager load things on login into there
-
-        // Im getting an infinite rerender errors, its almost certainly because
-        // of the useEffect Hook. Look at the comment about dependancy arrays
-        // in AuthContext if forgotten
-
-        login({
-            user_id: user_id,
-            income:income,
-            token:jwt,
-        });
-
-        return;
-
-    };
-
     return (
         <Box className="slide-down">
             <Button
-                onClick={storeAuth("Baba",0,"Bingo")}
+                onClick={handleAuth()}
             >
                 TEST BUTTON
             </Button>

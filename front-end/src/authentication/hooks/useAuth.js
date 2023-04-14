@@ -11,6 +11,7 @@ export const useAuth = () =>{
     const {getItem} = useLocalStorage();
 
     useEffect(()=>{
+        console.log("useEffect triggered")
         const user = getItem('user');
         if(user){
             addUser(JSON.parse(user));
