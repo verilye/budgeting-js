@@ -8,7 +8,8 @@ export default function LoginForm() {
 
     const {login} = useAuth(); 
 
-    const handleAuth = () =>{
+    let handleAuth = () =>{
+        console.log("canary")
         login({
             user_id:"Bingus",
             income:1,
@@ -121,11 +122,13 @@ export default function LoginForm() {
 
     return (
         <Box className="slide-down">
+
             <Button
-                onClick={handleAuth()}
+                onClick={handleAuth}
             >
                 TEST BUTTON
             </Button>
+
             {/* Display errors as long as the form field is invalid */}
             <FormGroup>
                 <FormControl>
@@ -206,9 +209,8 @@ export default function LoginForm() {
                         type="submit" value="CREATE ACCOUNT"
                     >CREATE ACCOUNT</Button>
                 </>
-
-
             </FormGroup>
+            
         </Box>
     )
 
