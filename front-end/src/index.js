@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import Splash from './splash_screen/splash_screen';
+import BudgetViewPort from './budgeting/budgeting';
+import DataVisualisations from './data_visuals/data_visuals';
+import GuardedRoute from './authentication/GuardedRoute';
+
+import { AuthContext } from './authentication/context/AuthContext';
+import { useAuth } from './authentication/hooks/useAuth';
+
 import './index.css';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Splash from './splash_screen/splash_screen';
-import BudgetViewPort from './budgeting/budgeting';
-import DataVisualisations from './data_visuals/data_visuals';
-import GuardedRoute from './authentication/GuardedRoute'
 
 const router = createBrowserRouter([
   {
@@ -35,8 +39,23 @@ const router = createBrowserRouter([
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+function App(){
+    
+  const {user, login, logout} = useAuth();
+
+  return(
+    <AuthContext.Provider value = {{user, setUser}}>
+      <RouterProvider router = {router} />
+    </AuthContext.Provider>
+  );
+
+};
+
+
 root.render(
   <React.StrictMode>
-      <RouterProvider router = {router} />
+      <App/>
   </React.StrictMode>
 );
+

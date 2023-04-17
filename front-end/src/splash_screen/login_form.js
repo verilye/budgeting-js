@@ -9,11 +9,20 @@ export default function LoginForm() {
     const {login} = useAuth(); 
 
     let handleAuth = () =>{
-        console.log("canary")
+        console.log("canary");
+
+        const a = "Bingus";
+        const b = 1;
+        const c = "Bongus"
+
+        let user = {
+            user_id:a,
+            income:b,
+            jwt: c,
+        }
+
         login({
-            user_id:"Bingus",
-            income:1,
-            jwt: "Jalapeno"
+            user
         });
     };
 
@@ -122,13 +131,14 @@ export default function LoginForm() {
 
     return (
         <Box className="slide-down">
-
+            
             <Button
                 onClick={handleAuth}
             >
                 TEST BUTTON
+                {}
+                
             </Button>
-
             {/* Display errors as long as the form field is invalid */}
             <FormGroup>
                 <FormControl>
