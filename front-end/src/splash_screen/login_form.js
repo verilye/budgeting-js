@@ -1,28 +1,25 @@
 import { Box, Button, FormControl, FormGroup, TextField, FormHelperText } from "@mui/material";
-import { React, useState } from "react";
+import { React, useContext, useState } from "react";
 import {useAuth} from '../authentication/hooks/useAuth';
 
 import './login_form.css';
+import { AuthContext } from "../authentication/context/AuthContext";
 
 export default function LoginForm() {
 
     const {login} = useAuth(); 
 
+    let context = useContext(AuthContext);
+
     let handleAuth = () =>{
         console.log("canary");
 
         const a = "Bingus";
-        const b = 1;
-        const c = "Bongus"
-
-        let user = {
-            user_id:a,
-            income:b,
-            jwt: c,
-        }
+        // const b = 1;
+        // const c = "Bongus"
 
         login({
-            user
+            a
         });
     };
 
@@ -132,14 +129,13 @@ export default function LoginForm() {
     return (
         <Box className="slide-down">
             
-            <Button
-                onClick={handleAuth}
-            >
-                TEST BUTTON
-                {}
-                
-            </Button>
+                <Button
+                    onClick={handleAuth}
+                >
+                    TEST BUTTON
+                </Button>
             {/* Display errors as long as the form field is invalid */}
+            
             <FormGroup>
                 <FormControl>
                     <TextField
@@ -220,6 +216,11 @@ export default function LoginForm() {
                     >CREATE ACCOUNT</Button>
                 </>
             </FormGroup>
+            <Box
+                color="black"
+                fontColor ="black"
+                fontSize ="50px"
+            >{context.user.user.user_id}</Box>
             
         </Box>
     )

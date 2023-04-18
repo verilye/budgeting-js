@@ -1,10 +1,10 @@
-import {useContext} from 'react';
+import {useContext, useState} from 'react';
 import {AuthContext} from "../context/AuthContext";
-import { useLocalStorage } from "./useLocalStorage";
+import {useLocalStorage } from "./useLocalStorage";
 
 
 export const useUser = ()=>{
-    const {user, setUser} = useContext(AuthContext);
+    const [user, setUser]= useState(AuthContext);
     const {setItem} = useLocalStorage();
 
     const addUser = (user) =>{
@@ -16,7 +16,7 @@ export const useUser = ()=>{
     const removeUser = () =>{
         setUser(null);
         setItem('user', '');   
-    }
+    };
 
     return{user, addUser, removeUser};
-}
+};

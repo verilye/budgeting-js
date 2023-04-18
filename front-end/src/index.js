@@ -45,7 +45,7 @@ function App(){
   const {user, login, logout} = useAuth();
 
   return(
-    <AuthContext.Provider value = {{user, setUser}}>
+    <AuthContext.Provider value = {{user}}>
       <RouterProvider router = {router} />
     </AuthContext.Provider>
   );
