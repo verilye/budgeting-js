@@ -1,25 +1,25 @@
 import { Box, Button, FormControl, FormGroup, TextField, FormHelperText } from "@mui/material";
-import { React, useContext, useState } from "react";
+import { React, useState } from "react";
 import {useAuth} from '../authentication/hooks/useAuth';
 
 import './login_form.css';
-import { AuthContext } from "../authentication/context/AuthContext";
+
 
 export default function LoginForm() {
 
     const {login} = useAuth(); 
 
-    let context = useContext(AuthContext);
+    
 
     let handleAuth = () =>{
         console.log("canary");
 
-        const a = "Bingus";
+        const a = "bongus";
         // const b = 1;
         // const c = "Bongus"
 
         login({
-            a
+            "user_id":a
         });
     };
 
@@ -216,11 +216,7 @@ export default function LoginForm() {
                     >CREATE ACCOUNT</Button>
                 </>
             </FormGroup>
-            <Box
-                color="black"
-                fontColor ="black"
-                fontSize ="50px"
-            >{context.user.user.user_id}</Box>
+            
             
         </Box>
     )

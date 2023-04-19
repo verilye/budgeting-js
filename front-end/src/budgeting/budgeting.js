@@ -1,10 +1,13 @@
 import './budgeting.css';
-import React from 'react';
+import {React, useContext} from 'react';
 import { Box } from "@mui/material";
 import IncomeDisplay from './income_display';
 import Category from './category_component';
+import { AuthContext } from '../authentication/context/AuthContext';
 
 export default function BudgetViewPort(){
+
+    let context = useContext(AuthContext);
 
 
     return(
@@ -20,6 +23,13 @@ export default function BudgetViewPort(){
 
                     budgeting-js 
                 </Box>
+
+                <Box
+                color="black"
+                fontColor ="black"
+                fontSize ="50px"
+            >Hi {context.user.user_id}
+            </Box>
 
                 {/* Make the income log expandable and editable in place to quickly add new income */}
                 {/* Show % of income that has been allocated */}

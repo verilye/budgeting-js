@@ -1,4 +1,4 @@
-import {createContext} from 'react';
+import {createContext, useState} from 'react';
 
 // Auth context tutorial
 // Up to step 4
@@ -12,7 +12,8 @@ import {createContext} from 'react';
 // Testing react hooks
 // https://www.toptal.com/react/testing-react-hooks-tutorial
 
-export const AuthContext = createContext({
-    user:null,
-    setUser:()=>{},
-});
+const AuthContext = createContext(undefined);
+
+export {AuthContext};
+
+
