@@ -10,14 +10,16 @@ export default function LoginForm() {
     const {login} = useAuth(); 
 
     let handleAuth = () =>{
-        console.log("canary");
+        console.log("test login activated");
 
         const a = "bongus";
-        // const b = 1;
-        // const c = "Bongus"
+        const b = 1;
+        const c = "Bongus"
 
         login({
-            "user_id":a
+            "user_id":a,
+            "income":b,
+            "jwt":c
         });
     };
 
