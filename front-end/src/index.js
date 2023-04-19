@@ -42,7 +42,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 function App(){
     
-  const {user, login, logout} = useAuth();
+  const {user} = useAuth();
 
   return(
     <AuthContext.Provider value = {{user}}>

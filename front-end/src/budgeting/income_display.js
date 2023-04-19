@@ -108,6 +108,7 @@ export default function IncomeDisplay(){
                     }
                 </Grid>
                 <Grid
+                    item
                     xs={1}
                 >
                     <Button

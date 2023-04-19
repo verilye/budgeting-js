@@ -8,10 +8,8 @@ export const useLocalStorage = () =>{
     const [value, setValue] = useState("");
 
     const setItem = (key, value) =>{
-        console.log("useLocalStorage activated!");
         localStorage.setItem(key, value);
         setValue(value);
-        console.log("something stored in local storage");
     };
 
     const getItem = (key) =>{

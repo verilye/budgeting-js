@@ -1,4 +1,4 @@
-import {useContext, useState} from 'react';
+import {useState} from 'react';
 import {AuthContext} from "../context/AuthContext";
 import {useLocalStorage } from "./useLocalStorage";
 
@@ -8,7 +8,6 @@ export const useUser = ()=>{
     const {setItem} = useLocalStorage();
 
     const addUser = (user) =>{
-        console.log("Use User activated!")
         setUser(user);
         setItem('user', JSON.stringify(user));
     };

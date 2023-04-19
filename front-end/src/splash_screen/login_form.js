@@ -9,8 +9,6 @@ export default function LoginForm() {
 
     const {login} = useAuth(); 
 
-    
-
     let handleAuth = () =>{
         console.log("canary");
 

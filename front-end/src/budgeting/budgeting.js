@@ -1,13 +1,13 @@
 import './budgeting.css';
-import {React, useContext} from 'react';
+import {React} from 'react';
 import { Box } from "@mui/material";
 import IncomeDisplay from './income_display';
 import Category from './category_component';
-import { AuthContext } from '../authentication/context/AuthContext';
+import { useAuth } from '../authentication/hooks/useAuth';
 
 export default function BudgetViewPort(){
 
-    let context = useContext(AuthContext);
+    let {user} = useAuth();
 
 
     return(
@@ -25,10 +25,8 @@ export default function BudgetViewPort(){
                 </Box>
 
                 <Box
-                color="black"
-                fontColor ="black"
-                fontSize ="50px"
-            >Hi {context.user.user_id}
+                    fontSize ="50px"
+                >Hi {user.user_id}
             </Box>
 
                 {/* Make the income log expandable and editable in place to quickly add new income */}
