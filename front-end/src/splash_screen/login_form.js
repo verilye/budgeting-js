@@ -12,7 +12,7 @@ export default function LoginForm() {
     let handleAuth = () =>{
         console.log("test login activated");
 
-        const a = "bongus";
+        const a = "Bingus";
         const b = 1;
         const c = "Bongus"
 

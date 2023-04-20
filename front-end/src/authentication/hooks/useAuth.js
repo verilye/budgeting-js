@@ -9,8 +9,10 @@ export const useAuth = () =>{
 
     const {user,addUser, removeUser} = useUser();
     const {getItem} = useLocalStorage();
-
+    
     useEffect(()=>{
+        // TODO 
+        // Authenticate jwt here
         const user = getItem('user');
         console.log(user);
         if(user){

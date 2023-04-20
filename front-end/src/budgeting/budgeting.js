@@ -1,13 +1,23 @@
 import './budgeting.css';
 import {React} from 'react';
-import { Box } from "@mui/material";
+import { Box,Button } from "@mui/material";
 import IncomeDisplay from './income_display';
 import Category from './category_component';
 import { useAuth } from '../authentication/hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 export default function BudgetViewPort(){
 
-    let {user} = useAuth();
+    let {user, logout} = useAuth();
+
+    const navigate = useNavigate();
+
+    let handleLogout =()=>{
+
+        logout();
+        navigate("/budgeting-js");
+        
+    };
 
 
     return(
@@ -23,11 +33,14 @@ export default function BudgetViewPort(){
 
                     budgeting-js 
                 </Box>
-
-                <Box
+                <Button onClick = {handleLogout}>
+                    Logout
+                </Button>
+                {user ? 
+                (<Box
                     fontSize ="50px"
-                >Hi {user.user_id}
-            </Box>
+                >Hi {user.user_id}, your jwt is {user.jwt}
+                </Box>) : null}
 
                 {/* Make the income log expandable and editable in place to quickly add new income */}
                 {/* Show % of income that has been allocated */}
