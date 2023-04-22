@@ -2,20 +2,18 @@ import React, { useState, createContext } from "react";
 
 const AuthContext = createContext();
 
-// FOLLOW THIS 
-// https://stackoverflow.com/questions/41030361/how-to-update-react-context-from-inside-a-child-component
+// READ THIS LEST YE WASTE ANOTHER 3 DAYS!!!
 
-// Testing react hooks
-// https://www.toptal.com/react/testing-react-hooks-tutorial
+// When manually entering a url, the context is wiped
+// To persist login after manually entering url, local storage
+// shenanigans will need to be used. 
+
+// NOTE
 
 function AuthProvider(props){
 
     const [authenticated, setAuthenticated] = useState(false);
-    console.log("AuthProvider - authenticated:")
-    console.log(authenticated);
     const [user, setUser] = useState(null);
-    console.log("AuthProvider - user:");
-    console.log(user);
 
     const login = (user)=>{
         console.log("AuthProvider - login");
