@@ -1,22 +1,20 @@
 import './budgeting.css';
-import {React} from 'react';
+import React,{ useContext} from 'react';
 import { Box,Button } from "@mui/material";
 import IncomeDisplay from './income_display';
 import Category from './category_component';
-import { useAuth } from '../authentication/hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../authentication/AuthContext';
 
 export default function BudgetViewPort(){
 
-    let {user, logout} = useAuth();
+    let {user, logout} = useContext(AuthContext);
 
     const navigate = useNavigate();
 
     let handleLogout =()=>{
-
         logout();
-        navigate("/budgeting-js");
-        
+        navigate("/budgeting-js"); 
     };
 
 

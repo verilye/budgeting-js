@@ -1,12 +1,10 @@
-import React from 'react';
+import React,{useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import Splash from './splash_screen/splash_screen';
 import BudgetViewPort from './budgeting/budgeting';
 import DataVisualisations from './data_visuals/data_visuals';
 import GuardedRoute from './authentication/GuardedRoute';
-
-import { AuthContext } from './authentication/context/AuthContext';
-import { useAuth } from './authentication/hooks/useAuth';
+import {AuthProvider} from './authentication/AuthContext';
 
 import './index.css';
 import {
@@ -27,13 +25,15 @@ const router = createBrowserRouter([
       <GuardedRoute>
         <BudgetViewPort/>
       </GuardedRoute>
+    
   },
   {
     path:"/budgeting-js/data-visuals",
     element:
-    <GuardedRoute>
-      <DataVisualisations/>
-    </GuardedRoute>
+      <GuardedRoute>
+        <DataVisualisations/>
+      </GuardedRoute>
+   
     
   }
 ]);
@@ -41,13 +41,11 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 function App(){
-    
-  const {user} = useAuth();
 
   return(
-    <AuthContext.Provider value = {{user}}>
+    <AuthProvider>
       <RouterProvider router = {router} />
-    </AuthContext.Provider>
+    </AuthProvider>
   );
 
 };
