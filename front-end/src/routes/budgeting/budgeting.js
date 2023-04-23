@@ -1,10 +1,10 @@
-import './budgeting.css';
 import React,{ useContext} from 'react';
 import { Box,Button } from "@mui/material";
 import IncomeDisplay from './income_display';
 import Category from './category_component';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../authentication/AuthContext';
+import { AuthContext } from '../../authentication/AuthContext';
+import './budgeting.css';
 
 export default function BudgetViewPort(){
 
@@ -21,25 +21,39 @@ export default function BudgetViewPort(){
     return(
             <div className="budgeting">
 
-                <Box className ="logo"
-                    sx={{                    
-                        fontSize: '2rem',
-                        paddingLeft:'1rem',
-                        height:'10vh',
-                    }}
+                <Box
+                    height='10vh'
+                    width="100%"
+                    display="flex"
+                    justifyContent ="space-between"
                 >
+                    <Box className ="logo"
+                        sx={{                    
+                            fontSize: '2rem',
+                            paddingLeft:'1rem',
+                        }}
+                    >
 
-                    budgeting-js 
+                        budgeting-js 
+                    </Box>
+
+                    <Box
+                        display="flex"
+                    >
+                        {user ? 
+                            (<Box
+                                fontSize ="1.5rem"
+
+                            > welcome {user.user_id}
+                            </Box>
+                        ) : null}
+                        <Button 
+                            onClick = {handleLogout}>
+                            Logout
+                        </Button>
+                    </Box>
                 </Box>
-                <Button onClick = {handleLogout}>
-                    Logout
-                </Button>
-                {user ? 
-                (<Box
-                    fontSize ="50px"
-                >Hi {user.user_id}, your jwt is {user.jwt}
-                </Box>) : null}
-
+                
                 {/* Make the income log expandable and editable in place to quickly add new income */}
                 {/* Show % of income that has been allocated */}
                 

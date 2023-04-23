@@ -1,8 +1,8 @@
-import React,{useState} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Splash from './splash_screen/splash_screen';
-import BudgetViewPort from './budgeting/budgeting';
-import DataVisualisations from './data_visuals/data_visuals';
+import Splash from './routes/splash_screen/splash_screen';
+import BudgetViewPort from './routes/budgeting/budgeting';
+import DataVisualisations from './routes/data_visuals/data_visuals';
 import GuardedRoute from './authentication/GuardedRoute';
 import {AuthProvider} from './authentication/AuthContext';
 

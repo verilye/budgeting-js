@@ -1,8 +1,8 @@
 import { Box, Button, FormControl, FormGroup, TextField, FormHelperText } from "@mui/material";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
 import './login_form.css';
-import { AuthContext } from "../authentication/AuthContext";
+import { AuthContext } from "../../authentication/AuthContext";
 import { useNavigate } from 'react-router-dom';
 
 
@@ -14,9 +14,9 @@ export default function LoginForm() {
     let handleAuth = () =>{
         console.log("test login activated");
         login({
-            "user_id":"Bingus",
+            "user_id":"Blingus",
             "income":1,
-            "jwt":"Bongus"
+            "jwt":"Blongus"
         });
         navigate("/budgeting-js/budgeting"); 
     };
