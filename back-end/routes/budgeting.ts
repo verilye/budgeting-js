@@ -8,17 +8,23 @@ router.post('/create-category', (req,res,next)=>{
     try{
 
         // Map variables from request to SQL command
-        db.connect();
     
-        console.log("creating category...")
+        console.log("creating category...") 
+
+        const user_id :String = req.body.user_id;
+        const category_id : String = req.body.category_id;
     
-        let sql = `INSERT INTO Category (user_id, category_id) 
-                VALUES(" + req.body.user_id + "," + req.body.category_id ")`; 
-        db.query(sql, function (err:any,result:any){
+        let sql = "INSERT INTO Category (user_id, category_id) VALUES(?,?)";
+        db.query(
+            sql, 
+            [user_id, category_id],
+            function (err:any,result:any){
             if(err) throw err;
             console.log("inserted category");
+            
         });
- 
+
+        return res.sendStatus(200);
 
     }catch(err){
         next(err);
@@ -31,10 +37,7 @@ router.post('/create-category', (req,res,next)=>{
 router.get('/get-categories', (req,res,next)=>{
 
     try{        
-        // all categories in an array, with goals inside the categories
-
-
-        db.connect();
+        // all categories in an array, with goals inside the categories 
     
         console.log("getting categories...")
     
@@ -45,6 +48,8 @@ router.get('/get-categories', (req,res,next)=>{
             console.log("inserted category");
         });
  
+
+        return res.sendStatus(200);
 
     }catch(err){
         next(err);

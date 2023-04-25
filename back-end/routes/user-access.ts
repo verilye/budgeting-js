@@ -40,10 +40,9 @@ router.post('/create-user', async (req,res, next)=>{
             const password_salt:String = bcrypt.genSaltSync(10);
             const password_hash:String  = bcrypt.hashSync(password, password_salt);
 
-            //Insert query
-            let sql = "INSERT INTO User (user_id, password_hash, password_salt, income) VALUES(?,?,?,?)";
+            //Insert user data query
             db.query(
-                sql, 
+                "INSERT INTO User (user_id, password_hash, password_salt, income) VALUES(?,?,?,?)", 
                 [user_id,password_hash,password_salt,0],
                 
                 function (err:Error,result:any){
@@ -51,6 +50,7 @@ router.post('/create-user', async (req,res, next)=>{
                     console.log("inserted user");
             });
 
+            // TODO
             // Create default categories and goals for examples
 
             return res.sendStatus(200);
@@ -61,8 +61,6 @@ router.post('/create-user', async (req,res, next)=>{
         next(err);
     }
 
-    
-    
 });
 
 router.post('/login',async (req,res,next) =>{
@@ -75,37 +73,31 @@ router.post('/login',async (req,res,next) =>{
     
         console.log("logging in ... ");
     
-        const result:any = await db.query('SELECT * FROM user WHERE user_id = ?',[user_id], 
-        function(err:any,result:any){
-            if(err) throw err;
-            
+        const result:any = await db.query(
+            'SELECT * FROM user WHERE user_id = ?',
+            [user_id], 
+            function(err:any,result:any){
+                if(err) throw err;
 
-            // TODO
-            // READ THIS!!
-            // Should shed some light on what the correct implementation is
-            // https://stackoverflow.com/questions/65092710/sending-a-plain-text-password-to-nodejs-express-server-am-i-overthinking-passwo
-            
-            // https://siddharthac6.medium.com/json-web-token-jwt-the-right-way-of-implementing-with-node-js-65b8915d550es
+                //Check user name match with the db entry
+                if(result.length === 0) {return res.status(409).json({error:"User does not exist!"})};
 
-            //Check user name match with the db entry
-            if(result.length === 0) {return res.status(409).json({error:"User does not exist!"})};
+                //Check password matches with hash when salted using stored
+                const salt = result[0].password_salt;
+                const password_hash = bcrypt.hashSync(password, salt);
+                if(password_hash != result[0].password_hash) return res.status(409).json({error:"Incorrect Password"});
 
-            //Check password matches with hash when salted using stored
-            const salt = result[0].password_salt;
-            const password_hash = bcrypt.hashSync(password, salt);
-            if(password_hash != result[0].password_hash) return res.status(409).json({error:"Incorrect Password"});
+                // generate JWT
 
-            // generate JWT
+                const privateKey:string = fs.readFileSync(__dirname+ '/../private.key', 'utf8');
+                const token:string = jwt.sign({user:result[0].user_id}, privateKey, {algorithm:"RS256", allowInsecureKeySizes:true});
 
-            const privateKey:string = fs.readFileSync(__dirname+ '/../private.key', 'utf8');
-            const token:string = jwt.sign({user:result[0].user_id}, privateKey, {algorithm:"RS256", allowInsecureKeySizes:true});
+                // return jwt
 
-            // return jwt
+                console.log("logged in");
 
-            console.log("logged in");
-
-            return res.send({token});
-        });
+                return res.send({"token":token,"income":result[0].income});
+            });
 
     }catch(err){
         next(err);
