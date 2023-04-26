@@ -40,7 +40,7 @@ export default function NavBar(){
             display="flex"
         >
             <Box
-                padding="1.5rem"
+                padding="1.7rem"
                 fontSize="1.5rem"
 
             > 
