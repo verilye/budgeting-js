@@ -8,7 +8,10 @@ export default function IncomeDisplay() {
     const currentDate = new Date();
 
     return (
-        <>
+        <Box
+            margin="2rem"
+
+        >
             <Box>
                 {currentDate.getDate()}/{currentDate.getMonth()}/{currentDate.getFullYear()}
             </Box>
@@ -17,6 +20,10 @@ export default function IncomeDisplay() {
                 INCOME
             </Box>
 
+
+
+            {/* Make the income log expandable and editable in place to quickly add new income */}
+            {/* Show % of income that has been allocated */}
             <Box
 
                 style={{
@@ -39,6 +46,6 @@ export default function IncomeDisplay() {
                 ${income}
 
             </Box>
-        </>
+        </Box>
     )
 }

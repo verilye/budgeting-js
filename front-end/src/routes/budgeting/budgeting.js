@@ -1,78 +1,23 @@
 import React, { useContext } from 'react';
-import { Box, Button } from "@mui/material";
+import { Box, Divider } from "@mui/material";
 import IncomeDisplay from './income_display';
 import Category from './category_component';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../authentication/AuthContext';
+
 import './budgeting.css';
+import NavBar from './navbar';
 
 export default function BudgetViewPort() {
 
-    let { user, logout } = useContext(AuthContext);
-
-    const navigate = useNavigate();
-
-    let handleLogout = () => {
-        logout();
-        navigate("/budgeting-js");
-    };
 
     return (
         <div className="budgeting">
 
-            <Box
-                height='10vh'
-                width="100%"
-                display="flex"
-                justifyContent="space-between"
-            >
-                <Box className="logo"
-                    padding="25px"
-                    sx={{
-                        fontSize: '2rem',
-                        paddingLeft: '1rem',
-                    }}
-                >
+            {/* Logo + user name + logout */}
+            <NavBar/>
 
-                    budgeting-js
-                </Box>
+            <Divider/>
 
-                <Box
-                    display="flex"
-                >
-                    <Box
-                        padding="1.5rem"
-                        fontSize="1.5rem"
-
-                    > 
-                        welcome {user.user_id}
-                    </Box>
-                    <Button
-                        padding ="10px"
-                        sx={{
-                            backgroundColor: "black",
-                            borderstyle:"white",
-                            color:"white",
-                            height:"2.5rem",
-                            padding:"1rem",
-                            margin:"1.5rem",
-                            fontWeight:"bold",
-                            "&:hover": {
-                                color: "black",
-                                bgcolor: "#FFFFFF",
-                                borderStyle: "solid",
-                            }
-                        }}
-                        onClick={handleLogout}>
-                        Logout
-                    </Button>
-                </Box>
-
-            </Box>
-
-            {/* Make the income log expandable and editable in place to quickly add new income */}
-            {/* Show % of income that has been allocated */}
-
+            {/* Edit income and display date */}
             <IncomeDisplay/>
 
             <Box className='category-display'
