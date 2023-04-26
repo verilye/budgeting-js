@@ -1,8 +1,8 @@
 .features{
     width: 20rem;
-    margin-top: -35rem;
-    margin-left:80rem;
-    padding-right:10rem;
+    margin-top:5rem;
+    margin-left: 75vw;
+    position:absolute;
     float:right;
 }
 

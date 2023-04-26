@@ -130,7 +130,7 @@ export default function LoginForm() {
                 <Button
                     onClick={handleAuth}
                 >
-                    TEST BUTTON
+                    TEST LOGIN BUTTON
                 </Button>
             {/* Display errors as long as the form field is invalid */}
             
