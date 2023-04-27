@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Box, TextField } from "@mui/material";
 
 import moneyIcon from "../../images/money.png";
 import plus from "../../images/plus.png";
 import minus from "../../images/minus.png";
+import { AuthContext } from "../../authentication/AuthContext";
 
 
 export default function IncomeDisplay() {
@@ -11,17 +12,36 @@ export default function IncomeDisplay() {
     //Add income from db here
     const income = 1210.21;
     const currentDate = new Date();
+    const user = useContext(AuthContext);
 
     // Inspiration for visual design
     // https://dribbble.com/shots/18563580-Web-App
 
+    const handleIncome = async (amount)=>{
 
-    const handleAdd =()=>{
-        //Add to income, send to server
-    }
+        let income = user.income;
+        let user_id = user.user_id;
 
-    const handleSubtract =()=>{
-        // subtract from income, send to server
+        if(amount>0){
+
+            income = income + amount;
+
+            const res = await fetch("http://localhost:4000/user-access/add-income" + user_id, {
+                method: "POST",
+                mode: 'cors',
+                headers: {  
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    income: income,
+                }),
+            });
+
+            if (res === 200) { 
+                console.log("income incorporated");
+            }
+        }
+
     }
 
     return (
@@ -114,13 +134,13 @@ export default function IncomeDisplay() {
                                 width="28px"
                                 height="28px"
                                 alt="plus"
-                                src={plus} onClick ={handleAdd}></img>
+                                src={plus} onClick ={handleIncome}></img>
                             <img
                                 width="28px"
                                 height="28px"
                                 src={minus}
                                 alt="minus"
-                                onClick = {handleSubtract}></img>
+                                onClick = {handleIncome}></img>
                         </Box>
                     </Box>
                 </Box>
