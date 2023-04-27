@@ -77,4 +77,32 @@ router.post('/create-goal', (req,res,next)=>{
     }
 });
 
+router.post('/add-income',(req,res,next)=>{
+    
+
+    // TODO 
+    // TEST MEEEE
+
+    try{
+
+        const income: String  = req.body.income;
+        const user_id: String = req.body.income;
+
+        let sql = `UPDATE User SET income = ? WHERE user_id = ?`;
+            
+        db.query(sql, 
+            [income,user_id],
+            function (err:any,result:any){
+            if(err) throw err;
+            console.log("inserted category");
+        });
+
+        return res.sendStatus(200);
+
+    }catch(err){
+        next(err);
+    }
+
+});
+
 module.exports = router;
