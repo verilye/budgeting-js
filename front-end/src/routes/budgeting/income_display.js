@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useRef } from "react"
 import { Box, TextField } from "@mui/material";
 
 import moneyIcon from "../../images/money.png";
@@ -10,6 +10,7 @@ import { AuthContext } from "../../authentication/AuthContext";
 export default function IncomeDisplay() {
 
     //Add income from db here
+    const incomeValue = useRef('');
     const income = 1210.21;
     const currentDate = new Date();
     const user = useContext(AuthContext);
@@ -17,7 +18,10 @@ export default function IncomeDisplay() {
     // Inspiration for visual design
     // https://dribbble.com/shots/18563580-Web-App
 
-    const handleIncome = async (amount)=>{
+    const handleIncome = async ()=>{
+
+        let amount = incomeValue;
+        console.log("handleIncomeActivated");
 
         let income = user.income;
         let user_id = user.user_id;
@@ -26,13 +30,14 @@ export default function IncomeDisplay() {
 
             income = income + amount;
 
-            const res = await fetch("http://localhost:4000/user-access/add-income" + user_id, {
+            const res = await fetch("http://localhost:4000/user-access/add-income", {
                 method: "POST",
                 mode: 'cors',
                 headers: {  
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
+                    user_id:user_id,
                     income: income,
                 }),
             });
@@ -47,20 +52,14 @@ export default function IncomeDisplay() {
     return (
         <Box
             margin="2rem"
+            marginLeft ="4rem"
             display="flex"
             justifyContent="flex-start"
-            columnGap="27.5vw"
+            columnGap="65vw"
         >
             <Box
-                paddingTop='25px'
-                fontSize="20px"
-            >
-                Today is {currentDate.getDate()}/{currentDate.getMonth()}/{currentDate.getFullYear()}
-            </Box>
-
-            <Box
                 display="flex"
-                justifyContent={"center"}
+                justifyContent={"space-between"}
 
                 style={{
 
@@ -87,7 +86,7 @@ export default function IncomeDisplay() {
                     padding="1rem"
                 >
                     <Box>
-                        SAVINGS
+                        AVAILABLE BALANCE
                     </Box>
                     <Box
                         overflow="hidden"
@@ -97,7 +96,7 @@ export default function IncomeDisplay() {
 
                             fontWeight: 'bold',
                             fontSize: "30px",
-                            marginBottom: "2rem",
+                            marginBottom: "0.5rem",
                         }}
 
                     >
@@ -117,6 +116,7 @@ export default function IncomeDisplay() {
                         }}
                     >   
                         <TextField
+                            inputRef={incomeValue}
                             style={{
                                 width:"10rem",
                                 float:"left",
@@ -144,6 +144,12 @@ export default function IncomeDisplay() {
                         </Box>
                     </Box>
                 </Box>
+            </Box>
+            <Box
+                paddingTop='3rem'
+                fontSize="25px"
+            >
+                Today is {currentDate.getDate()}/{currentDate.getMonth()}/{currentDate.getFullYear()}
             </Box>
         </Box>
     )
