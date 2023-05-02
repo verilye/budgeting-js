@@ -22,11 +22,8 @@ export default function NavBar(){
         width="100%"
         display="flex"
         justifyContent="space-between"
-        borderWidth = "2rem"
-        borderStyle= "solid"
-        borderColor= "black"
-        
-    >
+        >
+            
         <Box className="logo"
             padding="25px"
             fontSize='2rem'

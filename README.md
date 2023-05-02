@@ -5,10 +5,8 @@ Budgeting-Js
 
 MVP
   - store and track goals
-  - pull data from the db and display it in chart.js
 
 Trello link - https://trello.com/b/vyEzer2K/budgeting-js 
-
 
 Front end -
   MUI
@@ -17,7 +15,11 @@ Front end -
 Back end  - 
   Nodejs
   Typescript
+  Decided to use SQL queries instead of an orm system so that I
+  can become more familiar with SQL
 
-  Decided not to use an SQL query builder as I read a convincing argument that it
-  is an anti pattern. Needless abstraction when I could just write more portable SQL
-  that is just as testable.
+Secrets -
+This project needs a number of secret files ignored by git including:
+- private and public key on the server for authentication
+- certificate issued by Azure for db access
+- Environment variables with connection details for the database

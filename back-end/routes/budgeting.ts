@@ -77,11 +77,7 @@ router.post('/create-goal', (req,res,next)=>{
     }
 });
 
-router.post('/add-income',(req,res,next)=>{
-    
-
-    // TODO 
-    // TEST MEEEE
+router.post('/edit-income',(req,res,next)=>{
 
     try{
 
