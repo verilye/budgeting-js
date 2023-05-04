@@ -26,21 +26,25 @@ export default function IncomeDisplay() {
         if(polarity === "plus"){income = income + user.income};
         if(polarity === "minus"){income = user.income - income};
 
+        console.log(user.user_id);
+
         const res = fetch("http://localhost:4000/user-access/edit-income", {
             method: "POST",
             mode: 'cors',
             headers: {  
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
+            body: {
                 user_id: user.user_id,
                 income: income,
-            }),
+            },
         });
 
         if (res === 200) { 
             console.log("income incorporated");
         }
+
+        return;
     }
 
     return (
