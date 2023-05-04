@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { Box, Divider } from "@mui/material";
+import React from 'react';
+import { Box, Divider, Button } from "@mui/material";
 import IncomeDisplay from './income_display';
 import Category from './category_component';
 
@@ -13,15 +13,15 @@ export default function BudgetViewPort() {
         <div className="budgeting">
 
             {/* Logo + user name + logout */}
-            <NavBar/>
+            <NavBar />
 
-            <Divider/>
+            <Divider />
 
             {/* Edit income and display date */}
-            <IncomeDisplay/>
+            <IncomeDisplay />
 
             <Box className='category-display'
-             
+
                 sx={{
                     fontSize: '1.5rem',
                     padding: '20px',
@@ -33,7 +33,22 @@ export default function BudgetViewPort() {
                 }}
 
             >
-                CATEGORIES:
+                CATEGORIES
+                <Button
+                    padding="10px"
+                    sx={{
+                        backgroundColor: "black",
+                        color: "white",
+                        height: "2.5rem",
+                        padding: "1rem",
+                        margin: "1.5rem",
+                        fontWeight: "bold",
+                        "&:hover": {
+                            color: "black",
+                            bgcolor: "#FFFFFF",
+                            borderStyle: "solid",
+                        }
+                    }}>add +</Button>
                 {/* Paginate categories and goals here */}
                 {/* Categories should be scalable in size*/}
 

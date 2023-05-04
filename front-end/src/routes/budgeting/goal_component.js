@@ -1,21 +1,19 @@
-import { LinearProgress } from "@mui/material"
-import { Box } from "@mui/system"
+import { LinearProgress, Box, TextField, Button } from "@mui/material"
 
-export default function Goal(props){
-    
+export default function Goal(props) {
+
     // Get the progress value as a percentage of the total 
     let progress = 25;
 
 
-    return(
+    return (
 
         <Box className='goal'
             sx={{
-                width:'35vw',
-                height:'2rem',
-                padding:'5px',
-                margin:'5px',
-                borderRadius:'0.5rem',
+                
+                padding: '5px',
+                margin: '5px',
+                borderRadius: '0.5rem',
                 borderStyle: 'solid',
                 borderColor: 'black',
             }}
@@ -23,33 +21,70 @@ export default function Goal(props){
         >
             <Box
                 sx={{
-                    float:"left",
-                    padding:"5px",
-                    width:"10vw"
+                    float: "left",
+                    padding: "5px",
+                    width: "10vw"
                 }}
             >
                 New Car
             </Box>
             <Box
                 sx={{
-                   
+
                 }}
             >$1250/$5000</Box>
             {/* Monetary values here */}
             {/* The progress value should be a number out of 100.*/}
-            <LinearProgress 
+            <LinearProgress
                 sx={{
-                    height:"0.5rem",
+                    height: "0.5rem",
                     backgroundColor: 'gray',
-                    '& .MuiLinearProgress-bar':{
-                        backgroundColor : "green"
+                    '& .MuiLinearProgress-bar': {
+                        backgroundColor: "green"
                     }
                 }}
-                variant = "determinate" 
+                variant="determinate"
                 value={progress}>
 
             </LinearProgress>
-            
+
+            <Box
+                marginTop ="10px"
+                display="flex"
+                justifyContent="flex-start"
+                style={{
+
+                    borderStyle: "solid",
+                    borderWidth: "0.2rem",
+                    borderRadius: "0.5rem",
+                }}
+            >
+                <TextField
+                    style={{
+                        width: "8rem",
+                        float: "left",
+                    }}>
+
+                </TextField>
+                <Box
+                    width="20px"
+                    height="40px"
+                    display="flex"
+                    justifyContent="flex-start"
+                >
+                    <Button
+
+                    >
+                        b1
+                    </Button>
+                    <Button
+                       float="right"
+                    >
+                        b2
+                    </Button>
+                </Box>
+            </Box>
+
         </Box>
 
     )

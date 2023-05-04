@@ -1,6 +1,5 @@
 import React, { useContext, useRef } from "react"
 import { Box, Button, TextField } from "@mui/material";
-
 import moneyIcon from "../../images/money.png";
 import plus from "../../images/plus.png";
 import minus from "../../images/minus.png";
@@ -10,28 +9,26 @@ import { AuthContext } from "../../authentication/AuthContext";
 export default function IncomeDisplay() {
 
     const currentDate = new Date();
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const incomeValue = useRef('');
 
-    const addIncome = ()=>{
+    const addIncome = () => {
         handleIncome(incomeValue, plus);
     }
-    
-    const subtractIncome = ()=>{
+
+    const subtractIncome = () => {
         handleIncome(incomeValue, minus);
     }
 
-    const handleIncome = (income, polarity)=>{
+    const handleIncome = (income, polarity) => {
 
-        if(polarity === "plus"){income = income + user.income};
-        if(polarity === "minus"){income = user.income - income};
-
-        console.log(user.user_id);
+        if (polarity === "plus") { income = income + user.income };
+        if (polarity === "minus") { income = user.income - income };
 
         const res = fetch("http://localhost:4000/user-access/edit-income", {
             method: "POST",
             mode: 'cors',
-            headers: {  
+            headers: {
                 'Content-Type': 'application/json'
             },
             body: {
@@ -40,7 +37,7 @@ export default function IncomeDisplay() {
             },
         });
 
-        if (res === 200) { 
+        if (res === 200) {
             console.log("income incorporated");
         }
 
@@ -50,7 +47,7 @@ export default function IncomeDisplay() {
     return (
         <Box
             margin="2rem"
-            marginLeft ="4rem"
+            marginLeft="4rem"
             display="flex"
             justifyContent="flex-start"
             columnGap="65vw"
@@ -105,23 +102,23 @@ export default function IncomeDisplay() {
 
                     <Box
                         width="12rem"
-                        height ="3.5rem"
+                        height="3.5rem"
                         style={{
 
                             borderStyle: "solid",
                             borderWidth: "0.2rem",
                             borderRadius: "0.5rem",
                         }}
-                    >   
+                    >
                         <TextField
                             inputRef={incomeValue}
                             style={{
-                                width:"10rem",
-                                float:"left",
+                                width: "10rem",
+                                float: "left",
                             }}>
 
                         </TextField>
-                        <Box 
+                        <Box
                             width="20px"
                             height="40px"
                             float="right"
@@ -129,18 +126,18 @@ export default function IncomeDisplay() {
                             flexWrap="wrap"
                         >
                             <Button
-                               
+
                                 onClick={addIncome}
                             >
                                 <img
                                     width="28px"
                                     height="28px"
                                     alt="plus"
-                                    src={plus} 
+                                    src={plus}
                                 ></img>
                             </Button>
                             <Button
-                                onClick={subtractIncome}       
+                                onClick={subtractIncome}
                             >
                                 <img
                                     width="28px"

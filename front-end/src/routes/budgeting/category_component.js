@@ -1,31 +1,46 @@
 import React from "react"
-import { Box } from "@mui/system"
+import { Box, Button } from "@mui/material";
 import Goal from "./goal_component"
 
-export default function Category(){
+export default function Category() {
 
 
-    return(
+    return (
 
         <Box>
             <Box className='category'
-            
-            sx={{
-                width:"40vw",
-                fontSize:'1rem',
-                height:'8rem',
-                padding:'10px',
-                margin:'10px',
-                borderRadius: '1rem',
-                borderStyle: 'solid',
-                borderColor: 'black',
-            }}
-            
+                sx={{
+                    width: "40vw",
+                    fontSize: '1rem',
+
+                    padding: '10px',
+                    margin: '10px',
+                    borderRadius: '1rem',
+                    borderStyle: 'solid',
+                    borderColor: 'black',
+                }}
+
             >
-                Category:
+                Category
+                <Button
+                    padding="10px"
+
+                    sx={{
+                        fontSize: "10px",
+                        backgroundColor: "black",
+                        color: "white",
+                        height: "1rem",
+                        padding: "1rem",
+                        margin: "1.5rem",
+                        "&:hover": {
+                            color: "black",
+                            bgcolor: "#FFFFFF",
+                            borderStyle: "solid",
+                        }
+                    }} >new goal+</Button>
                 {/* populate with goals */}
-                <Goal/>
-                <Goal/>
+                <Goal />
+                <Goal />
             </Box>
         </Box>
     )
