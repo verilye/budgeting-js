@@ -10,7 +10,7 @@ export default function Category() {
         <Box>
             <Box className='category'
                 sx={{
-                    width: "40vw",
+                    width: "60vw",
                     fontSize: '1rem',
 
                     padding: '10px',

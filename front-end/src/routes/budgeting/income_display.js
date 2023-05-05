@@ -101,7 +101,7 @@ export default function IncomeDisplay() {
 
 
                     <Box
-                        width="12rem"
+                        width="12.5rem"
                         height="3.5rem"
                         style={{
 
@@ -119,29 +119,41 @@ export default function IncomeDisplay() {
 
                         </TextField>
                         <Box
-                            width="20px"
+
                             height="40px"
                             float="right"
-                            display="flex"
-                            flexWrap="wrap"
                         >
                             <Button
 
                                 onClick={addIncome}
+                                sx={{
+                                    width: "40px",
+                                    height: "30px",
+                                    padding:"0px",
+                                    minWidth:"20px",
+                                    minHeight:"20px",
+                                }}
                             >
                                 <img
-                                    width="28px"
-                                    height="28px"
+                                    width="25px"
+                                    height="25px"
                                     alt="plus"
                                     src={plus}
                                 ></img>
                             </Button>
                             <Button
                                 onClick={subtractIncome}
+                                sx={{
+                                    width: "40px",
+                                    height: "20px",
+                                    padding:"0px",
+                                    minWidth:"20px",
+                                    minHeight:"20px",
+                                }}
                             >
                                 <img
-                                    width="28px"
-                                    height="28px"
+                                    width="25px"
+                                    height="25px"
                                     src={minus}
                                     alt="minus"
                                 >

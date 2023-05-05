@@ -26,7 +26,6 @@ export default function BudgetViewPort() {
                     fontSize: '1.5rem',
                     padding: '20px',
                     margin: '10px',
-                    height: '80vh',
                     borderRadius: '2rem',
                     borderStyle: 'solid',
                     borderColor: 'black',

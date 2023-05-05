@@ -9,8 +9,11 @@ export default function Goal(props) {
     return (
 
         <Box className='goal'
+
+            display="flex"
+            justifyContent="flex-start"
             sx={{
-                
+
                 padding: '5px',
                 margin: '5px',
                 borderRadius: '0.5rem',
@@ -21,68 +24,86 @@ export default function Goal(props) {
         >
             <Box
                 sx={{
+                    height: "50px",
+                    width: "150px",
                     float: "left",
-                    padding: "5px",
-                    width: "10vw"
+                    padding: "15px",
+                    overflow: "hidden",
+
                 }}
             >
-                New Car
+                Pina colada and getting caught in the rain
             </Box>
             <Box
-                sx={{
-
-                }}
-            >$1250/$5000</Box>
-            {/* Monetary values here */}
-            {/* The progress value should be a number out of 100.*/}
-            <LinearProgress
-                sx={{
-                    height: "0.5rem",
-                    backgroundColor: 'gray',
-                    '& .MuiLinearProgress-bar': {
-                        backgroundColor: "green"
-                    }
-                }}
-                variant="determinate"
-                value={progress}>
-
-            </LinearProgress>
-
-            <Box
-                marginTop ="10px"
                 display="flex"
                 justifyContent="flex-start"
-                style={{
-
-                    borderStyle: "solid",
-                    borderWidth: "0.2rem",
-                    borderRadius: "0.5rem",
-                }}
             >
-                <TextField
-                    style={{
-                        width: "8rem",
-                        float: "left",
-                    }}>
-
-                </TextField>
                 <Box
-                    width="20px"
-                    height="40px"
+                    padding="20px"
+                >
+                    $1250/$5000
+                </Box>
+                {/* Monetary values here */}
+                {/* The progress value should be a number out of 100.*/}
+                <LinearProgress
+
+                    sx={{
+                        width: "24rem",
+                        paddingTop: "5px",
+                        marginTop: "25px",
+                        height: "0.5rem",
+                        backgroundColor: 'gray',
+                        '& .MuiLinearProgress-bar': {
+                            backgroundColor: "green"
+                        }
+                    }}
+                    variant="determinate"
+                    value={progress}>
+
+                </LinearProgress>
+            </Box>
+            <Box
+                marginLeft="40px"
+                display="flex"
+                justifyContent="center"
+            >
+                <Box
+                    height="55px"
+                    marginTop="10px"
                     display="flex"
                     justifyContent="flex-start"
+                    style={{
+                        borderStyle: "solid",
+                        borderWidth: "0.2rem",
+                        borderRadius: "0.5rem",
+                    }}
                 >
-                    <Button
+                    <TextField
+                        label="$"
+                        style={{
+                            width: "8rem",
+                        }}>
 
-                    >
-                        b1
-                    </Button>
+                    </TextField>
                     <Button
-                       float="right"
+                        sx={{
+                            fontSize: "12px",
+                            fontWeight: "bold",
+                            color: "black"
+                        }}
                     >
-                        b2
+                        add
                     </Button>
                 </Box>
+                <Button
+
+                    sx={{
+                        fontWeight: "bold",
+                        color: "black"
+                    }}
+                >
+                    edit
+                </Button>
             </Box>
 
         </Box>
