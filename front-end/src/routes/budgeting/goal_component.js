@@ -13,7 +13,7 @@ export default function Goal(props) {
             display="flex"
             justifyContent="flex-start"
             sx={{
-
+                height:'100px',
                 padding: '5px',
                 margin: '5px',
                 borderRadius: '0.5rem',
@@ -23,18 +23,41 @@ export default function Goal(props) {
 
         >
             <Box
+
+                textAlign="center"
                 sx={{
-                    height: "50px",
+                    marginTop:"5px",
+                    height: "40px",
                     width: "150px",
                     float: "left",
-                    padding: "15px",
+                    padding: "20px",
                     overflow: "hidden",
 
                 }}
             >
-                Pina colada and getting caught in the rain
+                Pepperoni Pizza 
             </Box>
+            <Button
+
+                sx={{
+                    fontWeight: "bold",
+                    backgroundColor: "black",
+                    color: "white",
+                    height: "1rem",
+                    padding: "1rem",
+                    margin: "1.5rem",
+                    marginTop:"2rem",
+                    "&:hover": {
+                        color: "black",
+                        bgcolor: "#FFFFFF",
+                        borderStyle: "solid",
+                    }
+                }}
+            >
+                edit
+            </Button>
             <Box
+                marginTop="1rem"
                 display="flex"
                 justifyContent="flex-start"
             >
@@ -64,22 +87,18 @@ export default function Goal(props) {
             </Box>
             <Box
                 marginLeft="40px"
+                marginTop="1.5rem"
                 display="flex"
                 justifyContent="center"
             >
                 <Box
                     height="55px"
-                    marginTop="10px"
                     display="flex"
                     justifyContent="flex-start"
-                    style={{
-                        borderStyle: "solid",
-                        borderWidth: "0.2rem",
-                        borderRadius: "0.5rem",
-                    }}
+
                 >
                     <TextField
-                        label="$"
+                        label="$amount"
                         style={{
                             width: "8rem",
                         }}>
@@ -87,23 +106,19 @@ export default function Goal(props) {
                     </TextField>
                     <Button
                         sx={{
-                            fontSize: "12px",
                             fontWeight: "bold",
-                            color: "black"
+                            backgroundColor: "green",
+                            color: "white",
+                            "&:hover": {
+                                color: "green",
+                                bgcolor: "#FFFFFF",
+                                borderStyle: "solid",
+                            }
                         }}
                     >
                         add
                     </Button>
                 </Box>
-                <Button
-
-                    sx={{
-                        fontWeight: "bold",
-                        color: "black"
-                    }}
-                >
-                    edit
-                </Button>
             </Box>
 
         </Box>
