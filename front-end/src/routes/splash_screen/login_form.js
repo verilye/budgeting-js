@@ -14,7 +14,7 @@ export default function LoginForm() {
     let handleAuth = () =>{
         console.log("test login activated");
         login({
-            "user_id":"Blingus",
+            "user_id":"Baba",
             "income":1,
             "jwt":"Blongus"
         });

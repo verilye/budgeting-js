@@ -98,7 +98,7 @@ export default function Goal(props) {
 
                 >
                     <TextField
-                        label="$amount"
+                        label="$ amount"
                         style={{
                             width: "8rem",
                         }}>

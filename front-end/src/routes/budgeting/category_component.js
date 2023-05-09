@@ -40,7 +40,6 @@ export default function Category() {
                     }} >new goal+</Button>
                 {/* populate with goals */}
                 <Goal />
-                <Goal />
             </Box>
         </Box>
     )

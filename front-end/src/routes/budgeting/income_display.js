@@ -50,7 +50,7 @@ export default function IncomeDisplay() {
             marginLeft="4rem"
             display="flex"
             justifyContent="flex-start"
-            columnGap="65vw"
+            columnGap="22vw"
         >
             <Box
                 display="flex"
@@ -162,6 +162,12 @@ export default function IncomeDisplay() {
                         </Box>
                     </Box>
                 </Box>
+            </Box>
+            <Box
+                marginTop='1.5rem'
+                width="10rem"
+            >
+                
             </Box>
             <Box
                 paddingTop='3rem'
