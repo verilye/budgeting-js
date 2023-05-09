@@ -1,6 +1,7 @@
 import React from "react"
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import Goal from "./goal_component"
+import AddGoalDialog from "./dialogs/add_goal_dialog";
 
 export default function Category() {
 
@@ -13,7 +14,7 @@ export default function Category() {
                     width: "65vw",
                     fontSize: '1rem',
                     padding: '10px',
-                    paddingLeft:"20px",
+                    paddingLeft: "20px",
                     margin: '10px',
                     borderRadius: '1rem',
                     borderStyle: 'solid',
@@ -22,22 +23,7 @@ export default function Category() {
 
             >
                 Category
-                <Button
-                    padding="10px"
-
-                    sx={{
-                        fontSize: "10px",
-                        backgroundColor: "black",
-                        color: "white",
-                        height: "1rem",
-                        padding: "1rem",
-                        margin: "1.5rem",
-                        "&:hover": {
-                            color: "black",
-                            bgcolor: "#FFFFFF",
-                            borderStyle: "solid",
-                        }
-                    }} >new goal+</Button>
+                <AddGoalDialog/>
                 {/* populate with goals */}
                 <Goal />
             </Box>
