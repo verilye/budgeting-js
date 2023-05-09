@@ -34,14 +34,44 @@ router.post('/create-category', (req, res, next) => {
 
 
 // Should return all categories and goals for user
-router.get('/get-categories', (req, res, next) => {
+router.get('/get-goals', (req, res, next) => {
+
+
+    // The aim here is to use node-fu to return neat little objects
+    // back to the end user for consumption
+
+    // Pull all categories, build objects
+    // const categoryArr = [...categorySqlResult];
+    // for(; i< categoryArr; i++){
+    //      new Category(categoryArr[i]);
+    // }
+
+
+    // If I use a map, then I dont need to query for categories
+
+    // Pull all goals with category_id into these objects
+    // i =0;
+    // for(;i<goalSqlResult;i++){
+    //      map.add[goalSqlResult.key, goal];
+    // }
+    
+    // for(map.size())
+    // {
+    //     if(!category){new Category(map.key);}
+    //     category.append()
+    // }
+    // return JSON
+    
+
+
+    
+
 
     try {
-        // all categories in an array, with goals inside the categories 
 
-        console.log("getting categories...")
+        console.log("getting categories and goals...")
 
-        let sql = `SELECT * FROM Category`
+        let sql = `SELECT * FROM Goal WHERE (user_id)`
 
         db.query(sql, function (err: any, result: any) {
             if (err) throw err;
