@@ -36,43 +36,26 @@ router.post('/create-category', (req, res, next) => {
 // Should return all categories and goals for user
 router.get('/get-goals/:user_id', async (req, res, next) => {
 
-
-    // Use more complex SQL to pull cohesive objects from the db
-
-    // Pull goal data then organise it here
-
-    // If I use a map, then I dont need to query for categories
-    // Pull all goals with category_id into these objects
-    // i =0;
-    // for(;i<goalSqlResult;i++){
-    //      map.add[goalSqlResult.key, goal];
-    // }
-
-    // for(map.size())
-    // {
-    //     if(!category){new Category(map.key);}
-    //     category.append()
-    // }
-    // return JSON
-
-    // Add to objects manually client side? Only query on reload
-
-    // Pull all categories and goals and serve it up cohesively only on client
-
     try {
 
+        console.log("a");
+
         let sql = `SELECT * FROM Goal WHERE user_id = ? ORDER BY category_id`
+        const result = await new Promise((resolve, reject) => {
+            console.log("b");
+            db.query(sql,
+                [req.params.user_id],
+                function (err: any, result: any) {
+                    if (err) {
+                        throw err;
+                    }
+                    console.log("c");
+                    resolve(result);
+                });
+        })
 
-        db.query(sql,
-            [req.params.user_id],
-            function (err: any, result: any) {
-                if (err) {
-                    throw err;
-                }
-                return res.send(result);
-            });
 
-
+        res.send({ result });
 
     } catch (err) {
         next(err);

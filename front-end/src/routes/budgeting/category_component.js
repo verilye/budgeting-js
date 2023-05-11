@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 import Goal from "./goal_component"
 import AddGoalDialog from "./dialogs/add_goal_dialog";
 
-export default function Category() {
+export default function Category(props) {
 
 
     return (
@@ -22,10 +22,19 @@ export default function Category() {
                 }}
 
             >
-                Category
-                <AddGoalDialog/>
-                {/* populate with goals */}
-                <Goal />
+                {props.category_id}
+                <AddGoalDialog />
+
+                {
+                    (data) ? data.map(item => (
+                        // pass down props here 
+                        // for pagination 
+                        <Goal
+
+                        />
+                    )) : <></>
+
+                }
             </Box>
         </Box>
     )

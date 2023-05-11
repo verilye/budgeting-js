@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Box, Divider } from "@mui/material";
 import IncomeDisplay from './income_display';
 import Category from './category_component';
@@ -6,8 +6,36 @@ import Category from './category_component';
 import './budgeting.css';
 import NavBar from './navbar';
 import AddCategoryDialog from './dialogs/add_category_dialog';
+import { AuthContext } from '../../authentication/AuthContext';
 
 export default function BudgetViewPort() {
+
+    const { user } = useContext(AuthContext);
+
+    let [data, setData] = useState();
+
+
+    useEffect(() => {
+
+        // Here we want to load all categories and goals then display them
+
+        async function fetchData() {
+
+            const res = await fetch("http://localhost:4000/budgeting/get-goals/" + user.user_id, {
+                method: "GET",
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            let resJson = await res.json();
+
+            setData(resJson);
+        }
+        fetchData();
+        // eslint-disable-next-line
+    }, []);
 
     return (
         <div className="budgeting">
@@ -33,12 +61,24 @@ export default function BudgetViewPort() {
 
             >
                 CATEGORIES
-                <AddCategoryDialog/>
-                {/* Paginate categories and goals here */}
-                {/* Categories should be scalable in size*/}
+                <AddCategoryDialog />
+                
+                <Box className='categories'>
 
-                <Category />
+                    {
+                        
+                        (data) ? data.map(item => (
+                                // pass down props here 
+                                // for pagination 
+                                <Category
 
+                                />
+                            )): <></>
+                        
+                    }
+
+
+                </Box>
             </Box>
 
         </div>
