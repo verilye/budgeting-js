@@ -4,11 +4,8 @@
 
 export default interface Goal{
 
-    user_id:String,
-    category_id:String, 
     goal_id:String,
     target_amount:number,
     target_progress:number,
-    target_date:Date,
 
 }

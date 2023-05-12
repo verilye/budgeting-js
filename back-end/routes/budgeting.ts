@@ -1,6 +1,7 @@
 import * as express from "express";
 import db from "../startup/dbConnection";
 import Category from "../models/Category";
+import Goal from "../models/Goal";
 
 const router = express.Router();
 
@@ -79,6 +80,14 @@ router.get('/get-goals/:user_id', async (req, res, next) => {
     
                 categories[counter] = category;
             }
+
+            let goal: Goal ={
+                goal_id:element.goal_id,
+                target_amount:0,
+                target_progress:0,
+            }
+
+            categories[counter].goals.push(goal);
 
             lastCategory = element.category_id;
 
