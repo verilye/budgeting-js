@@ -1,5 +1,6 @@
 import * as express from "express";
 import db from "../startup/dbConnection";
+import Category from "../models/Category";
 
 const router = express.Router();
 
@@ -38,24 +39,52 @@ router.get('/get-goals/:user_id', async (req, res, next) => {
 
     try {
 
-        console.log("a");
+
 
         let sql = `SELECT * FROM Goal WHERE user_id = ? ORDER BY category_id`
-        const result = await new Promise((resolve, reject) => {
-            console.log("b");
+        const result: any = await new Promise((resolve, reject) => {
+
             db.query(sql,
                 [req.params.user_id],
                 function (err: any, result: any) {
                     if (err) {
                         throw err;
                     }
-                    console.log("c");
+                    console.log("goals got");
                     resolve(result);
                 });
         })
 
+        // for each category
+        //      create category if it doesnt exist
+        //      add goals to array inside category
+        //      return as json object
 
-        res.send({ result });
+        const categories: any | [] = [];
+
+        let counter = -1;
+        let lastCategory:String = "";
+
+        result.forEach((element: any) => {
+
+            if(element.category_id != lastCategory){
+                
+                counter++;
+
+                let category: Category = {
+                    category_id: element.category_id,
+                    user_id: element.user_id,
+                    goals: []
+                }
+    
+                categories[counter] = category;
+            }
+
+            lastCategory = element.category_id;
+
+        });
+
+        res.send({ categories });
 
     } catch (err) {
         next(err);
