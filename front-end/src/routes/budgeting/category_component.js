@@ -3,7 +3,6 @@ import { Box } from "@mui/material";
 import Goal from "./goal_component"
 import AddGoalDialog from "./dialogs/add_goal_dialog";
 
-
 export default function Category({category_id,goals}) {
 
 
@@ -24,7 +23,9 @@ export default function Category({category_id,goals}) {
 
             > 
                 {category_id}
-                <AddGoalDialog />
+                <AddGoalDialog 
+                    category_id={category_id}
+                />
 
                 {
                     (goals) ? goals.map(item => (

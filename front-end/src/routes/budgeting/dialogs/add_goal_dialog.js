@@ -3,7 +3,7 @@ import { Dialog, DialogActions, DialogContent, DialogContentText, Button, TextFi
 import { AuthContext } from '../../../authentication/AuthContext';
 
 
-export default function AddGoalDialog(){
+export default function AddGoalDialog({category_id}){
 
     const {user} = useContext(AuthContext);
 
@@ -20,9 +20,9 @@ export default function AddGoalDialog(){
                 headers: {  
                     'Content-Type': 'application/json'
                 }, 
-                body: JSON.stringify({
+                body: JSON.stringify({ 
                     user_id: user.user_id,
-                    category_id: "Blueberries",
+                    category_id: category_id,
                     goal_id: goalName
                 }),
             });
