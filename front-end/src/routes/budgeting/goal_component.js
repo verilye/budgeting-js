@@ -1,9 +1,11 @@
 import { LinearProgress, Box, TextField, Button } from "@mui/material"
 
-export default function Goal(props) {
+export default function Goal({goal_id,target_amount,target_progress}) {
 
-    // Get the progress value as a percentage of the total 
-    let progress = 25;
+    // Progress = % of (target_amount) that (target_progress) is 
+
+
+    let progress = target_amount / target_progress;
 
 
     return (
@@ -35,7 +37,7 @@ export default function Goal(props) {
 
                 }}
             >
-                Pepperoni Pizza 
+                {goal_id} 
             </Box>
             <Button
 
@@ -64,7 +66,7 @@ export default function Goal(props) {
                 <Box
                     padding="20px"
                 >
-                    $1250/$5000
+                    {target_progress}/{target_amount}
                 </Box>
                 {/* Monetary values here */}
                 {/* The progress value should be a number out of 100.*/}

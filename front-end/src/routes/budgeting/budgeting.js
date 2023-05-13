@@ -66,11 +66,13 @@ export default function BudgetViewPort() {
                 <Box className='categories'>
 
                     {
-                        
-                        (data) ? data.map(item => (
+                        (data) ? data.categories.map(item => (
                                 // pass down props here 
                                 // for pagination 
                                 <Category
+                                    key ={item.category_id}
+                                    category_id = {item.category_id}
+                                    goals = {item.goals}
 
                                 />
                             )): <></>
