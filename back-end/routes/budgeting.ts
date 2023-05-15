@@ -42,10 +42,25 @@ router.get('/get-goals/:user_id', async (req, res, next) => {
 
 
 
-        let sql = `SELECT * FROM Goal WHERE user_id = ? ORDER BY category_id`
-        const result: any = await new Promise((resolve, reject) => {
+        let categorySql = `SELECT * FROM Category WHERE user_id = ? ORDER BY category_id`
+        const categoryResult: any = await new Promise((resolve, reject) => {
+            db.query(categorySql,
+                [req.params.user_id],
+                function (err: any, result: any) {
+                    if(err){
+                        throw err;
+                    }
+                    console.log("categories got");
+                    resolve(result);
+                }
+            )
+        });
 
-            db.query(sql,
+
+
+        let goalSql = `SELECT * FROM Goal WHERE user_id = ? ORDER BY category_id`
+        const goalResult: any = await new Promise((resolve, reject) => {
+            db.query(goalSql,
                 [req.params.user_id],
                 function (err: any, result: any) {
                     if (err) {
@@ -63,28 +78,32 @@ router.get('/get-goals/:user_id', async (req, res, next) => {
 
         const categories: any | [] = [];
 
-        let counter = -1;
-        let lastCategory:String = "";
-
-        result.forEach((element: any) => {
-
-            if(element.category_id != lastCategory){
-                
-                counter++;
-
-                let category: Category = {
-                    category_id: element.category_id,
-                    user_id: element.user_id,
-                    goals: []
-                }
-    
-                categories[counter] = category;
+        for(let i = 0;i<categoryResult.length;i++){
+           
+            let category: Category = {
+                category_id: categoryResult[i].category_id,
+                user_id: categoryResult[i].user_id,
+                goals: []
             }
 
-            let goal: Goal ={
-                goal_id:element.goal_id,
-                target_amount:0,
-                target_progress:0,
+            categories[i] = category;
+
+        }
+        
+
+        let counter = -1;
+        let lastCategory: String = "";
+
+        goalResult.forEach((element: any) => {
+
+            if (element.category_id != lastCategory) {
+                counter++;
+            }
+
+            let goal: Goal = {
+                goal_id: element.goal_id,
+                target_amount: 0,
+                target_progress: 0,
             }
 
             categories[counter].goals.push(goal);
