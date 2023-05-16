@@ -3,7 +3,7 @@ import { Dialog, DialogActions, DialogContent, DialogContentText, Button, TextFi
 import { AuthContext } from '../../../authentication/AuthContext';
 
 
-export default function AddCategoryDialog() {
+export default function AddCategoryDialog({fetchData}) {
 
     // TODO
     // Add submit data to 'form'
@@ -36,6 +36,8 @@ export default function AddCategoryDialog() {
             }else{
                 console.log(res);
             }
+
+            fetchData();
 
         } catch (err) {
             console.log(err);

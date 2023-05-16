@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 import Goal from "./goal_component"
 import AddGoalDialog from "./dialogs/add_goal_dialog";
 
-export default function Category({category_id,goals}) {
+export default function Category({category_id,goals, fetchData}) {
 
 
     return (
@@ -24,6 +24,7 @@ export default function Category({category_id,goals}) {
             > 
                 {category_id}
                 <AddGoalDialog 
+                    fetchData = {fetchData}
                     category_id={category_id}
                 />
 
@@ -32,6 +33,7 @@ export default function Category({category_id,goals}) {
                         // pass down props here 
                         // for pagination 
                         <Goal
+                            fetchData = {fetchData}
                             key = {item.goal_id}
                             goal_id = {item.goal_id}
                             target_amount = { item.target_amount}

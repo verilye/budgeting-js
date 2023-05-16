@@ -1,6 +1,6 @@
 import { LinearProgress, Box, TextField, Button } from "@mui/material"
 
-export default function Goal({goal_id,target_amount,target_progress}) {
+export default function Goal({goal_id,target_amount,target_progress, fetchData}) {
 
     // Progress = % of (target_amount) that (target_progress) is 
 
