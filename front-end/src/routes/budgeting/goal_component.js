@@ -2,11 +2,24 @@ import { LinearProgress, Box, TextField, Button } from "@mui/material"
 
 export default function Goal({goal_id,target_amount,target_progress, fetchData}) {
 
+
+    const handleEdit =()=>{
+
+        // TODO
+        // This needs to be a dialogue
+
+        // change goal amount
+        // change progress amount
+        // delete
+    }
+
+    const handleAdd=()=>{
+        // post (added amount + current amount) to db
+    }
+
+
     // Progress = % of (target_amount) that (target_progress) is 
-
-
     let progress = target_amount / target_progress;
-
 
     return (
 
@@ -55,6 +68,7 @@ export default function Goal({goal_id,target_amount,target_progress, fetchData})
                         borderStyle: "solid",
                     }
                 }}
+                onClick={handleEdit}
             >
                 edit
             </Button>
@@ -117,6 +131,8 @@ export default function Goal({goal_id,target_amount,target_progress, fetchData})
                                 borderStyle: "solid",
                             }
                         }}
+
+                        onClick ={handleAdd}
                     >
                         add
                     </Button>

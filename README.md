@@ -1,3 +1,6 @@
+Setup:
+Install packages separately for both /front-end and /back-end then npm start 'em
+
 Budgeting-Js
 
   This project will be a web app which allows the user to allocate money that 
