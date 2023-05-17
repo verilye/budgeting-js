@@ -47,7 +47,7 @@ router.get('/get-goals/:user_id', async (req, res, next) => {
             db.query(categorySql,
                 [req.params.user_id],
                 function (err: any, result: any) {
-                    if(err){
+                    if (err) {
                         throw err;
                     }
                     console.log("categories got");
@@ -55,8 +55,6 @@ router.get('/get-goals/:user_id', async (req, res, next) => {
                 }
             )
         });
-
-
 
         let goalSql = `SELECT * FROM Goal WHERE user_id = ? ORDER BY category_id`
         const goalResult: any = await new Promise((resolve, reject) => {
@@ -78,8 +76,8 @@ router.get('/get-goals/:user_id', async (req, res, next) => {
 
         const categories: any | [] = [];
 
-        for(let i = 0;i<categoryResult.length;i++){
-           
+        for (let i = 0; i < categoryResult.length; i++) {
+
             let category: Category = {
                 category_id: categoryResult[i].category_id,
                 user_id: categoryResult[i].user_id,
@@ -89,16 +87,16 @@ router.get('/get-goals/:user_id', async (req, res, next) => {
             categories[i] = category;
 
         }
-        
 
-        let counter = -1;
-        let lastCategory: String = "";
+
+        let counter = 0;
+
 
         goalResult.forEach((element: any) => {
 
-            if (element.category_id != lastCategory) {
+            while (element.category_id != categories[counter].category_id) {
                 counter++;
-            }
+            } 
 
             let goal: Goal = {
                 goal_id: element.goal_id,
@@ -107,8 +105,6 @@ router.get('/get-goals/:user_id', async (req, res, next) => {
             }
 
             categories[counter].goals.push(goal);
-
-            lastCategory = element.category_id;
 
         });
 
@@ -162,6 +158,8 @@ router.post('/edit-income', (req, res, next) => {
 
     try {
 
+        console.log("editing income")
+
         const income: String = req.body.income;
         const user_id: String = req.body.income;
 
@@ -171,7 +169,7 @@ router.post('/edit-income', (req, res, next) => {
             [income, user_id],
             function (err: any, result: any) {
                 if (err) throw err;
-                console.log("inserted category");
+                console.log("income updated");
             });
 
         return res.sendStatus(200);

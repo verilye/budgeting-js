@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react"
+import React, { useContext, useRef, useState } from "react"
 import { Box, Button, TextField } from "@mui/material";
 import moneyIcon from "../../images/money.png";
 import plus from "../../images/plus.png";
@@ -11,34 +11,47 @@ export default function IncomeDisplay() {
     const currentDate = new Date();
     const { user } = useContext(AuthContext);
     const incomeValue = useRef('');
+    const [polarity, setPolarity] = useState("");
 
     const addIncome = () => {
-        handleIncome(incomeValue, plus);
+        setPolarity("plus")
+        handleIncome();
     }
 
     const subtractIncome = () => {
-        handleIncome(incomeValue, minus);
+        setPolarity("minus")
+        handleIncome();
     }
 
-    const handleIncome = (income, polarity) => {
+    const handleIncome = async() => {
 
-        if (polarity === "plus") { income = income + user.income };
-        if (polarity === "minus") { income = user.income - income };
+        let income;
 
-        const res = fetch("http://localhost:4000/user-access/edit-income", {
-            method: "POST",
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: {
-                user_id: user.user_id,
-                income: income,
-            },
-        });
+        if (polarity === "plus") { income = incomeValue + user.income };
+        if (polarity === "minus") { income = user.income - incomeValue };
 
-        if (res === 200) {
-            console.log("income incorporated");
+        try {
+
+            const res = await fetch("http://localhost:4000/budgeting/edit-income", {
+                method: "POST",
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body:
+                    JSON.stringify({
+                        user_id: user.user_id,
+                        income: income,
+                    })
+                ,
+            });
+
+            if (res === 200) {
+                console.log("income incorporated");
+            }
+        }
+        catch (err) {
+            console.log(err);
         }
 
         return;
@@ -129,9 +142,9 @@ export default function IncomeDisplay() {
                                 sx={{
                                     width: "40px",
                                     height: "30px",
-                                    padding:"0px",
-                                    minWidth:"20px",
-                                    minHeight:"20px",
+                                    padding: "0px",
+                                    minWidth: "20px",
+                                    minHeight: "20px",
                                 }}
                             >
                                 <img
@@ -146,9 +159,9 @@ export default function IncomeDisplay() {
                                 sx={{
                                     width: "40px",
                                     height: "20px",
-                                    padding:"0px",
-                                    minWidth:"20px",
-                                    minHeight:"20px",
+                                    padding: "0px",
+                                    minWidth: "20px",
+                                    minHeight: "20px",
                                 }}
                             >
                                 <img
@@ -167,7 +180,7 @@ export default function IncomeDisplay() {
                 marginTop='1.5rem'
                 width="10rem"
             >
-                
+
             </Box>
             <Box
                 paddingTop='3rem'
