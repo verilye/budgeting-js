@@ -36,6 +36,7 @@ export default function Category({category_id,goals, fetchData}) {
                             fetchData = {fetchData}
                             key = {item.goal_id}
                             goal_id = {item.goal_id}
+                            category_id={category_id}
                             target_amount = { item.target_amount}
                             target_progress ={item.target_progress}
 

@@ -1,17 +1,7 @@
 import { LinearProgress, Box, TextField, Button } from "@mui/material"
+import EditGoalDialog from "./dialogs/edit_goal_dialog";
 
-export default function Goal({goal_id,target_amount,target_progress, fetchData}) {
-
-
-    const handleEdit =()=>{
-
-        // TODO
-        // This needs to be a dialogue
-
-        // change goal amount
-        // change progress amount
-        // delete
-    }
+export default function Goal({goal_id,category_id,target_amount,target_progress, fetchData}) {
 
     const handleAdd=()=>{
         // post (added amount + current amount) to db
@@ -52,26 +42,11 @@ export default function Goal({goal_id,target_amount,target_progress, fetchData})
             >
                 {goal_id} 
             </Box>
-            <Button
-
-                sx={{
-                    fontWeight: "bold",
-                    backgroundColor: "black",
-                    color: "white",
-                    height: "1rem",
-                    padding: "1rem",
-                    margin: "1.5rem",
-                    marginTop:"2rem",
-                    "&:hover": {
-                        color: "black",
-                        bgcolor: "#FFFFFF",
-                        borderStyle: "solid",
-                    }
-                }}
-                onClick={handleEdit}
-            >
-                edit
-            </Button>
+            <EditGoalDialog
+                goal_id = {goal_id}
+                category_id ={category_id}
+                fetchData={fetchData}
+            />
             <Box
                 marginTop="1rem"
                 display="flex"
