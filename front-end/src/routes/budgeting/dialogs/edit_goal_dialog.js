@@ -14,15 +14,9 @@ export default function EditGoalDialog({ category_id,goal_id, fetchData }) {
 
     const handleSubmit = async () => {
 
-        // TODO
-        // This needs to be a dialogue
-
-        // change goal amount
-        // change progress amount
-        // delete
-
         try {
 
+            // Need to pass in new category id if you wish for names to be changed
             const res = await fetch("http://localhost:4000/budgeting/create-goal", {
                 method: "POST",
                 mode: 'cors',
@@ -30,7 +24,7 @@ export default function EditGoalDialog({ category_id,goal_id, fetchData }) {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    user_id: user.user_id,
+                    user_id: user.user_id, 
                     category_id:category_id,
                     goal_id: goal_id,
                     progressAmount:progressAmount,
@@ -118,7 +112,12 @@ export default function EditGoalDialog({ category_id,goal_id, fetchData }) {
                     <Button onClick={handleSubmit}>Submit</Button>
                 </DialogActions>
                 <DialogActions>
-                    <Button onClick={handleDelete}>Delete goal</Button>
+                    <Button 
+                    
+                    sx={{
+                        color:'red',
+                    }}
+                    onClick={handleDelete}>Delete goal</Button>
                 </DialogActions>
             </Dialog>
         </div>

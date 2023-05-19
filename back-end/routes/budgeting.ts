@@ -122,6 +122,22 @@ router.post('/edit-goal', (req, res, next) => {
 
     try {
 
+        //Need to pass old goal id in along with new one if you want to change the name
+        
+        let sql = "UPDATE Goal SET(target_amount, progress_amount) VALUES(?,?,?,?,?) WHERE ";
+        db.query(
+            sql,
+            [req.body.category_id, req.body.goal_id, 
+                req.body.target_amount, req.body.progress_amount ],
+    
+            function (err: any, result: any) {
+                if (err) throw err;
+                console.log("edited goal");
+
+            });
+
+        return res.sendStatus(200);
+
     } catch (err) {
         next(err);
     }
