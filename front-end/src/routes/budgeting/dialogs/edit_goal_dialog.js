@@ -17,7 +17,7 @@ export default function EditGoalDialog({ category_id,goal_id, fetchData }) {
         try {
 
             // Need to pass in new category id if you wish for names to be changed
-            const res = await fetch("http://localhost:4000/budgeting/create-goal", {
+            const res = await fetch("http://localhost:4000/budgeting/edit-goal", {
                 method: "POST",
                 mode: 'cors',
                 headers: {
@@ -27,8 +27,8 @@ export default function EditGoalDialog({ category_id,goal_id, fetchData }) {
                     user_id: user.user_id, 
                     category_id:category_id,
                     goal_id: goal_id,
-                    progressAmount:progressAmount,
-                    goalAmount:goalAmount,
+                    progress_amount:progressAmount,
+                    target_amount:goalAmount,
                 }),
             });
 

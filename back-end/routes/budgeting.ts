@@ -96,12 +96,12 @@ router.get('/get-goals/:user_id', async (req, res, next) => {
 
             while (element.category_id != categories[counter].category_id) {
                 counter++;
-            } 
+            }
 
             let goal: Goal = {
                 goal_id: element.goal_id,
-                target_amount: 0,
-                target_progress: 0,
+                target_amount: element.target_amount,
+                target_progress: element.target_progress,
             }
 
             categories[counter].goals.push(goal);
@@ -123,13 +123,12 @@ router.post('/edit-goal', (req, res, next) => {
     try {
 
         //Need to pass old goal id in along with new one if you want to change the name
-        
-        let sql = "UPDATE Goal SET(target_amount, progress_amount) VALUES(?,?,?,?,?) WHERE ";
+
+        let sql = "UPDATE Goal SET target_amount = ?, target_progress = ? WHERE goal_id = ? AND category_id = ?";
         db.query(
             sql,
-            [req.body.category_id, req.body.goal_id, 
-                req.body.target_amount, req.body.progress_amount ],
-    
+            [req.body.target_amount, req.body.progress_amount, req.body.goal_id, req.body.category_id],
+
             function (err: any, result: any) {
                 if (err) throw err;
                 console.log("edited goal");
@@ -139,7 +138,7 @@ router.post('/edit-goal', (req, res, next) => {
         return res.sendStatus(200);
 
     } catch (err) {
-        next(err);
+        next(err); 
     }
 });
 

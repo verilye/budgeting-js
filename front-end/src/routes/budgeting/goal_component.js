@@ -9,7 +9,7 @@ export default function Goal({goal_id,category_id,target_amount,target_progress,
 
 
     // Progress = % of (target_amount) that (target_progress) is 
-    let progress = target_amount / target_progress;
+    let progress = target_progress;
 
     return (
 
