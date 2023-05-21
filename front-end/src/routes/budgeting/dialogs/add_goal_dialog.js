@@ -9,6 +9,7 @@ export default function AddGoalDialog({ category_id, fetchData }) {
 
     const [open, setOpen] = useState(false);
     const [goalName, setGoalName] = useState('');
+    const [target_amount, setTargetAmount] = useState('');
 
     const handleSubmit = async () => {
 
@@ -23,7 +24,8 @@ export default function AddGoalDialog({ category_id, fetchData }) {
                 body: JSON.stringify({
                     user_id: user.user_id,
                     category_id: category_id,
-                    goal_id: goalName
+                    goal_id: goalName, 
+                    target_amount: target_amount,
                 }),
             });
 
@@ -76,7 +78,7 @@ export default function AddGoalDialog({ category_id, fetchData }) {
             <Dialog open={open} onClose={handleClose}>
                 <DialogContent>
                     <DialogContentText>
-                        Name of new category:
+                        Name of new goal:
                     </DialogContentText>
                     <TextField
                         onInput={e => setGoalName(e.target.value)}
@@ -84,6 +86,15 @@ export default function AddGoalDialog({ category_id, fetchData }) {
                         margin='dense'
                         id='goal_id'
                         label='goal_id'
+                        fullWidth
+                        variant='standard'
+                    />
+                    <TextField
+                        onInput={e => setTargetAmount(e.target.value)}
+                        autoFocus
+                        margin='dense'
+                        id='target_amount'
+                        label='target_amount'
                         fullWidth
                         variant='standard'
                     />

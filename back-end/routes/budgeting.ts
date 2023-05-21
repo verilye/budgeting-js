@@ -149,11 +149,12 @@ router.post('/create-goal', (req, res, next) => {
         const user_id: String = req.body.user_id;
         const category_id: String = req.body.category_id
         const goal_id: String = req.body.goal_id;
+        const target_amount: String = req.body.target_amount;
 
-        let sql = "INSERT INTO Goal (user_id, category_id, goal_id) VALUES(?,?,?)";
+        let sql = "INSERT INTO Goal (user_id, category_id, goal_id, target_amount, target_progress) VALUES(?,?,?,?,0)";
         db.query(
             sql,
-            [user_id, category_id, goal_id],
+            [user_id, category_id, goal_id, target_amount],
             function (err: any, result: any) {
                 if (err) throw err;
                 console.log("inserted goal");
