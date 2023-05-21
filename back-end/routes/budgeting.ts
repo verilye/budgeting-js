@@ -34,7 +34,6 @@ router.post('/create-category', (req, res, next) => {
 
 });
 
-
 // Should return all categories and goals for user
 router.get('/get-goals/:user_id', async (req, res, next) => {
 
@@ -116,7 +115,6 @@ router.get('/get-goals/:user_id', async (req, res, next) => {
 
 });
 
-
 //Should allow the user to edit goal income
 router.post('/edit-goal', (req, res, next) => {
 
@@ -138,7 +136,7 @@ router.post('/edit-goal', (req, res, next) => {
         return res.sendStatus(200);
 
     } catch (err) {
-        next(err); 
+        next(err);
     }
 });
 
@@ -185,6 +183,29 @@ router.post('/edit-income', (req, res, next) => {
             function (err: any, result: any) {
                 if (err) throw err;
                 console.log("income updated");
+            });
+
+        return res.sendStatus(200);
+
+    } catch (err) {
+        next(err);
+    }
+
+});
+
+router.delete('/delete-goal', (req, res, next) => {
+
+    try {
+
+        console.log("deleting goal")
+
+        let sql = `DELETE FROM Goal WHERE goal_id = ? AND category_id = ?`;
+
+        db.query(sql,
+            [req.body.goal_id, req.body.category_id],
+            function (err: any, result: any) {
+                if (err) throw err;
+                console.log("goal deleted");
             });
 
         return res.sendStatus(200);
