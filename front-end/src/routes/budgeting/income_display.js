@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react"
+import React, { useContext, useState } from "react"
 import { Box, Button, TextField } from "@mui/material";
 import moneyIcon from "../../images/money.png";
 import plus from "../../images/plus.png";
@@ -10,29 +10,38 @@ export default function IncomeDisplay() {
 
     const currentDate = new Date();
     const { user } = useContext(AuthContext);
-    const incomeValue = useRef('');
-    const [polarity, setPolarity] = useState("");
+    const [incomeValue, setIncomeValue] = useState("");
+    const [negative, setNegative] = useState(false);
+    const [error, setError] = useState(false);
 
     const addIncome = () => {
-        setPolarity("plus")
+        setError(false);
+        setNegative(false)
         handleIncome();
     }
 
     const subtractIncome = () => {
-        setPolarity("minus")
-        handleIncome();
+
+        setError(false);
+        if ((user.income - parseInt(incomeValue)) < 0) {
+            setError(true);
+        } else {
+            setNegative(true)
+            handleIncome();
+        }
     }
 
-    const handleIncome = async() => {
+    const handleIncome = async () => {
 
-        let income;
-
-        if (polarity === "plus") { income = incomeValue + user.income };
-        if (polarity === "minus") { income = user.income - incomeValue };
+        let income = parseInt(incomeValue);
+        if (negative === true) {
+            income = user.income - income;
+        } else {
+            income = income + user.income
+        };
 
         try {
-
-            const res = await fetch("http://localhost:4000/budgeting/edit-income", {
+            await fetch("http://localhost:4000/budgeting/edit-income", {
                 method: "POST",
                 mode: 'cors',
                 headers: {
@@ -43,21 +52,15 @@ export default function IncomeDisplay() {
                         user_id: user.user_id,
                         income: income,
                     })
-                ,
             });
-
-            if (res === 200) {
-                console.log("income incorporated");
-            }
         }
         catch (err) {
             console.log(err);
         }
-
-        return;
     }
 
     return (
+        <Box>
         <Box
             margin="2rem"
             marginLeft="4rem"
@@ -124,7 +127,7 @@ export default function IncomeDisplay() {
                         }}
                     >
                         <TextField
-                            inputRef={incomeValue}
+                            onInput={e => setIncomeValue(e.target.value)}
                             style={{
                                 width: "10rem",
                                 float: "left",
@@ -188,6 +191,12 @@ export default function IncomeDisplay() {
             >
                 Today is {currentDate.getDate()}/{currentDate.getMonth()}/{currentDate.getFullYear()}
             </Box>
+           
+        </Box>
+        {error ? (
+                <Box marginLeft={'5vw'} marginBottom={'3vh'}>Income cant be less than 0!</Box>
+
+                ) : null}
         </Box>
     )
 }

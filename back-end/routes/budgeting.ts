@@ -38,9 +38,6 @@ router.post('/create-category', (req, res, next) => {
 router.get('/get-goals/:user_id', async (req, res, next) => {
 
     try {
-
-
-
         let categorySql = `SELECT * FROM Category WHERE user_id = ? ORDER BY category_id`
         const categoryResult: any = await new Promise((resolve, reject) => {
             db.query(categorySql,
@@ -171,16 +168,9 @@ router.post('/create-goal', (req, res, next) => {
 router.post('/edit-income', (req, res, next) => {
 
     try {
-
-        console.log("editing income")
-
-        const income: String = req.body.income;
-        const user_id: String = req.body.income;
-
         let sql = `UPDATE User SET income = ? WHERE user_id = ?`;
-
         db.query(sql,
-            [income, user_id],
+            [req.body.income, req.body.user_id],
             function (err: any, result: any) {
                 if (err) throw err;
                 console.log("income updated");
@@ -191,7 +181,6 @@ router.post('/edit-income', (req, res, next) => {
     } catch (err) {
         next(err);
     }
-
 });
 
 router.delete('/delete-goal', (req, res, next) => {

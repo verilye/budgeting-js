@@ -48,7 +48,7 @@ export default function BudgetViewPort() {
             <Divider />
 
             {/* Edit income and display date */}
-            <IncomeDisplay />
+            <IncomeDisplay fetchData={fetchData}/>
 
             <Box className='category-display'
 
