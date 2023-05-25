@@ -1,15 +1,41 @@
 import { LinearProgress, Box, TextField, Button } from "@mui/material"
 import EditGoalDialog from "./dialogs/edit_goal_dialog";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../authentication/AuthContext";
 
-export default function Goal({goal_id,category_id,target_amount,target_progress, fetchData}) {
+export default function Goal({ goal_id, category_id, target_amount, target_progress, fetchData }) {
 
-    const handleAdd=()=>{
-        // post (added amount + current amount) to db
+    let user = useContext(AuthContext);
+    let [addedAmount, setAddedAmount] = useState("");
+
+    const handleAdd = async () => {
+        let newAmount = target_progress + parseInt(addedAmount);
+        try {
+            await fetch("http://localhost:4000/budgeting/edit-goal", {
+                method: "POST",
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    user_id: user.user_id,
+                    category_id: category_id,
+                    goal_id: goal_id,
+                    target_progress: newAmount,
+                    target_amount: target_amount,
+                })
+            })
+
+            fetchData();
+
+        } catch (err) {
+            console.log(err)
+        }
     }
 
 
     // Progress = % of (target_amount) that (target_progress) is 
-    let progress = target_progress;
+    let progress = (target_progress/target_amount) * 100;
 
     return (
 
@@ -18,7 +44,7 @@ export default function Goal({goal_id,category_id,target_amount,target_progress,
             display="flex"
             justifyContent="flex-start"
             sx={{
-                height:'100px',
+                height: '100px',
                 padding: '5px',
                 margin: '5px',
                 borderRadius: '0.5rem',
@@ -31,7 +57,7 @@ export default function Goal({goal_id,category_id,target_amount,target_progress,
 
                 textAlign="center"
                 sx={{
-                    marginTop:"5px",
+                    marginTop: "5px",
                     height: "40px",
                     width: "150px",
                     float: "left",
@@ -40,11 +66,11 @@ export default function Goal({goal_id,category_id,target_amount,target_progress,
 
                 }}
             >
-                {goal_id} 
+                {goal_id}
             </Box>
             <EditGoalDialog
-                goal_id = {goal_id}
-                category_id ={category_id}
+                goal_id={goal_id}
+                category_id={category_id}
                 fetchData={fetchData}
             />
             <Box
@@ -89,6 +115,7 @@ export default function Goal({goal_id,category_id,target_amount,target_progress,
 
                 >
                     <TextField
+                        onInput={e => setAddedAmount(e.target.value)}
                         label="$ amount"
                         style={{
                             width: "8rem",
@@ -107,7 +134,7 @@ export default function Goal({goal_id,category_id,target_amount,target_progress,
                             }
                         }}
 
-                        onClick ={handleAdd}
+                        onClick={handleAdd}
                     >
                         add
                     </Button>

@@ -27,7 +27,7 @@ export default function EditGoalDialog({ category_id,goal_id, fetchData }) {
                     user_id: user.user_id, 
                     category_id:category_id,
                     goal_id: goal_id,
-                    progress_amount:progressAmount,
+                    target_progress:progressAmount,
                     target_amount:goalAmount,
                 }),
             });

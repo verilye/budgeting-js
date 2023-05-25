@@ -18,7 +18,7 @@ export default function LoginForm() {
             "income":1,
             "jwt":"Blongus"
         });
-        navigate("/budgeting-js/budgeting"); 
+        navigate("/budgeting-js/"); 
     };
 
     const [user_id, setUserID] = useState("");
@@ -112,8 +112,6 @@ export default function LoginForm() {
 
                 handleAuth(user_id, 0, resJson.token,);
 
-                // TODO
-                // reroute to app
 
             }
 

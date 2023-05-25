@@ -1,16 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext} from 'react';
 import { Navigate} from 'react-router-dom';
 import { AuthContext } from './AuthContext';
 
 export default function GuardedRoute({children}){
 
-    const {authenticated} = React.useContext(AuthContext);
+    const {authenticated} = useContext(AuthContext);
 
-    console.log("Guarded Route:");
+    console.log("Authenticated ?:");
     console.log(authenticated);
 
     return (
-        (authenticated) ? children : <Navigate to="/budgeting-js"/>
+        (authenticated) ? children : <Navigate to="/budgeting-js/splash"/>
     );
 
 }

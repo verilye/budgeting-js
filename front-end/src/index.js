@@ -4,7 +4,7 @@ import Splash from './routes/splash_screen/splash_screen';
 import BudgetViewPort from './routes/budgeting/budgeting';
 import DataVisualisations from './routes/data_visuals/data_visuals';
 import GuardedRoute from './authentication/GuardedRoute';
-import {AuthProvider} from './authentication/AuthContext';
+import { AuthProvider } from './authentication/AuthContext';
 
 import './index.css';
 import {
@@ -14,37 +14,36 @@ import {
 
 const router = createBrowserRouter([
   {
-    path:"/budgeting-js/",
+    path: "/budgeting-js/splash",
     element:
-          <Splash/>
-        
+      <Splash />
   },
   {
-    path:"/budgeting-js/budgeting",
+    path: "/budgeting-js/",
     element:
       <GuardedRoute>
-        <BudgetViewPort/>
+        <BudgetViewPort />
       </GuardedRoute>
-    
+
   },
   {
-    path:"/budgeting-js/data-visuals",
+    path: "/budgeting-js/data-visuals",
     element:
       <GuardedRoute>
-        <DataVisualisations/>
+        <DataVisualisations />
       </GuardedRoute>
-   
-    
+
+
   }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-function App(){
+function App() {
 
-  return(
+  return (
     <AuthProvider>
-      <RouterProvider router = {router} />
+      <RouterProvider router={router} />
     </AuthProvider>
   );
 
@@ -53,7 +52,7 @@ function App(){
 
 root.render(
   <React.StrictMode>
-      <App/>
+    <App />
   </React.StrictMode>
 );
 
