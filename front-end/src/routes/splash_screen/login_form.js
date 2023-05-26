@@ -8,19 +8,12 @@ import { useNavigate } from 'react-router-dom';
 
 export default function LoginForm() {
 
-    const {login} = React.useContext(AuthContext); 
     const navigate = useNavigate();
 
-    let handleAuth = () =>{
-        console.log("test login activated");
-        login({
-            "user_id":"BABA",
-            "income":1,
-            "jwt":"Blongus"
-        });
-        navigate("/budgeting-js/"); 
-    };
+    const { login } = React.useContext(AuthContext);
 
+    const [token, setToken] = useState("");
+    const [income, setIncome] = useState();
     const [user_id, setUserID] = useState("");
     const [password, setPassword] = useState("");
 
@@ -30,6 +23,16 @@ export default function LoginForm() {
     // On change to form element, check for correctness
     // if incorrect display error message
     // if correct, remove and change appearance
+
+    let handleAuth = () => {
+        console.log("handling auth")
+        login({
+            "user_id": user_id,
+            "income": income,
+            "jwt": token
+        });
+        navigate("/budgeting-js");
+    }
 
     let checkUserID = (user_id) => {
         if (user_id.length > 20 || user_id.length <= 5) {
@@ -59,10 +62,10 @@ export default function LoginForm() {
 
         try {
 
-            const res = await fetch("http://localhost:4000/user-access/login" + user_id, {
+            const res = await fetch("http://localhost:4000/user-access/login", {
                 method: "POST",
                 mode: 'cors',
-                headers: {  
+                headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
@@ -71,15 +74,11 @@ export default function LoginForm() {
                 }),
             });
 
-            let resJson = await res.json();
-
-            if (res === 200) { 
-
-                // TODO
-                // Store JWT in auth context
-
-                handleAuth(user_id, resJson.income, resJson.token)
+            if (res.status === 200) {
                 // Store User in auth context
+                setIncome(res.income);
+                setToken(res.token);
+                handleAuth();
             }
 
 
@@ -101,21 +100,14 @@ export default function LoginForm() {
                 body: JSON.stringify({
                     user_id: user_id,
                     password: password,
-                }),
+                })
             });
 
-            let resJson = await res.json();
-
             if (res.status === 200) {
-                setUserID("");
-                setPassword("");
-
-                handleAuth(user_id, 0, resJson.token,);
-
-
+                setIncome(res.income);
+                setToken(res.token);
+                handleAuth();
             }
-
-            console.log(resJson);
 
         } catch (err) {
             console.log(err)
@@ -124,18 +116,10 @@ export default function LoginForm() {
 
     return (
         <Box className="slide-down">
-            
-                <Button
-                    onClick={handleAuth}
-                >
-                    TEST LOGIN BUTTON
-                </Button>
-            {/* Display errors as long as the form field is invalid */}
-            
             <FormGroup>
                 <FormControl>
                     <TextField
-                        onChange={(e) => checkUserID(e.target.value)}
+                        onChange={e => checkUserID(e.target.value)}
                         type="text"
                         name="user_id"
                         placeholder="User Name"
@@ -143,21 +127,21 @@ export default function LoginForm() {
                     />
                     {user_id_err ? (
 
-                        <FormHelperText error="true">Username must be greater than 5 characters and less than 20</FormHelperText>
+                        <FormHelperText error= {true} >Username must be greater than 5 characters and less than 20</FormHelperText>
 
                     ) : null}
 
                 </FormControl>
                 <FormControl>
                     <TextField
-                        onChange={(e) => checkPassword(e.target.value)}
+                        onChange={e => checkPassword(e.target.value)}
                         type="text"
                         name="password"
                         placeholder="Password"
                         className="password-input form"
                     />
                     {password_err ? (
-                        <FormHelperText error="true">Password must be greater than 5 characters and less than 20</FormHelperText>
+                        <FormHelperText error={true}>Password must be greater than 5 characters and less than 20</FormHelperText>
                     ) : null}
 
 
@@ -212,8 +196,8 @@ export default function LoginForm() {
                     >CREATE ACCOUNT</Button>
                 </>
             </FormGroup>
-            
-            
+
+
         </Box>
     )
 

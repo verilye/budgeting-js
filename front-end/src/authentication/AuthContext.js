@@ -1,10 +1,9 @@
 import React, { useState, createContext } from "react";
 
-// READ THIS LEST YE WASTE ANOTHER 3 DAYS!!!
 
-// When manually entering a url, the context is wiped
-// To persist login after manually entering url, local storage
-// shenanigans will need to be used. 
+// To authenticate a user a client application must send a JSON web token
+// in the authorisation header of the HTTP request to your backend API
+// https://cloud.google.com/api-gateway/docs/authenticating-users-jwt
 
 const AuthContext = createContext();
 
