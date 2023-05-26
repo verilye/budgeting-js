@@ -11,6 +11,7 @@ import { AuthContext } from '../../authentication/AuthContext';
 export default function BudgetViewPort() {
 
     const { user } = useContext(AuthContext);
+    console.log(user);
    
     let [data, setData] = useState();
 
