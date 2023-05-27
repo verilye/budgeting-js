@@ -12,11 +12,8 @@ export default function LoginForm() {
 
     const { login } = React.useContext(AuthContext);
 
-    const [token, setToken] = useState("");
-    const [income, setIncome] = useState();
     const [user_id, setUserID] = useState("");
     const [password, setPassword] = useState("");
-
     const [user_id_err, setUIDErr] = useState(false);
     const [password_err, setPErr] = useState(false);
 
@@ -24,8 +21,9 @@ export default function LoginForm() {
     // if incorrect display error message
     // if correct, remove and change appearance
 
-    let handleAuth = () => {
-        console.log("handling auth")
+    let handleAuth = (income, token) => {
+        console.log(income);
+        console.log(token);
         login({
             "user_id": user_id,
             "income": income,
@@ -58,8 +56,6 @@ export default function LoginForm() {
 
     let handleLogin = async (e) => {
 
-        // store login credentials in auth context once confirmed
-
         try {
 
             const res = await fetch("http://localhost:4000/user-access/login", {
@@ -74,14 +70,10 @@ export default function LoginForm() {
                 }),
             });
 
+            let resJson = await res.json();
             if (res.status === 200) {
-                // Store User in auth context
-                setIncome(res.income);
-                setToken(res.token);
-                handleAuth();
+                handleAuth(resJson.income, resJson.token);
             }
-
-
         } catch (err) {
             console.log(err)
         }
@@ -104,9 +96,8 @@ export default function LoginForm() {
             });
 
             if (res.status === 200) {
-                setIncome(res.income);
-                setToken(res.token);
-                handleAuth();
+                // TODO
+                // Here we should automcatically log user in 
             }
 
         } catch (err) {
@@ -127,7 +118,7 @@ export default function LoginForm() {
                     />
                     {user_id_err ? (
 
-                        <FormHelperText error= {true} >Username must be greater than 5 characters and less than 20</FormHelperText>
+                        <FormHelperText error={true} >Username must be greater than 5 characters and less than 20</FormHelperText>
 
                     ) : null}
 

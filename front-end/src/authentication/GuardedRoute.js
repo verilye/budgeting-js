@@ -22,9 +22,6 @@ export default function GuardedRoute({ children }) {
         return <div></div>
     }
 
-    console.log("Authenticated ?:");
-    console.log(authenticated);
-
     return (
         (authenticated) ? children : <Navigate to="/budgeting-js/splash" />
     );
