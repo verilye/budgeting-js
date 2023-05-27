@@ -9,38 +9,41 @@ import { AuthContext } from "../../authentication/AuthContext";
 export default function IncomeDisplay() {
 
     const currentDate = new Date();
-    const {user, income, setIncome} = useContext(AuthContext);
+    const { user, income, setIncome } = useContext(AuthContext);
     const [incomeValue, setIncomeValue] = useState("");
-    const [negative, setNegative] = useState(false);
     const [error, setError] = useState(false);
 
     const addIncome = () => {
+
+        console.log("add");
         setError(false);
-        setNegative(false)
-        handleIncome();
+        handleIncome(false);
     }
 
     const subtractIncome = () => {
 
+        console.log("subtract");
         setError(false);
         if ((income - parseInt(incomeValue)) < 0) {
             setError(true);
         } else {
-            setNegative(true)
-            handleIncome();
+
+            handleIncome(true);
         }
     }
 
-    const handleIncome = async () => {
+    const handleIncome = async (negative) => {
 
         let newIncome = parseInt(incomeValue);
 
         if (negative === true) {
             newIncome = income - newIncome;
-            
+
         } else {
             newIncome = newIncome + income
         };
+
+        console.log(newIncome)
 
         try {
             await fetch("http://localhost:4000/budgeting/edit-income", {
@@ -65,142 +68,142 @@ export default function IncomeDisplay() {
 
     return (
         <Box>
-        <Box
-            margin="2rem"
-            marginLeft="4rem"
-            display="flex"
-            justifyContent="flex-start"
-            columnGap="22vw"
-        >
             <Box
+                margin="2rem"
+                marginLeft="4rem"
                 display="flex"
-                justifyContent={"space-between"}
-
-                style={{
-
-                    borderStyle: "solid",
-                    borderWidth: "0.2rem",
-                    borderRadius: "0.5rem",
-                }}
+                justifyContent="flex-start"
+                columnGap="22vw"
             >
-                {/* Make the income log expandable and editable in place to quickly add new income */}
-                {/* Show % of income that has been allocated */}
                 <Box
-                    paddingLeft="2rem"
-                    paddingRight="1rem"
-                    paddingTop="2.5rem"
+                    display="flex"
+                    justifyContent={"space-between"}
+
+                    style={{
+
+                        borderStyle: "solid",
+                        borderWidth: "0.2rem",
+                        borderRadius: "0.5rem",
+                    }}
                 >
-                    <img
-                        src={moneyIcon}
-                        alt="moneyLogo"
-                        height="40px"
-                        width="40px"
-                    />
-                </Box>
-                <Box
-                    padding="1rem"
-                >
-                    <Box>
-                        AVAILABLE BALANCE
-                    </Box>
+                    {/* Make the income log expandable and editable in place to quickly add new income */}
+                    {/* Show % of income that has been allocated */}
                     <Box
-                        overflow="hidden"
-                        variant="outline"
-
-                        sx={{
-
-                            fontWeight: 'bold',
-                            fontSize: "30px",
-                            marginBottom: "0.5rem",
-                        }}
-
+                        paddingLeft="2rem"
+                        paddingRight="1rem"
+                        paddingTop="2.5rem"
                     >
-                        ${income}
-
-                    </Box>
-
-
-                    <Box
-                        width="12.5rem"
-                        height="3.5rem"
-                        style={{
-
-                            borderStyle: "solid",
-                            borderWidth: "0.2rem",
-                            borderRadius: "0.5rem",
-                        }}
-                    >
-                        <TextField
-                            onInput={e => setIncomeValue(e.target.value)}
-                            style={{
-                                width: "10rem",
-                                float: "left",
-                            }}>
-
-                        </TextField>
-                        <Box
-
+                        <img
+                            src={moneyIcon}
+                            alt="moneyLogo"
                             height="40px"
-                            float="right"
-                        >
-                            <Button
+                            width="40px"
+                        />
+                    </Box>
+                    <Box
+                        padding="1rem"
+                    >
+                        <Box>
+                            AVAILABLE BALANCE
+                        </Box>
+                        <Box
+                            overflow="hidden"
+                            variant="outline"
 
-                                onClick={addIncome}
-                                sx={{
-                                    width: "40px",
-                                    height: "30px",
-                                    padding: "0px",
-                                    minWidth: "20px",
-                                    minHeight: "20px",
-                                }}
+                            sx={{
+
+                                fontWeight: 'bold',
+                                fontSize: "30px",
+                                marginBottom: "0.5rem",
+                            }}
+
+                        >
+                            ${income}
+
+                        </Box>
+
+
+                        <Box
+                            width="12.5rem"
+                            height="3.5rem"
+                            style={{
+
+                                borderStyle: "solid",
+                                borderWidth: "0.2rem",
+                                borderRadius: "0.5rem",
+                            }}
+                        >
+                            <TextField
+                                onInput={e => setIncomeValue(e.target.value)}
+                                style={{
+                                    width: "10rem",
+                                    float: "left",
+                                }}>
+
+                            </TextField>
+                            <Box
+
+                                height="40px"
+                                float="right"
                             >
-                                <img
-                                    width="25px"
-                                    height="25px"
-                                    alt="plus"
-                                    src={plus}
-                                ></img>
-                            </Button>
-                            <Button
-                                onClick={subtractIncome}
-                                sx={{
-                                    width: "40px",
-                                    height: "20px",
-                                    padding: "0px",
-                                    minWidth: "20px",
-                                    minHeight: "20px",
-                                }}
-                            >
-                                <img
-                                    width="25px"
-                                    height="25px"
-                                    src={minus}
-                                    alt="minus"
+                                <Button
+
+                                    onClick={addIncome}
+                                    sx={{
+                                        width: "40px",
+                                        height: "30px",
+                                        padding: "0px",
+                                        minWidth: "20px",
+                                        minHeight: "20px",
+                                    }}
                                 >
-                                </img>
-                            </Button>
+                                    <img
+                                        width="25px"
+                                        height="25px"
+                                        alt="plus"
+                                        src={plus}
+                                    ></img>
+                                </Button>
+                                <Button
+                                    onClick={subtractIncome}
+                                    sx={{
+                                        width: "40px",
+                                        height: "20px",
+                                        padding: "0px",
+                                        minWidth: "20px",
+                                        minHeight: "20px",
+                                    }}
+                                >
+                                    <img
+                                        width="25px"
+                                        height="25px"
+                                        src={minus}
+                                        alt="minus"
+                                    >
+                                    </img>
+                                </Button>
+                            </Box>
                         </Box>
                     </Box>
                 </Box>
-            </Box>
-            <Box
-                marginTop='1.5rem'
-                width="10rem"
-            >
+                <Box
+                    marginTop='1.5rem'
+                    width="10rem"
+                >
+
+                </Box>
+                <Box
+                    paddingTop='3rem'
+                    fontSize="25px"
+                >
+                    Today is {currentDate.getDate()}/{currentDate.getMonth()}/{currentDate.getFullYear()}
+                </Box>
 
             </Box>
-            <Box
-                paddingTop='3rem'
-                fontSize="25px"
-            >
-                Today is {currentDate.getDate()}/{currentDate.getMonth()}/{currentDate.getFullYear()}
-            </Box>
-           
-        </Box>
-        {error ? (
+            {error ? (
                 <Box marginLeft={'5vw'} marginBottom={'3vh'}>Income cant be less than 0!</Box>
 
-                ) : null}
+            ) : null}
         </Box>
     )
 }
