@@ -16,19 +16,15 @@ export default function LoginForm() {
     const [password, setPassword] = useState("");
     const [user_id_err, setUIDErr] = useState(false);
     const [password_err, setPErr] = useState(false);
-
-    // On change to form element, check for correctness
-    // if incorrect display error message
-    // if correct, remove and change appearance
-
+    
     let handleAuth = (income, token) => {
-        console.log(income);
-        console.log(token);
-        login({
-            "user_id": user_id,
-            "income": income,
-            "jwt": token
-        });
+        login(
+            {
+                "user_id": user_id,
+                "jwt": token
+            },
+            income,
+        );
         navigate("/budgeting-js");
     }
 

@@ -10,8 +10,9 @@ export default function GuardedRoute({ children }) {
     useEffect(() => {
         setTimeout(() => {
             const saved = localStorage.getItem('user');
+            const income = localStorage.getItem('income');
             if (saved) {
-                login(JSON.parse(saved));
+                login(JSON.parse(saved), JSON.parse(income));
                 setIsLoading(false);
             }
         },100);

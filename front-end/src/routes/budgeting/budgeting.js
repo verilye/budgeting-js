@@ -10,8 +10,7 @@ import { AuthContext } from '../../authentication/AuthContext';
 
 export default function BudgetViewPort() {
 
-    const { user } = useContext(AuthContext);
-    console.log(user);
+    const { user, income } = useContext(AuthContext);
    
     let [data, setData] = useState();
 
@@ -43,12 +42,10 @@ export default function BudgetViewPort() {
     return (
         <div className="budgeting">
 
-            {/* Logo + user name + logout */}
             <NavBar />
 
             <Divider />
 
-            {/* Edit income and display date */}
             <IncomeDisplay fetchData={fetchData}/>
 
             <Box className='category-display'

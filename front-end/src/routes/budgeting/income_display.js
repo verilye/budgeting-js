@@ -9,7 +9,7 @@ import { AuthContext } from "../../authentication/AuthContext";
 export default function IncomeDisplay() {
 
     const currentDate = new Date();
-    const { user } = useContext(AuthContext);
+    const {user, income, setIncome} = useContext(AuthContext);
     const [incomeValue, setIncomeValue] = useState("");
     const [negative, setNegative] = useState(false);
     const [error, setError] = useState(false);
@@ -23,7 +23,7 @@ export default function IncomeDisplay() {
     const subtractIncome = () => {
 
         setError(false);
-        if ((user.income - parseInt(incomeValue)) < 0) {
+        if ((income - parseInt(incomeValue)) < 0) {
             setError(true);
         } else {
             setNegative(true)
@@ -33,11 +33,13 @@ export default function IncomeDisplay() {
 
     const handleIncome = async () => {
 
-        let income = parseInt(incomeValue);
+        let newIncome = parseInt(incomeValue);
+
         if (negative === true) {
-            income = user.income - income;
+            newIncome = income - newIncome;
+            
         } else {
-            income = income + user.income
+            newIncome = newIncome + income
         };
 
         try {
@@ -50,9 +52,11 @@ export default function IncomeDisplay() {
                 body:
                     JSON.stringify({
                         user_id: user.user_id,
-                        income: income,
+                        income: newIncome,
                     })
             });
+
+            setIncome(newIncome);
         }
         catch (err) {
             console.log(err);
@@ -111,7 +115,7 @@ export default function IncomeDisplay() {
                         }}
 
                     >
-                        ${user.income}
+                        ${income}
 
                     </Box>
 
