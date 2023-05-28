@@ -9,20 +9,16 @@ import { AuthContext } from "../../authentication/AuthContext";
 export default function IncomeDisplay() {
 
     const currentDate = new Date();
-    const { user, income, setIncome } = useContext(AuthContext);
+    const { user, income, setIncome, storeLocally } = useContext(AuthContext);
     const [incomeValue, setIncomeValue] = useState("");
     const [error, setError] = useState(false);
 
     const addIncome = () => {
-
-        console.log("add");
         setError(false);
         handleIncome(false);
     }
 
     const subtractIncome = () => {
-
-        console.log("subtract");
         setError(false);
         if ((income - parseInt(incomeValue)) < 0) {
             setError(true);
@@ -60,6 +56,7 @@ export default function IncomeDisplay() {
             });
 
             setIncome(newIncome);
+            storeLocally(user, newIncome);
         }
         catch (err) {
             console.log(err);

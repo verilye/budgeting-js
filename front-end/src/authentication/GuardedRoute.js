@@ -15,11 +15,11 @@ export default function GuardedRoute({ children }) {
                 login(JSON.parse(saved), JSON.parse(income));
                 setIsLoading(false);
             }
-        },100);
+        },50);
         //eslint-disable-next-line
     }, []);
 
-    if(isLoading){
+    if (isLoading) {
         return <div></div>
     }
 

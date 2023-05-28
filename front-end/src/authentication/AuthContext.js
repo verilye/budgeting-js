@@ -12,14 +12,16 @@ function AuthProvider(props) {
     const [user, setUser] = useState(null);
     const [income, setIncome] = useState(null);
    
-    const login = (user,income) => {
+    const storeLocally = (user, income) => {
+        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('income', JSON.stringify(income));
+    }
 
-        console.log(income);
+    const login = (user,income) => {
+        storeLocally(user, income);
         setUser(user);
         setIncome(income);
         setAuthenticated(true);
-        localStorage.setItem('user', JSON.stringify(user));
-        localStorage.setItem('income', JSON.stringify(income));
     }
 
     const logout = () => {
@@ -30,8 +32,10 @@ function AuthProvider(props) {
     }
 
     const value = {
-        authenticated, user, income,setIncome,login, logout
+        authenticated, user, income,setIncome, login, logout, storeLocally
     }
+
+    
 
     return (
         <AuthContext.Provider value={value} {...props} />
