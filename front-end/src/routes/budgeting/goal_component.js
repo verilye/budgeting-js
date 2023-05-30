@@ -5,12 +5,15 @@ import { AuthContext } from "../../authentication/AuthContext";
 
 export default function Goal({ goal_id, category_id, target_amount, target_progress, fetchData }) {
 
-    let user = useContext(AuthContext);
+    let {user, income, setIncome, storeLocally} = useContext(AuthContext);
     let [addedAmount, setAddedAmount] = useState("");
 
     const handleAdd = async () => {
-        let newAmount = target_progress + parseInt(addedAmount);
         try {
+            // Subtract income then allocate that amount to goal
+            let newProgress = target_progress + parseInt(addedAmount);
+            let newIncome = income - parseInt(addedAmount);
+
             await fetch("http://localhost:4000/budgeting/edit-goal", {
                 method: "POST",
                 mode: 'cors',
@@ -21,11 +24,25 @@ export default function Goal({ goal_id, category_id, target_amount, target_progr
                     user_id: user.user_id,
                     category_id: category_id,
                     goal_id: goal_id,
-                    target_progress: newAmount,
+                    target_progress: newProgress,
                     target_amount: target_amount,
                 })
             })
 
+            await fetch("http://localhost:4000/budgeting/edit-income", {
+                method: "POST",
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    user_id: user.user_id,
+                    income: newIncome
+                })
+            })
+
+            setIncome(newIncome);
+            storeLocally(user, newIncome);
             fetchData();
 
         } catch (err) {
@@ -35,7 +52,7 @@ export default function Goal({ goal_id, category_id, target_amount, target_progr
 
 
     // Progress = % of (target_amount) that (target_progress) is 
-    let progress = (target_progress/target_amount) * 100;
+    let progress = (target_progress / target_amount) * 100;
 
     return (
 

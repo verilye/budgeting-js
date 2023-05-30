@@ -78,7 +78,7 @@ export default function AddGoalDialog({ category_id, fetchData }) {
             <Dialog open={open} onClose={handleClose}>
                 <DialogContent>
                     <DialogContentText>
-                        Name of new goal:
+                        New goal:
                     </DialogContentText>
                     <TextField
                         onInput={e => setGoalName(e.target.value)}

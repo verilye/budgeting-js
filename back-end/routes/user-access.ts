@@ -37,7 +37,6 @@ router.post('/create-user', async (req, res, next) => {
         } else {
 
             // Hash user details
-
             const password_salt: String = bcrypt.genSaltSync(10);
             const password_hash: String = bcrypt.hashSync(password, password_salt);
 
