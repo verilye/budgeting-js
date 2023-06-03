@@ -46,7 +46,8 @@ export default function IncomeDisplay() {
                 method: "POST",
                 mode: 'cors',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'x-access-token': user.token
                 },
                 body:
                     JSON.stringify({

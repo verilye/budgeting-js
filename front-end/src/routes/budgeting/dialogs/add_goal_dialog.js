@@ -19,7 +19,8 @@ export default function AddGoalDialog({ category_id, fetchData }) {
                 method: "POST",
                 mode: 'cors',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'x-access-token': user.token
                 },
                 body: JSON.stringify({
                     user_id: user.user_id,

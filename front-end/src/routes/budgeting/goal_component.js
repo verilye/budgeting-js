@@ -18,7 +18,8 @@ export default function Goal({ goal_id, category_id, target_amount, target_progr
                 method: "POST",
                 mode: 'cors',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'x-access-token': user.token
                 },
                 body: JSON.stringify({
                     user_id: user.user_id,
@@ -33,7 +34,8 @@ export default function Goal({ goal_id, category_id, target_amount, target_progr
                 method: "POST",
                 mode: 'cors',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'x-access-token': user.token
                 },
                 body: JSON.stringify({
                     user_id: user.user_id,

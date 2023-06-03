@@ -10,7 +10,7 @@ import { AuthContext } from '../../authentication/AuthContext';
 
 export default function BudgetViewPort() {
 
-    const { user, income } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
    
     let [data, setData] = useState();
 
@@ -22,7 +22,8 @@ export default function BudgetViewPort() {
             method: "GET",
             mode: 'cors',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': user.token
             }
         });
 

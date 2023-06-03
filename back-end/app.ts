@@ -4,18 +4,14 @@ dotenv.config({path:"./db.env"});
 
 const cors = require('cors');
 const error = require("./middleware/error");
+const auth = require("./middleware/auth");
 const app = express();
 
 app.use(cors({
     origin : '*',
 }));
 
-
-// NOTE
-// In routes include next in the parameters (req,res,next)
-// catch errors using catch{ next(err); }
-// This function is passed after every route on error
-
+app.use(auth);
 require('./startup/routes')(app);
 app.use(error);
 
