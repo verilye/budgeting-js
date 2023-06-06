@@ -11,27 +11,35 @@ import { AuthContext } from '../../authentication/AuthContext';
 export default function BudgetViewPort() {
 
     const { user } = useContext(AuthContext);
-   
+
     let [data, setData] = useState();
 
     // Here we want to load all categories and goals then display them
-    let fetchData = React.useCallback(async()=> {
+    let fetchData = React.useCallback(async () => {
+        try {
+            const res = await fetch("http://localhost:4000/budgeting/get-goals", {
+                method: "POST",
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-access-token': user.jwt
+                },
+                body: JSON.stringify({
+                    user_id: user.user_id,
+                })
+            });
 
+            let resJson = await res.json();
 
-        const res = await fetch("http://localhost:4000/budgeting/get-goals/" + user.user_id, {
-            method: "GET",
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-access-token': user.token
-            }
-        });
+            setData(resJson);
+        }
+        catch (err) {
 
-        let resJson = await res.json();
+            console.log(err);
+            
+        }
 
-        setData(resJson);
-
-    },[user]);
+    }, [user]);
 
 
     useEffect(() => {
@@ -47,7 +55,7 @@ export default function BudgetViewPort() {
 
             <Divider />
 
-            <IncomeDisplay fetchData={fetchData}/>
+            <IncomeDisplay fetchData={fetchData} />
 
             <Box className='category-display'
 
@@ -62,9 +70,9 @@ export default function BudgetViewPort() {
 
             >
                 CATEGORIES
-                <AddCategoryDialog 
+                <AddCategoryDialog
 
-                    fetchData = {fetchData}
+                    fetchData={fetchData}
 
                 />
 
@@ -75,7 +83,7 @@ export default function BudgetViewPort() {
                             // pass down props here 
                             // for pagination 
                             <Category
-                                fetchData = {fetchData}
+                                fetchData={fetchData}
                                 key={item.category_id}
                                 category_id={item.category_id}
                                 goals={item.goals}

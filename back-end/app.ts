@@ -4,14 +4,12 @@ dotenv.config({path:"./db.env"});
 
 const cors = require('cors');
 const error = require("./middleware/error");
-const auth = require("./middleware/auth");
 const app = express();
 
 app.use(cors({
     origin : '*',
 }));
 
-app.use(auth);
 require('./startup/routes')(app);
 app.use(error);
 

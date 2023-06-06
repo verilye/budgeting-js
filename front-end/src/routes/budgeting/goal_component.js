@@ -19,7 +19,7 @@ export default function Goal({ goal_id, category_id, target_amount, target_progr
                 mode: 'cors',
                 headers: {
                     'Content-Type': 'application/json',
-                    'x-access-token': user.token
+                    'x-access-token': JSON.stringify(user.token)
                 },
                 body: JSON.stringify({
                     user_id: user.user_id,

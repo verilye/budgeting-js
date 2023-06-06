@@ -3,7 +3,32 @@ import db from "../startup/dbConnection";
 import Category from "../models/Category";
 import Goal from "../models/Goal";
 
+const fs = require('fs');
+const jwt = require('jsonwebtoken');
+
 const router = express.Router();
+
+// Auth - check for valid jwt in headers. These are secure routes
+router.use((req, res, next) => {
+
+    const public_key: string = fs.readFileSync(__dirname + '/../private.key', 'utf8');
+
+    try {
+        const token = req.headers['x-access-token'];
+        const decodedToken = jwt.verify(token, public_key);
+        const user_id = decodedToken.user;
+
+        if (req.body.user_id && req.body.user_id !== user_id) {
+
+            throw 'Invalid User id';
+
+        } else { 
+            next();
+        }
+    } catch (err) {
+        next(err)
+    }
+});
 
 router.post('/create-category', (req, res, next) => {
 
@@ -35,13 +60,12 @@ router.post('/create-category', (req, res, next) => {
 });
 
 // Should return all categories and goals for user
-router.get('/get-goals/:user_id', async (req, res, next) => {
-
+router.post('/get-goals', async (req, res, next) => {
     try {
         let categorySql = `SELECT * FROM Category WHERE user_id = ? ORDER BY category_id`
         const categoryResult: any = await new Promise((resolve, reject) => {
             db.query(categorySql,
-                [req.params.user_id],
+                [req.body.user_id],
                 function (err: any, result: any) {
                     if (err) {
                         throw err;
@@ -55,7 +79,7 @@ router.get('/get-goals/:user_id', async (req, res, next) => {
         let goalSql = `SELECT * FROM Goal WHERE user_id = ? ORDER BY category_id`
         const goalResult: any = await new Promise((resolve, reject) => {
             db.query(goalSql,
-                [req.params.user_id],
+                [req.body.user_id],
                 function (err: any, result: any) {
                     if (err) {
                         throw err;
