@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Box, Divider } from "@mui/material";
 import IncomeDisplay from './income_display';
 import Category from './category_component';
+import { useNavigate } from 'react-router-dom';
 
 import './budgeting.css';
 import NavBar from './navbar';
@@ -10,8 +11,8 @@ import { AuthContext } from '../../authentication/AuthContext';
 
 export default function BudgetViewPort() {
 
-    const { user } = useContext(AuthContext);
-
+    const { user ,logout} = useContext(AuthContext);
+    const navigate = useNavigate();
     let [data, setData] = useState();
 
     // Here we want to load all categories and goals then display them
@@ -34,9 +35,9 @@ export default function BudgetViewPort() {
             setData(resJson);
         }
         catch (err) {
-
             console.log(err);
-            
+            logout();
+            navigate("/budgeting-js");
         }
 
     }, [user]);
