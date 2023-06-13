@@ -77,12 +77,12 @@ router.post('/login', async (req, res, next) => {
                 if (err) throw err;
 
                 //Check user name match with the db entry
-                if (result.length === 0) { return res.status(409).json({ error: "User does not exist!" }) };
+                if (result.length === 0) { return res.status(500).json({ error: "User does not exist!" }) };
 
                 //Check password matches with hash when salted using stored
                 const salt = result[0].password_salt;
                 const password_hash = bcrypt.hashSync(password, salt);
-                if (password_hash != result[0].password_hash) return res.status(409).json({ error: "Incorrect Password" });
+                if (password_hash != result[0].password_hash) return res.status(500).json({ error: "Incorrect Password" });
 
                 // generate JWT
 
@@ -95,6 +95,7 @@ router.post('/login', async (req, res, next) => {
 
                 return res.send({ "token": token, "income": result[0].income });
             });
+        
 
     } catch (err) {
         next(err);

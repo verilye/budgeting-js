@@ -16,6 +16,7 @@ export default function LoginForm() {
     const [password, setPassword] = useState("");
     const [user_id_err, setUIDErr] = useState(false);
     const [password_err, setPErr] = useState(false);
+    const [login_err, setLoginErr] = useState(false);
     
     let handleAuth = (income, token) => {
         login(
@@ -36,6 +37,7 @@ export default function LoginForm() {
 
         setUserID(user_id);
         setUIDErr(false);
+        setLoginErr(false);
         return true;
     };
 
@@ -47,6 +49,7 @@ export default function LoginForm() {
 
         setPassword(password);
         setPErr(false);
+        setLoginErr(false);
         return true;
     };
 
@@ -67,9 +70,9 @@ export default function LoginForm() {
             });
 
             let resJson = await res.json();
-            if (res.status === 200) {
-                handleAuth(resJson.income, resJson.token);
-            }
+            if (res.status === 200) { handleAuth(resJson.income, resJson.token);}
+            if (res.status === 500) { setLoginErr(true);}
+
         } catch (err) {
             console.log(err)
         }
@@ -92,8 +95,9 @@ export default function LoginForm() {
             });
 
             if (res.status === 200) {
-                // TODO
-                // Here we should automcatically log user in 
+                
+                // LOGIN HERE
+                handleLogin();
             }
 
         } catch (err) {
@@ -114,7 +118,7 @@ export default function LoginForm() {
                     />
                     {user_id_err ? (
 
-                        <FormHelperText error={true} >Username must be greater than 5 characters and less than 20</FormHelperText>
+                        <FormHelperText error={true} > Username must be greater than 5 characters and less than 20</FormHelperText>
 
                     ) : null}
 
@@ -131,7 +135,9 @@ export default function LoginForm() {
                         <FormHelperText error={true}>Password must be greater than 5 characters and less than 20</FormHelperText>
                     ) : null}
 
-
+                    {login_err ?(
+                        <FormHelperText error={true}>Username or password do not exist!</FormHelperText>
+                    ):null}
                 </FormControl>
 
                 <>
