@@ -8,6 +8,11 @@ const jwt = require('jsonwebtoken');
 
 const router = express.Router();
 
+
+// Authorise here, then allow the user to access the user budgeting api
+
+
+
 // Auth - check for valid jwt in headers. These are secure routes
 router.use((req, res, next) => {
 
@@ -142,10 +147,10 @@ router.post('/edit-goal', (req, res, next) => {
     try {
         //Need to pass old goal id in along with new one if you want to change the name
 
-        let sql = "UPDATE Goal SET target_amount = ?, target_progress = ? WHERE goal_id = ? AND category_id = ?";
+        let sql = "UPDATE Goal SET target_amount = ?, target_progress = ? WHERE goal_id = ? AND category_id = ? AND user_id = ?";
         db.query(
             sql,
-            [req.body.target_amount, req.body.target_progress, req.body.goal_id, req.body.category_id],
+            [req.body.target_amount, req.body.target_progress, req.body.goal_id, req.body.category_id, req.body.user_id],
 
             function (err: any, result: any) {
                 if (err) throw err;
@@ -212,10 +217,10 @@ router.delete('/delete-goal', (req, res, next) => {
 
         console.log("deleting goal")
 
-        let sql = `DELETE FROM Goal WHERE goal_id = ? AND category_id = ?`;
+        let sql = `DELETE FROM Goal WHERE goal_id = ? AND category_id = ? AND user_id =?`;
 
         db.query(sql,
-            [req.body.goal_id, req.body.category_id],
+            [req.body.goal_id, req.body.category_id, req.body.user_id],
             function (err: any, result: any) {
                 if (err) throw err;
                 console.log("goal deleted");

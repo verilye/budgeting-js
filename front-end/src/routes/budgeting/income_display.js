@@ -49,11 +49,10 @@ export default function IncomeDisplay() {
                     'Content-Type': 'application/json',
                     'x-access-token': user.token
                 },
-                body:
-                    JSON.stringify({
-                        user_id: user.user_id,
-                        income: newIncome,
-                    })
+                body: JSON.stringify({
+                    user_id: user.user_id,
+                    income: newIncome,
+                })
             });
 
             setIncome(newIncome);

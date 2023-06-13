@@ -11,7 +11,7 @@ import { AuthContext } from '../../authentication/AuthContext';
 
 export default function BudgetViewPort() {
 
-    const { user ,logout} = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
     const navigate = useNavigate();
     let [data, setData] = useState();
 
@@ -39,7 +39,7 @@ export default function BudgetViewPort() {
             logout();
             navigate("/budgeting-js");
         }
-
+        // eslint-disable-next-line
     }, [user]);
 
 
