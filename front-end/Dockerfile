@@ -20,7 +20,6 @@ RUN npm run build
 
 # ==== RUN ====
 # Set the env to production
-ENV NODE_ENV production
 
 # Expose the port that is used for npm start when making the app
 EXPOSE 3000

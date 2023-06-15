@@ -4,27 +4,23 @@ import { AuthContext } from './AuthContext';
 
 export default function GuardedRoute({ children }) {
 
-    const [isLoading, setIsLoading] = useState(true);
     const { authenticated, login } = useContext(AuthContext);
 
     useEffect(() => {
-        setTimeout(() => {
-            const saved = localStorage.getItem('user');
-            const income = localStorage.getItem('income');
-            if (saved) {
-                login(JSON.parse(saved), JSON.parse(income));
-                setIsLoading(false);
-            }
-        },50);
+
+        console.log("DING DONG BITCH")
+        const saved = localStorage.getItem('user');
+        const income = localStorage.getItem('income');
+
+        if (saved) {
+            login(JSON.parse(saved), JSON.parse(income));
+        }
         //eslint-disable-next-line
     }, []);
 
-    if (isLoading) {
-        return <div></div>
-    }
 
     return (
-        (authenticated) ? children : <Navigate to="/budgeting-js/splash" />
+        (authenticated === true) ? children : <Navigate to="/budgeting-js/splash" /> 
     );
 
 }

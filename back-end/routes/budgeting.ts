@@ -5,15 +5,10 @@ import Goal from "../models/Goal";
 
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
-
 const router = express.Router();
 
 
 // Authorise here, then allow the user to access the user budgeting api
-
-
-
-// Auth - check for valid jwt in headers. These are secure routes
 router.use((req, res, next) => {
 
     const public_key: string = fs.readFileSync(__dirname + '/../private.key', 'utf8');
