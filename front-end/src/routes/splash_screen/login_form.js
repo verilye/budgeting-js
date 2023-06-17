@@ -30,30 +30,31 @@ export default function LoginForm() {
     }
 
     let checkUserID = (user_id) => {
-        if (user_id.length > 20 || user_id.length <= 5) {
+        if (user_id.length > 20 || user_id.length < 5) {
             setUIDErr(true);
             return false;
         }
 
         setUserID(user_id);
         setUIDErr(false);
-        setLoginErr(false);
         return true;
     };
 
     let checkPassword = (password) => {
-        if (password.length > 20 || password.length <= 5) {
+        if (password.length > 20 || password.length < 5) {
             setPErr(true);
             return false;
         }
 
         setPassword(password);
         setPErr(false);
-        setLoginErr(false);
         return true;
     };
 
     let handleLogin = async (e) => {
+
+        if(await checkPassword(password) !== true){return;}
+        if(await checkUserID(user_id) !== true){return;}
 
         try {
 
@@ -70,16 +71,19 @@ export default function LoginForm() {
             });
 
             let resJson = await res.json();
-            if (res.status === 200) { handleAuth(resJson.income, resJson.token);}
+            if (res.status === 200) { await handleAuth(resJson.income, resJson.token);}
             if (res.status === 500) { setLoginErr(true);}
 
         } catch (err) {
-            console.log(err)
+            console.log(err)    
         }
     };
 
     // Submit register data (after validation)
     let handleRegister = async (e) => {
+
+        if(await checkPassword(password) !== true){return;}
+        if(await checkUserID(user_id) !== true){return;}
 
         try {
             let res = await fetch("http://localhost:4000/user-access/create-user", {

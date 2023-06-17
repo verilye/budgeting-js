@@ -27,12 +27,13 @@ function AuthProvider(props) {
     const logout = () => {
         setUser(null);
         setAuthenticated(false);
+        setIncome(null);
         localStorage.removeItem('user');
         localStorage.removeItem('income');
     }
 
     const value = {
-        authenticated, user, income,setIncome, login, logout, storeLocally
+        authenticated,setAuthenticated, user, income,setIncome, login, logout, storeLocally
     }
 
     
