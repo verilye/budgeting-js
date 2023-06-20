@@ -10,6 +10,7 @@ import './index.css';
 import {
   createBrowserRouter,
   RouterProvider,
+  Navigate
 } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -32,8 +33,11 @@ const router = createBrowserRouter([
       <GuardedRoute>
         <DataVisualisations />
       </GuardedRoute>
-
-
+  },
+  {
+    path:"*",
+    element:
+      <Navigate to="/budgeting-js" replace/>
   }
 ]);
 
