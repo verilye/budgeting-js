@@ -2,3 +2,4 @@
 /db.env
 /private.key
 /public.key
+/DigiCertGlobalRootCA.crt.pem
