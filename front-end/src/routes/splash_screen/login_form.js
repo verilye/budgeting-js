@@ -22,7 +22,7 @@ export default function LoginForm() {
         login(
             {
                 "user_id": user_id,
-                "jwt": token
+                "token": token
             },
             income,
         );
@@ -71,6 +71,8 @@ export default function LoginForm() {
             });
 
             let resJson = await res.json();
+
+            console.log("handeLogin -> response token: "+resJson.token)
             if (res.status === 200) { await handleAuth(resJson.income, resJson.token);}
             if (res.status === 500) { setLoginErr(true);}
 

@@ -25,7 +25,7 @@ export default function IncomeDisplay() {
         } else {
 
             handleIncome(true);
-        }
+        } 
     }
 
     const handleIncome = async (negative) => {
@@ -39,7 +39,8 @@ export default function IncomeDisplay() {
             newIncome = newIncome + income
         };
 
-        console.log(newIncome)
+        console.log(newIncome);
+        console.log(user.token);
 
         try {
             await fetch("https://budgeting-js-back-end.azurewebsites.net/budgeting/edit-income", {

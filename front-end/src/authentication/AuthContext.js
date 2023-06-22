@@ -18,7 +18,7 @@ function AuthProvider(props) {
     }
 
     const login = (user,income) => {
-        storeLocally(user, income);
+        storeLocally(user, income); 
         setUser(user);
         setIncome(income);
         setAuthenticated(true);

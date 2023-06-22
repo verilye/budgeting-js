@@ -23,7 +23,7 @@ export default function BudgetViewPort() {
                 mode: 'cors',
                 headers: {
                     'Content-Type': 'application/json',
-                    'x-access-token': user.jwt
+                    'x-access-token': user.token
                 },
                 body: JSON.stringify({
                     user_id: user.user_id,
