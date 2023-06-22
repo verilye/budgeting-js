@@ -16,7 +16,7 @@ export default function AddCategoryDialog({fetchData}) {
 
         try {
 
-            const res = await fetch("http://localhost:4000/budgeting/create-category",{
+            const res = await fetch("https://budgeting-js-back-end.azurewebsites.net/budgeting/create-category",{
                 method: "POST",
                 mode: 'cors',
                 headers: {  

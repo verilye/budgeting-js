@@ -18,7 +18,7 @@ export default function BudgetViewPort() {
     // Here we want to load all categories and goals then display them
     let fetchData = React.useCallback(async () => {
         try {
-            const res = await fetch("http://localhost:4000/budgeting/get-goals", {
+            const res = await fetch("https://budgeting-js-back-end.azurewebsites.net/budgeting/get-goals", {
                 method: "POST",
                 mode: 'cors',
                 headers: {

@@ -14,7 +14,7 @@ export default function Goal({ goal_id, category_id, target_amount, target_progr
             let newProgress = target_progress + parseInt(addedAmount);
             let newIncome = income - parseInt(addedAmount);
 
-            await fetch("http://localhost:4000/budgeting/edit-goal", {
+            await fetch("https://budgeting-js-back-end.azurewebsites.net/budgeting/edit-goal", {
                 method: "POST",
                 mode: 'cors',
                 headers: {
@@ -30,7 +30,7 @@ export default function Goal({ goal_id, category_id, target_amount, target_progr
                 })
             })
 
-            await fetch("http://localhost:4000/budgeting/edit-income", {
+            await fetch("https://budgeting-js-back-end.azurewebsites.net/budgeting/edit-income", {
                 method: "POST",
                 mode: 'cors',
                 headers: {

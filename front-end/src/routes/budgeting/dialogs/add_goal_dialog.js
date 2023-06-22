@@ -15,7 +15,7 @@ export default function AddGoalDialog({ category_id, fetchData }) {
 
         try {
 
-            const res = await fetch("http://localhost:4000/budgeting/create-goal", {
+            const res = await fetch("https://budgeting-js-back-end.azurewebsites.net/budgeting/create-goal", {
                 method: "POST",
                 mode: 'cors',
                 headers: {

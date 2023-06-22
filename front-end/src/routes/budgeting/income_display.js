@@ -42,7 +42,7 @@ export default function IncomeDisplay() {
         console.log(newIncome)
 
         try {
-            await fetch("http://localhost:4000/budgeting/edit-income", {
+            await fetch("https://budgeting-js-back-end.azurewebsites.net/budgeting/edit-income", {
                 method: "POST",
                 mode: 'cors',
                 headers: {

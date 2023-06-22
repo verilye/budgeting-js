@@ -17,7 +17,7 @@ export default function EditGoalDialog({ category_id,goal_id, fetchData }) {
         try {
 
             // Need to pass in new category id if you wish for names to be changed
-            const res = await fetch("http://localhost:4000/budgeting/edit-goal", {
+            const res = await fetch("https://budgeting-js-back-end.azurewebsites.net/budgeting/edit-goal", {
                 method: "POST",
                 mode: 'cors',
                 headers: {
@@ -53,7 +53,7 @@ export default function EditGoalDialog({ category_id,goal_id, fetchData }) {
         try {
 
             // Need to pass in new category id if you wish for names to be changed
-            const res = await fetch("http://localhost:4000/budgeting/delete-goal", {
+            const res = await fetch("https://budgeting-js-back-end.azurewebsites.net/budgeting/delete-goal", {
                 method: "DELETE",
                 mode: 'cors',
                 headers: {

@@ -58,7 +58,7 @@ export default function LoginForm() {
 
         try {
 
-            const res = await fetch("http://localhost:4000/user-access/login", {
+            const res = await fetch("https://budgeting-js-back-end.azurewebsites.net/user-access/login", {
                 method: "POST",
                 mode: 'cors',
                 headers: {
@@ -86,7 +86,7 @@ export default function LoginForm() {
         if(await checkUserID(user_id) !== true){return;}
 
         try {
-            let res = await fetch("http://localhost:4000/user-access/create-user", {
+            let res = await fetch("https://budgeting-js-back-end.azurewebsites.net/user-access/create-user", {
                 method: "POST",
                 mode: 'cors',
                 headers: {
